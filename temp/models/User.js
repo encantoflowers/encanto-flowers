@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const uuid = require('uuid');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -14,9 +12,12 @@ const userSchema = new mongoose.Schema({
     trim: true,
     required: true,
     unique: true,
-    maxlength: 32,
+    match: [
+      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+      "Please enter a valid email address",
+    ],
   },
-  hashed_password: {
+  password: {
     type: String,
     required: true,
   },
