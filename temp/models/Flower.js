@@ -13,10 +13,10 @@ const flowerSchema = new Schema(
         images: [imageSchema],
         tags: [
             {
-                ref: 'tags',
+                type: Schema.Types.String,
+                ref: 'Tags',
             }
         ],
-
     },
     {
         toJSON: {
@@ -41,7 +41,6 @@ const imageSchema = new Schema(
             data: Buffer,
             contentType: String
         },
-
     },
     {
         toJSON: {
