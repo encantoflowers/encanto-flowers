@@ -5,9 +5,9 @@ const colorSchema = require('./schemas/colorSchema');
 const typeSchema = require('./schemas/typeSchema');
 
 const tagSchema = new mongoose.Schema({
-  Occasion: [occasionSchema],
-  Color: [colorSchema],
-  Type: [typeSchema],
+  occasions: [occasionSchema],
+  colors: [colorSchema],
+  types: [typeSchema],
 });
 
 module.exports = mongoose.model('Tags', tagSchema);
