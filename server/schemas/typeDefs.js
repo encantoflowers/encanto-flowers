@@ -7,6 +7,14 @@ const typeDefs = gql`
         Color: String
         Type: String
     }
+
+    type Query {
+        tags: [Tag]!
+    }
+
+    type Mutation {
+        addTag(occasion: String, color: String, type: String)
+    }
 `
 
 module.exports = typeDefs;
