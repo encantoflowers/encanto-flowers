@@ -9,7 +9,7 @@ function Cart(props) {
             <div>
                 <div>Product</div>
                 <div>Price</div>
-                <div>Quantity</div>
+                <div>Quantitys</div>
                 <div>Subtotal</div>
             </div>
             {props.items.map((item) => {
