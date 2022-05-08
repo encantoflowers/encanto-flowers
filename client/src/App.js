@@ -3,9 +3,10 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
-import SingleThought from './pages/SingleThought';
+import Cart from './pages/Cart';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Cart from './pages/Cart';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -25,10 +26,9 @@ function App() {
                 element={<Home />} 
               />
               <Route
-                path="/thoughts/:thoughtId"
-                element={<SingleThought />}
+                path="/cart/"
+                element={<Cart />}
               />
-              {/* TODO: Add code here that creates a route for displaying a single thought's comments */}
             </Routes>
           </div>
           <Footer />
