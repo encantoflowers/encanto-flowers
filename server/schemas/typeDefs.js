@@ -1,20 +1,42 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-    type Tag {
-        _id: ID
-        occasions: [String]
-        colors: [String]
-        types: [String]
-    }
+type Occasion {
+    _id: ID
+    Name: String
+}
 
-    type Query {
-        tags: [Tag]!
-    }
+type Color {
+    _id: ID
+    Name: String
+}
 
-    type Mutation {
-        addTag(occasion: String, color: String, type: String)
-    }
-`
+type Type {
+    _id: ID
+    Name: String
+}
+
+type Tag {
+    _id: ID
+    Name: String!
+    occasions: [Occasion]!
+    colors: [Color]!
+    types: [Type]!
+}
+
+type Query {
+    occasions: [Occasion]!
+    colors: [Color]!
+    types: [Type]!
+    tags: [Tag]! 
+}
+
+type Mutation {
+    addOccasion(Name: String!): Occasion
+    addColor(Name: String!): Color
+    addType(Name: String!): Type
+    addTag(Name: String): Tag
+}
+`;
 
 module.exports = typeDefs;

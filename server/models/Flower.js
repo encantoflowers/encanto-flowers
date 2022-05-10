@@ -1,5 +1,29 @@
 const {Schema, model} = require('mongoose');
 
+const imageSchema = new Schema(
+    {
+        name: {
+            type: String,
+            required: true,
+        },
+        description: {
+            type: String,
+            required: true,
+        },
+        img:
+        {
+            data: Buffer,
+            contentType: String
+        },
+    },
+    {
+        toJSON: {
+            getters: true,
+        },
+        id: false,
+    }
+);
+
 const flowerSchema = new Schema(
     {
         name: {
@@ -17,30 +41,6 @@ const flowerSchema = new Schema(
                 ref: 'Tags',
             }
         ],
-    },
-    {
-        toJSON: {
-            getters: true,
-        },
-        id: false,
-    }
-);
-
-const imageSchema = new Schema(
-    {
-        name: {
-            type: String,
-            required: true,
-        },
-        description: {
-            type: String,
-            required: true,
-        },
-        img:
-        {
-            data: Buffer,
-            contentType: String
-        },
     },
     {
         toJSON: {
