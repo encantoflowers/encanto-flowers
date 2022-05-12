@@ -1,41 +1,18 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-type Occasion {
+type Category {
     _id: ID
     Name: String
-}
-
-type Color {
-    _id: ID
-    Name: String
-}
-
-type Type {
-    _id: ID
-    Name: String
-}
-
-type Tag {
-    _id: ID
-    Name: String!
-    occasions: [Occasion]!
-    colors: [Color]!
-    types: [Type]!
 }
 
 type Query {
-    occasions: [Occasion]!
-    colors: [Color]!
-    types: [Type]!
-    tags: [Tag]! 
+    categories: [Category]!
 }
 
 type Mutation {
-    addOccasion(Name: String!): Occasion
-    addColor(Name: String!): Color
-    addType(Name: String!): Type
-    addTag(Name: String): Tag
+    addCategory(): Category
+    removeCategory(categoryId: ID!): Category
 }
 `;
 

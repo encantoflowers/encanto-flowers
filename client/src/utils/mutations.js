@@ -1,41 +1,19 @@
 import { gql } from '@apollo/client';
 
-export const ADD_TAG = gql`
-    mutation addTag($Name: String ) {
-        addTag(Name: $Name) {
-            _id
-            Name
-            occasions {
-            Name
-            }
-            colors {
-            Name
-            }
-            types {
-            Name
-            }
-        }
-    }
-`
-
-export const ADD_OCCASION = gql`
-    mutation addOccasion($Name: String! ) {
-        addOccasion(Name: $Name) {
+export const ADD_CATEGORY = gql`
+    mutation addCategory($Name: String ) {
+        addCategory(Name: $Name) {
             _id
             Name
         }
     }
 `
 
-export const ADD_COLOR = gql`
-    mutation addColor($Name: String! ) {
-        addColor(Name: $Name) {
+export const REMOVE_CATEGORY = gql`
+    mutation removeCategory($Name: String! ) {
+        removeCategory(Name: $Name) {
             _id
             Name
         }
     }
-`
-
-export const ADD_TYPE = gql`
-    
 `
