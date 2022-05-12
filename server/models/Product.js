@@ -24,7 +24,7 @@ const imageSchema = new Schema(
     }
 );
 
-const flowerSchema = new Schema(
+const productSchema = new Schema(
     {
         name: {
             type: String,
@@ -54,4 +54,4 @@ const flowerSchema = new Schema(
 // Tags
 // Image
 
-module.exports = model ('Flower', flowerSchema);
+module.exports = model ('Product', productSchema);
