@@ -1,5 +1,6 @@
 const {Schema, model} = require('mongoose');
 
+const productSchema = new Schema(
 const imageSchema = new Schema(
     {
         name: {
@@ -54,4 +55,4 @@ const flowerSchema = new Schema(
 // Tags
 // Image
 
-module.exports = model ('Flower', flowerSchema);
+module.exports = model ('Product', productSchema);
