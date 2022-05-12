@@ -15,6 +15,9 @@ const resolvers = {
         tags: async () => {
             return Tag.find().populate('occasions').populate('colors').populate('types');
         },
+        product: async () => {
+            return await Product.find().populate('tags');
+        }
     },
     Mutation: {
         addOccasion: async (parent, { Name }) => {
