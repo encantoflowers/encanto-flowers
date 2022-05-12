@@ -1,5 +1,5 @@
-const Flower = require ('./Flower');
+const Flower = require ('./Product');
 const Tags = require ('./Tags');
 const User = require ('./User');
 
-module.exports = { User, Flower, Tags };
+module.exports = { User, Product, Tags };

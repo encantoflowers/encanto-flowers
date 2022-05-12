@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "main": "server/server.js",
   "dependencies": {
-   "mongoose": "^6.3.0",
-    "nosql": "^6.1.0"
+    "mongoose": "^6.3.0",
+    "nosql": "^6.1.0",
+    "react-qty-picker": "^1.0.6"
   },
   "scripts": {
     "start": "node server/server.js",
