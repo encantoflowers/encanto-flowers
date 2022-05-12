@@ -54,4 +54,4 @@ const imageSchema = new Schema(
 // Tags
 // Image
 
-module.exports = model ('Product', flowerSchema);
+module.exports = model ('Product', productSchema);
