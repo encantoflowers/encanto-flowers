@@ -32,7 +32,7 @@ const productSchema = new Schema(
             required: true,
         },
         price: {
-            type: Number,
+            type: Float,
             required: true,
         },
         images: [imageSchema],
