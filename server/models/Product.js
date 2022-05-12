@@ -24,6 +24,7 @@ const imageSchema = new Schema(
     }
 );
 
+
 const productSchema = new Schema(
     {
         name: {
