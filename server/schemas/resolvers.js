@@ -19,8 +19,8 @@ const resolvers = {
             return await Product.find({}).populate('tags');
         },
         product: async (parent, {productId }) => {
-            return Product.findOne({_id: productId})
-        }
+            return Product.findOne({_id: productId});
+        },
     },
     Mutation: {
         addOccasion: async (parent, { Name }) => {
