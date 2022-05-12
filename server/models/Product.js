@@ -1,6 +1,5 @@
 const {Schema, model} = require('mongoose');
 
-const productSchema = new Schema(
 const imageSchema = new Schema(
     {
         name: {
@@ -25,7 +24,8 @@ const imageSchema = new Schema(
     }
 );
 
-const flowerSchema = new Schema(
+
+const productSchema = new Schema(
     {
         name: {
             type: String,
