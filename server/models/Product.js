@@ -35,7 +35,7 @@ const productSchema = new Schema(
             type: Float,
             required: true,
         },
-        images: [imageSchema],
+        image: [imageSchema],
         tags: [
             {
                 type: Schema.Types.String,

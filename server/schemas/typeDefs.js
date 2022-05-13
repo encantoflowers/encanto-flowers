@@ -24,13 +24,19 @@ type Tag {
     types: [Type]!
 }
 
+type Image {
+    _id: ID
+    name: String
+    description: String
+    img: String
+}
+
 type Product {
     _id: ID
     name: String
     price: Float
     tags: [Tag]
-    images: [imageSchema]
-    // Q: look into image schema  
+    image: Image
 }
 
 type Query {
