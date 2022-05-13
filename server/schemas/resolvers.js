@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Flower, Tag, User, Color, Occasion, Type, Order } = require('../models');
+const { Product, Tag, User, Color, Occasion, Type, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -29,6 +29,14 @@ const resolvers = {
         tags: async () => {
             return Tag.find().populate('occasions').populate('colors').populate('types');
         },
+
+        products: async () => {
+            return await Product.find({}).populate('tags');
+        },
+        product: async (parent, {productId }) => {
+            return Product.findOne({_id: productId});
+        },
+
         order: async (parent, { _id }, context) => {
             if (context.user) {
                 const user = await User.findById(context.user._id).populate({
@@ -69,6 +77,7 @@ const resolvers = {
             });
             return { session: session.id };
         }
+
     },
     Mutation: {
         addUser: async (parent, args, context) => {

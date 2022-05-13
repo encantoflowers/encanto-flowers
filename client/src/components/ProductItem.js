@@ -8,7 +8,7 @@ export default function ProductItem(item) {
          const res = await response.json();
          return res;
     }
-
+// incomplete - need to finish 
     useEffect((id) => {
         getFlower(id)
 

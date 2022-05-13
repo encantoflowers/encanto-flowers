@@ -24,7 +24,6 @@ const imageSchema = new Schema(
     }
 );
 
-
 const productSchema = new Schema(
     {
         name: {
@@ -32,10 +31,10 @@ const productSchema = new Schema(
             required: true,
         },
         price: {
-            type: Number,
+            type: Float,
             required: true,
         },
-        images: [imageSchema],
+        image: [imageSchema],
         tags: [
             {
                 type: Schema.Types.String,

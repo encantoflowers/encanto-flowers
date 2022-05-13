@@ -30,6 +30,21 @@ type Tag {
     types: [Type]!
 }
 
+
+type Image {
+    _id: ID
+    name: String
+    description: String
+    img: String
+}
+
+type Product {
+    _id: ID
+    name: String
+    price: Float
+    tags: [Tag]
+    image: Image
+=======
 type Order {
     _id: ID
     purchaseDate: String
@@ -40,6 +55,7 @@ type Checkout {
     _id: ID
     purchaseDate: String
     products: [Product]
+
 }
 
 type Query {
