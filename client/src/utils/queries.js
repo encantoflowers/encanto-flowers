@@ -27,12 +27,10 @@ export const ADD_ORDER = gql`
 `;
 
 export const QUERY_TAGS = gql`
-    query allTags {
-        tags {
+    query categories {
+        categories {
             _id
-            occasions
-            colors
-            types
+            Name
         }
     }
 `
