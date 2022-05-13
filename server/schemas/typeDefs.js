@@ -26,6 +26,7 @@ type Product {
     price: Float
     tags: [Tag]
     image: Image
+}
 
 type Order {
     _id: ID
