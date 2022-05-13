@@ -1,7 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Product, Tag, User, Color, Occasion, Type, Order } = require('../models');
-const { signToken } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const { Product, Category, Order } = require('../models');
+// const { signToken } = require('../utils/auth');
+// const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
     Query: {
@@ -17,17 +17,8 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
-        occasions: async () => {
-            return Occasion.find();
-        },
-        colors: async () => {
-            return Color.find();
-        },
-        types: async () => {
-            return Type.find();
-        },
-        tags: async () => {
-            return Tag.find().populate('occasions').populate('colors').populate('types');
+        categories: async () => {
+            return Category.find();
         },
 
         products: async () => {
@@ -93,44 +84,10 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
-        addOccasion: async (parent, { Name }) => {
-            Occasion.create({
+        addCategory: async (parent, { Name }) => {
+            Category.create({
                 Name
             })
-            .then((occasion) => {
-                return Tag.findOneAndUpdate(
-                    { Name: 'OnlyTag' },
-                    { $addToSet: { occasions: occasion._id } }
-                );
-            })
-        },
-        addColor: async (parent, { Name }) => {
-            Color.create({
-                Name
-            })
-            .then((color) => {
-                return Tag.findOneAndUpdate(
-                    { Name: 'OnlyTag' },
-                    { $addToSet: { colors: color._id } }
-                );
-            })
-        },
-        addType: async (parent, { Name }) => {
-            Type.create({
-                Name
-            })
-            .then((type) => {
-                return Tag.findOneAndUpdate(
-                    { Name: 'OnlyTag' },
-                    { $addToSet: { types: type._id } }
-                );
-            })
-        },
-        // Add tags by type to the single overarching Tag model
-        addTag: async (parent, { Name }) => {
-            Tag.create(
-                { Name }
-            );
         },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });

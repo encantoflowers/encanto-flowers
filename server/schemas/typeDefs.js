@@ -9,7 +9,6 @@ type Category {
 type User {
     name: String
     email: String
-    password: String
     orders: [Order]
 }
 
@@ -24,7 +23,7 @@ type Product {
     _id: ID
     name: String
     price: Float
-    tags: [Tag]
+    categories: [Category]
     image: Image
 }
 
@@ -44,13 +43,20 @@ type Checkout {
 type Query {
     user: [User]!
     categories: [Category]! 
+    products: [Product]!
+    product(productId: ID!): Product
     order: [Order]!
     checkout: [Order]!
 }
 
 type Mutation {
-    addUser: (user: UserInput)
-    addOrder: (products: [ProductInput])
+    addUser (
+        name: String!
+        email: String!
+        password: String!
+        role: Int!
+        ): User
+    addOrder (products: [ID]!): Order
     addCategory(Name: String!): Category
     removeCategory(categoryId: ID!): Category
     login(email: String!, password: String!): User!
