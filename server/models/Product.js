@@ -30,12 +30,16 @@ const productSchema = new Schema(
             type: String,
             required: true,
         },
+        description: {
+            type: String,
+            required: true,
+        },
         price: {
             type: Number,
             required: true,
         },
         image: [imageSchema],
-        tags: [
+        category: [
             {
                 type: Schema.Types.String,
                 ref: 'Category',
