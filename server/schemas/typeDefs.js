@@ -10,7 +10,8 @@ type User {
     _id: ID
     name: String
     email: String
-    orders: [Order]
+    password: String
+    # orders: [Order]
 }
 
 type Image {
@@ -23,9 +24,10 @@ type Image {
 type Product {
     _id: ID
     name: String
+    description: String
     price: Float
     categories: [Category]
-    image: Image
+    image: [Image]
 }
 
 type Order {
@@ -55,7 +57,7 @@ type Mutation {
         name: String!
         email: String!
         password: String!
-        role: Int!
+        # role: Int!
         ): User
     addOrder (products: [ID]!): Order
     addCategory(Name: String!): Category

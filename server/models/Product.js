@@ -12,8 +12,10 @@ const imageSchema = new Schema(
         },
         img:
         {
-            data: Buffer,
-            contentType: String
+            // data: Buffer,
+            // contentType: String
+            type: String,
+            required: true,
         },
     },
     {
@@ -39,7 +41,7 @@ const productSchema = new Schema(
             required: true,
         },
         image: [imageSchema],
-        category: [
+        categories: [
             {
                 type: Schema.Types.String,
                 ref: 'Category',
