@@ -85,9 +85,15 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
         addCategory: async (parent, { Name }) => {
-            Category.create({
+            const category = await Category.create({
                 Name
             })
+
+            return category;
+        },
+        removeCategory: async (parent, { categoryId }) => {
+            const category = await Category.findByIdAndDelete({ _id: categoryId });
+            return category;
         },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
