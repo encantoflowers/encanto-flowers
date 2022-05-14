@@ -22,7 +22,7 @@ const resolvers = {
         },
 
         products: async () => {
-            return await Product.find({}).populate('tags');
+            return await Product.find({}).populate('category');
         },
         product: async (parent, {productId }) => {
             return Product.findOne({_id: productId});
