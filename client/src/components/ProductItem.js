@@ -1,21 +1,18 @@
-import React , { useEffect , useState  }from 'react'
+import React, { useEffect, useState } from 'react'
+import { QUERY_PRODUCT } from '../utils/queries';
 
 export default function ProductItem(item) {
 
-    const [product, setProduct ] = useState(item)
-    const getFlower = async (id) => {
-         const response = await fetch ('/api/${id}');
-         const res = await response.json();
-         return res;
-    }
-// incomplete - need to finish 
-    useEffect((id) => {
-        getFlower(id)
-
-    })
+    const {
+        name,
+        _id,
+        image,
+        description,
+        price,
+    } = item;
 
     return (
-        <div>
+        <Container>
             {/* item image
             item name
             item description
@@ -23,8 +20,20 @@ export default function ProductItem(item) {
             quantity picker
             add to cart
             call to order */}
+            <Row>
+                <Col lg={6} md={6} sm={1}>
+                    <img
+                        src={`image/${image}`}
+                    // placeholder address, need to update
+                    />
+                </Col>
+                <Col lg={6} md={6} sm={1}>
+                    <h3>${item.name}</h3>
 
-        
-        </div>
+                </Col>
+            </Row>
+
+
+        </Container>
     )
 }

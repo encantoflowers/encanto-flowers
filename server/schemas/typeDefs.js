@@ -26,6 +26,7 @@ type Product {
     price: Float
     tags: [Tag]
     image: Image
+}
 
 type Order {
     _id: ID
@@ -45,6 +46,8 @@ type Query {
     categories: [Category]! 
     order: [Order]!
     checkout: [Order]!
+    product(productId: ID!): Product 
+    products: [Product]!
 }
 
 type Mutation {
