@@ -43,6 +43,11 @@ type Checkout {
 
 }
 
+type Auth {
+    token: ID
+    user: User
+  }
+
 type Query {
     user: [User]!
     categories: [Category]! 
@@ -59,10 +64,12 @@ type Mutation {
         password: String!
         # role: Int!
         ): User
+    deleteUser(id: ID!): User
+    updateUser(id: ID!, name: String, email: String, password: String): User
     addOrder (products: [ID]!): Order
     addCategory(Name: String!): Category
     removeCategory(categoryId: ID!): Category
-    login(email: String!, password: String!): User!
+    login(email: String!, password: String!): Auth
 }
 `;
 
