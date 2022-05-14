@@ -23,6 +23,7 @@ type Image {
 type Product {
     _id: ID
     name: String
+    description: String
     price: Float
     categories: [Category]
     image: Image

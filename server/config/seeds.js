@@ -19,8 +19,10 @@ db.once('open', async () => {
     const products = await Product.insertMany([
         {
             name: 'Boucuet01',
+            description: 'A bouquet of roses',
             price: 9.99,
-            // image: [bouquet01.jpg],
+            
+            
         }
     ])
     console.log('products seeded');
@@ -28,8 +30,8 @@ db.once('open', async () => {
     await User.deleteMany();
     const users = await User.insertMany([
         {
-            name: 'John Doe',
-            email: 'test@gmail.com',
+            name: 'Ian Nicholas',
+            email: 'inicholas8686@gmail.com',
             password: 'password',
         }
     ])
