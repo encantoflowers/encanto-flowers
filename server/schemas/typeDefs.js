@@ -26,7 +26,7 @@ type Product {
     description: String
     price: Float
     categories: [Category]
-    image: Image
+    image: [Image]
 }
 
 type Order {

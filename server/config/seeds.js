@@ -21,20 +21,20 @@ db.once('open', async () => {
             name: 'Boucuet01',
             description: 'A bouquet of roses',
             price: 9.99,
-            
-            
+            image: [{name: 'Roses', description: 'Flowers', img: 'photo.png' }],
+            categories: categories[0]._id 
         }
     ])
     console.log('products seeded');
 
     await User.deleteMany();
-    const users = await User.insertMany([
+    const users = await User.create(
         {
             name: 'Ian Nicholas',
             email: 'inicholas8686@gmail.com',
             password: 'password',
         }
-    ])
+    )
     console.log('users seeded');
     
 });

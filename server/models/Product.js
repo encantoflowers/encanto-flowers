@@ -12,9 +12,12 @@ const imageSchema = new Schema(
         },
         img:
         {
-            data: Buffer,
-            contentType: String
-        },
+            type: String,
+            required: true,
+        }
+            // data: Buffer,
+            // contentType: String
+        
     },
     {
         toJSON: {
@@ -39,7 +42,7 @@ const productSchema = new Schema(
             required: true,
         },
         image: [imageSchema],
-        category: [
+        categories: [
             {
                 type: Schema.Types.String,
                 ref: 'Category',
