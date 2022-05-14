@@ -47,6 +47,8 @@ type Query {
     product(productId: ID!): Product
     order: [Order]!
     checkout: [Order]!
+    product(productId: ID!): Product 
+    products: [Product]!
 }
 
 type Mutation {

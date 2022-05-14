@@ -24,7 +24,45 @@ export const ADD_ORDER = gql`
             }
         }
     }
-`;
+`
+
+export const QUERY_PRODUCT = gql`
+    query getProduct($productId: ID) {
+        product (productId: $product) {
+            _id
+            name
+            description
+            price
+            image {
+                name
+                description
+                img
+            }
+            category {
+                name
+            }
+        }
+    }
+`
+
+export const QUERY_ALL_PRODUCTS = gql`
+     query products {
+        products {
+            _id
+            name
+            description
+            price
+            image {
+                name
+                description
+                img
+            }
+            category {
+                name
+            }
+        }
+        }
+`
 
 export const QUERY_TAGS = gql`
     query categories {
