@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { Category } = require('../models');
+const { Category, Product, User } = require('../models');
 
 db.once('open', async () => {
     // Delete any existing category entries
@@ -14,4 +14,25 @@ db.once('open', async () => {
     ])
     // Notify the user that the categories have been seeded
     console.log('categories seeded');
+
+    await Product.deleteMany();
+    const products = await Product.insertMany([
+        {
+            name: 'Boucuet01',
+            price: 9.99,
+            // image: [bouquet01.jpg],
+        }
+    ])
+    console.log('products seeded');
+
+    await User.deleteMany();
+    const users = await User.insertMany([
+        {
+            name: 'John Doe',
+            email: 'test@gmail.com',
+            password: 'password',
+        }
+    ])
+    console.log('users seeded');
+    
 });

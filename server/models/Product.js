@@ -38,7 +38,7 @@ const productSchema = new Schema(
         tags: [
             {
                 type: Schema.Types.String,
-                ref: 'Tags',
+                ref: 'Category',
             }
         ],
     },
