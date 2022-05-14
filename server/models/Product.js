@@ -15,7 +15,7 @@ const imageSchema = new Schema(
             type: String,
             required: true,
         }
-        
+
     },
     {
         toJSON: {
