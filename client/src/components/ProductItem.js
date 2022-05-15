@@ -1,15 +1,15 @@
+import { useQuery } from '@apollo/client';
 import React, { useEffect, useState } from 'react'
 import { QUERY_PRODUCT } from '../utils/queries';
+import { QuantityPicker } from 'react-qty-picker';
+
 
 export default function ProductItem(item) {
-
-    const {
-        name,
-        _id,
-        image,
-        description,
-        price,
-    } = item;
+    const getQuantity = (value) => {
+        console.log(value)
+    }
+    const { loading, data } = useQuery(QUERY_PRODUCT);
+    const product = data?.product || [];
 
     return (
         <Container>
@@ -20,19 +20,14 @@ export default function ProductItem(item) {
             quantity picker
             add to cart
             call to order */}
-            <Row>
-                <Col lg={6} md={6} sm={1}>
-                    <img
-                        src={`image/${image}`}
-                    // placeholder address, need to update
-                    />
-                </Col>
-                <Col lg={6} md={6} sm={1}>
-                    <h3>${item.name}</h3>
-
-                </Col>
-            </Row>
-
+            <img
+                src={`/images/${item.image.img}`}
+            />
+            {item.name}
+            {item.description}
+            {item.price}
+            <QuantityPicker min={1} onChange={getQuantity} />
+            
 
         </Container>
     )

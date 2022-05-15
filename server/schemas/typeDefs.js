@@ -21,6 +21,12 @@ type Image {
     img: String
 }
 
+input ImageInput {
+    name: String
+    description: String
+    img: String
+}
+
 type Product {
     _id: ID
     name: String
@@ -68,6 +74,22 @@ type Mutation {
     updateUser(id: ID!, name: String, email: String, password: String): User
     addOrder (products: [ID]!): Order
     addCategory(Name: String!): Category
+    addProduct(
+        name: String!
+        description: String!
+        price: Float! 
+        categories: [String]!
+        image: ImageInput!
+        ): Product 
+    deleteProduct(productId: ID!): Product
+    updateProduct(
+        productId: ID!
+        name: String
+        description: String
+        price: Float
+        categories: [String]
+        image: ImageInput
+        ): Product
     removeCategory(categoryId: ID!): Category
     login(email: String!, password: String!): Auth
 }

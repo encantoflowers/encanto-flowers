@@ -17,14 +17,7 @@ export default function ProductItem(item) {
 
     return (
         <div>
-            {/* item image
-            item name
-            item description
-            item price
-            quantity picker
-            add to cart
-            call to order */}
-
+           
         
         </div>
     )
