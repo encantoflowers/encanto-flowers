@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { Product, Category, Order,  User } = require('../models');
-// const { signToken } = require('../utils/auth');
+const { signToken } = require('../utils/auth');
 // const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
@@ -73,7 +73,15 @@ const resolvers = {
     Mutation: {
         addUser: async (parent,{name, email, password}) => {
             const user = await User.create({name, email, password});
-            // const token = signToken(user);
+            const token = signToken(user);
+            return user;
+        },
+        deleteUser: async (parent, {id}) => {
+            const user = await User.findByIdAndDelete(id);
+            return user;
+        },
+        updateUser: async (parent, {id, name, email, password}) => {
+            const user = await User.findByIdAndUpdate(id, {name, email, password});
             return user;
         },
         addOrder: async (parent, { products }, context) => {
@@ -85,16 +93,22 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
         addCategory: async (parent, { Name }) => {
-            Category.create({
+            const category = await Category.create({
                 Name
             })
+
+            return category;
+        },
+        removeCategory: async (parent, { categoryId }) => {
+            const category = await Category.findByIdAndDelete({ _id: categoryId });
+            return category;
         },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
             if (!user) {
                 throw new AuthenticationError('Invalid credentials');
             }
-            const isValid = await user.validatePassword(password);
+            const isValid = await user.isCorrectPassword(password);
             if (!isValid) {
                 throw new AuthenticationError('Invalid credentials');
             }
