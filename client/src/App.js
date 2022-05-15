@@ -2,8 +2,10 @@ import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import Navbar from './components/Navbar/';
+
 // import Home from './pages/Home';
-import Cart from './pages/Cart';
+// import Cart from './pages/Cart';
 // import Header from './components/Header';
 // import Footer from './components/Footer';
 
@@ -16,23 +18,35 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <Navbar />
+        <Routes>
+          
+      
+      {/* <Navbar /> */}
+      {/* <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          {/* <Header /> */}
+          {/* <Header /> 
           <div className="container">
+
+            <h1>Hello World! Here I come!</h1>
+            <Navbar />
             <Routes>
-              {/* <Route 
+              <Route 
                 path="/" 
                 element={<Home />} 
-              /> */}
+              />
               <Route
                 path="/cart/"
                 element={<Cart />}
               />
             </Routes>
           </div>
-          {/* <Footer /> */}
+          <Footer />
         </div>
-      </Router>
+      </Router> */}
+      </Routes>
+    </Router>
+
     </ApolloProvider>
   );
 }

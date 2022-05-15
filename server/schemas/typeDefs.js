@@ -49,7 +49,7 @@ type Auth {
   }
 
 type Query {
-    user: [User]!
+    user: User
     categories: [Category]! 
     products: [Product]!
     product(productId: ID!): Product
