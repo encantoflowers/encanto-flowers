@@ -7,6 +7,7 @@ import {
     UPDATE_CART_QUANTITY,
     UPDATE_PRODUCTS
 } from '../utils/actions';
+import { Container , Row, Col, Button } from 'react-bootstrap'
 
 
 export default function ProductItem(item) {
