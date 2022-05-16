@@ -109,8 +109,8 @@ const resolvers = {
             return product
         },
 
-        updateProduct: async (parent, {id, name, description, price, categories, image}) => {
-            const product = await Product.findByIdAndUpdate(id, {name, description, price, categories, image});
+        updateProduct: async (parent, {productId, name, description, price, categories, image}) => {
+            const product = await Product.findByIdAndUpdate(productId, {name, description, price, categories, image});
             return product
         },
 
