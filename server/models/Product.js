@@ -12,11 +12,10 @@ const imageSchema = new Schema(
         },
         img:
         {
-            // data: Buffer,
-            // contentType: String
             type: String,
             required: true,
-        },
+        }
+
     },
     {
         toJSON: {
