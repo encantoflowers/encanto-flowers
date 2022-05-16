@@ -16,7 +16,7 @@ function App() {
     <ApolloProvider client={client}>
       <EncantoNav />
       <Router>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           
       
