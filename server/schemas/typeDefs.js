@@ -83,11 +83,11 @@ type Mutation {
         ): Product 
     deleteProduct(productId: ID!): Product
     updateProduct(
-        productId: ID!
-        name: String
-        description: String
-        price: Float
-        categories: [String]
+        productId: ID!,
+        name: String,
+        description: String,
+        price: Float,
+        categories: [String],
         image: ImageInput
         ): Product
     removeCategory(categoryId: ID!): Category
