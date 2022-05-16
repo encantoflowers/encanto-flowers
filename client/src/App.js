@@ -2,11 +2,8 @@ import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Navbar from './components/Navbar/';
-
-// import Home from './pages/Home';
-// import Cart from './pages/Cart';
-// import Header from './components/Header';
+import EncantoNav from './components/Navbar';
+import Cart from './pages/Cart';
 // import Footer from './components/Footer';
 
 const client = new ApolloClient({
@@ -17,6 +14,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <EncantoNav />
       <Router>
         <Navbar />
         <Routes>
