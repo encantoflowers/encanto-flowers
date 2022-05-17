@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { QUERY_CATEGORIES } from '../utils/queries';
+import { UPDATE_CATEGORIES } from '../utils/actions';
 import { useStoreContext } from '../utils/GlobalState';
+import { idbPromise } from '../utils/helpers';
 
 
 
-export default function EncantoNav() {
+function EncantoNav() {
     
     const [state, dispatch] = useStoreContext();
 
@@ -20,7 +22,17 @@ export default function EncantoNav() {
             type: UPDATE_CATEGORIES,
             products: data.categories,
           });
-        }
+          data.categories.forEach((category) => {
+            idbPromise('categories', 'put', category);
+          });
+        } else if (!loading) {
+            idbPromise('categories', 'get').then((category) => {
+              dispatch({
+                type: UPDATE_CATEGORIES,
+                products: categories,
+              });
+            });
+          }
       }, [data, loading, dispatch]);
 
     return (
@@ -38,24 +50,27 @@ export default function EncantoNav() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#link">Link</Nav.Link>
-                    <NavDropdown title="Categories" id="basic-nav-dropdown">
-                    {data.length ? (
-                        <div>
-                            {data.map((category) => (
-                            <NavDropdown.Item href="#" key={category._id}>{category.name}</NavDropdown.Item>
+                  <Nav.Link href="#home">Home</Nav.Link>
+                      <Nav.Link href="#link">Link</Nav.Link>
+                      <NavDropdown title="Categories" id="basic-nav-dropdown">
+                      {data ? (
+                      <div>
+                        {data.categories.map((category) => (
+                            <NavDropdown.Item href="#" key={category._id}>{category.Name}</NavDropdown.Item>
                         ))}
+                      </div>  
+                      ) : ( 
+                        <div>
+                        <NavDropdown.Item href="#" key='None'>'No Categories'</NavDropdown.Item>
                         </div>
-                        
-                    ) : (
-                        <NavDropdown.Item href="#">No Categories!</NavDropdown.Item>
-                    )} 
-                    
-                    </NavDropdown>
+                      )}
+                      
+                  </NavDropdown>
                 </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
     )
 }
+
+export default EncantoNav;
