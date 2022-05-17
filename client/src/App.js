@@ -6,6 +6,10 @@ import { setContext } from '@apollo/client/link/context';
 import EncantoNav from './components/Navbar';
 import Cart from './pages/Cart';
 // import Footer from './components/Footer';
+import Product from './pages/Product'
+import Categories from './pages/Categories'
+import CategoryMenu from './components/CategoryMenu';
+import ProductItem from './components/ProductItem';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -29,17 +33,18 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+
+      <StoreProvider>
       <Router>
         <div>
-          <StoreProvider>
             <EncantoNav />
-          </StoreProvider>
         </div>
-        </Router>
         {/* <Navbar /> */}
-        {/* <Routes> */}
-          
-      
+        {/* <EncantoNav /> */}
+       <h1>Hello world!</h1>
+       <ProductItem />
+        <Routes>
+       
       {/* <Navbar /> */}
       {/* <Router>
         <div className="flex-column justify-flex-start min-100-vh">
@@ -62,9 +67,10 @@ function App() {
           <Footer />
         </div>
       </Router> */}
-      {/* </Routes> */}
-    {/* </Router> */}
-
+      </ Routes>
+    </ Router>
+    </ StoreProvider>   
+      
     </ApolloProvider>
   );
 }

@@ -7,15 +7,15 @@ import {
 } from '../../utils/actions';
 import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
-import { Dropdown } from 'react-bootstrap'
+import { Dropdown , Container } from 'react-bootstrap'
+import './style.css'
 
 export default function CategoryMenu() {
 
     const [state, dispatch] = useStoreContext();
 
-    const { categories } = state;
-
     const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
+    const { categories } = state;
 
     useEffect(() => {
         if (categoryData) {
@@ -43,18 +43,23 @@ export default function CategoryMenu() {
         });
     };
     return (
-        <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Categories: All 
+        <Container> 
+        <Dropdown className='dropdown mx-auto'>
+            <Dropdown.Toggle className='dropdown' id="dropdown-basic">
+                Categories: All
             </Dropdown.Toggle>
-            <Dropdown.Menu>
+            <Dropdown.Menu >
                 {categories.map((item) => (
-                    <Dropdown.Item key={item._id}
-                        onClick={() => {
-                            handleClick(item._id);
-                        }}>{item.name}</Dropdown.Item>
+                    <Dropdown.Item  key={item._id} 
+                    onClick={() => {
+                        handleClick(item._id)
+                    }}>
+                    {item.name}
+                </Dropdown.Item>
                 ))}
+                
             </Dropdown.Menu>
         </Dropdown>
+        </Container>
     )
 }
