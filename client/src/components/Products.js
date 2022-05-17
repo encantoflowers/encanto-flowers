@@ -4,9 +4,9 @@ import {
     UPDATE_PRODUCTS
 } from '../utils/actions';
 import { useQuery } from '@apollo/client';
-import { idbPromise } from '../../utils/helpers';
-import { useStoreContext } from '../../utils/GlobalState';
-import ProductItem from '../ProductItem';
+import { idbPromise } from '../utils/helpers';
+import { useStoreContext } from '../utils/GlobalState';
+import ProductItem from './ProductItem';
 
 export default function AllProducts() {
 
