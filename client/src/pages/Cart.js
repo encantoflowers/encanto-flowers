@@ -12,9 +12,9 @@ function Cart(props) {
                 <div>Quantitys</div>
                 <div>Subtotal</div>
             </div>
-            {props.items.map((item) => {
+            {props.items.map((item) => (
                 <CartItems item={item} />
-            })}
+            ))}
         </div>
     )
 }

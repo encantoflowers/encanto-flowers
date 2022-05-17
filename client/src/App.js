@@ -1,23 +1,43 @@
 import React from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { StoreProvider } from './utils/GlobalState';
+import { setContext } from '@apollo/client/link/context';
 import EncantoNav from './components/Navbar';
 import Cart from './pages/Cart';
 // import Footer from './components/Footer';
 
-const client = new ApolloClient({
+const httpLink = createHttpLink({
   uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
 function App() {
   return (
     <ApolloProvider client={client}>
-      <EncantoNav />
       <Router>
-        <Navbar />
-        <Routes>
+        <div>
+          <StoreProvider>
+            <EncantoNav />
+          </StoreProvider>
+        </div>
+        </Router>
+        {/* <Navbar /> */}
+        {/* <Routes> */}
           
       
       {/* <Navbar /> */}
@@ -42,8 +62,8 @@ function App() {
           <Footer />
         </div>
       </Router> */}
-      </Routes>
-    </Router>
+      {/* </Routes> */}
+    {/* </Router> */}
 
     </ApolloProvider>
   );

@@ -1,15 +1,48 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap';
+import { useQuery } from '@apollo/client';
+import { QUERY_CATEGORIES } from '../utils/queries';
+import { UPDATE_CATEGORIES } from '../utils/actions';
+import { useStoreContext } from '../utils/GlobalState';
+import { idbPromise } from '../utils/helpers';
 
-export default function EncantoNav() {
+
+
+function EncantoNav() {
+    
+    const [state, dispatch] = useStoreContext();
+
+    const { loading, data } = useQuery(QUERY_CATEGORIES);
+
+    const { categories } = state;
+
+    useEffect(() => {
+        if (data) {
+          dispatch({
+            type: UPDATE_CATEGORIES,
+            products: data.categories,
+          });
+          data.categories.forEach((category) => {
+            idbPromise('categories', 'put', category);
+          });
+        } else if (!loading) {
+            idbPromise('categories', 'get').then((category) => {
+              dispatch({
+                type: UPDATE_CATEGORIES,
+                products: categories,
+              });
+            });
+          }
+      }, [data, loading, dispatch]);
+
     return (
         <Navbar bg="light" expand="lg">
             <Container>
                 <Navbar.Brand href="#home">
                 <img
                 alt=""
-                src="../../public/images/encanto_logo_nav.png"
-                width="30"
+                src="/images/encanto_logo_nav.png"
+                width="90"
                     height="30"
                     className="d-inline-block align-top"
                 />
@@ -17,18 +50,27 @@ export default function EncantoNav() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#link">Link</Nav.Link>
-                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                    </NavDropdown>
+                  <Nav.Link href="#home">Home</Nav.Link>
+                      <Nav.Link href="#link">Link</Nav.Link>
+                      <NavDropdown title="Categories" id="basic-nav-dropdown">
+                      {data ? (
+                      <div>
+                        {data.categories.map((category) => (
+                            <NavDropdown.Item href="#" key={category._id}>{category.Name}</NavDropdown.Item>
+                        ))}
+                      </div>  
+                      ) : ( 
+                        <div>
+                        <NavDropdown.Item href="#" key='None'>'No Categories'</NavDropdown.Item>
+                        </div>
+                      )}
+                      
+                  </NavDropdown>
                 </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
     )
 }
+
+export default EncantoNav;
