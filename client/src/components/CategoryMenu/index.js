@@ -43,8 +43,8 @@ export default function CategoryMenu() {
         });
     };
     return (
-        <Container> 
-        <Dropdown className='dropdown mx-auto'>
+
+        <Dropdown className='dropdown mx-auto mt-4'>
             <Dropdown.Toggle className='dropdown' id="dropdown-basic">
                 Categories: All
             </Dropdown.Toggle>
@@ -60,6 +60,6 @@ export default function CategoryMenu() {
                 
             </Dropdown.Menu>
         </Dropdown>
-        </Container>
+
     )
 }
