@@ -11,6 +11,7 @@ import Categories from './pages/Categories'
 import CategoryMenu from './components/CategoryMenu';
 import ProductItem from './components/ProductItem';
 import  QuantityPicker  from './components/QuantityPicker'
+import Banner from './components/Banner';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -39,6 +40,9 @@ function App() {
       <Router>
         <div>
             <EncantoNav />
+        </div>
+        <div>
+          <Banner />
         </div>
        <ProductItem />
         <Routes>
