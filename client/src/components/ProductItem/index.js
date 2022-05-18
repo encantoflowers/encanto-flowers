@@ -102,6 +102,7 @@ export default function ProductItem(item) {
                     <p>Quantity</p>
                    <QuantityPicker />
                     </div>
+                
                     <Button className='button' onClick={addToCart}>Add to Cart</Button>
                     <a href="tel:123456789">
                     <Button className='button'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
