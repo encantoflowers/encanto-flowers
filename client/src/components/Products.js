@@ -9,6 +9,7 @@ import { useStoreContext } from '../utils/GlobalState';
 import ProductItem from './ProductItem';
 import { Container , Card, Col, Button } from 'react-bootstrap';
 
+
 export default function AllProducts() {
 
     const [state, dispatch] = useStoreContext();

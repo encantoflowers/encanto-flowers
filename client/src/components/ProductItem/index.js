@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/client';
 import React, { useEffect, useState } from 'react'
 import { QUERY_PRODUCT } from '../../utils/queries';
-import { QuantityPicker } from 'react-qty-picker';
 import {
     ADD_TO_CART,
     UPDATE_CART_QUANTITY,
@@ -11,6 +10,7 @@ import { Container , Row, Col, Button } from 'react-bootstrap';
 import { useStoreContext } from '../../utils/GlobalState';
 import { useParams } from 'react-router-dom';
 import { idbPromise } from '../../utils/helpers';
+import QuantityPicker from '../QuantityPicker';
 import './style.css'
 
 
@@ -100,7 +100,7 @@ export default function ProductItem(item) {
                     {currentProduct.price}
                     <div>
                     <p>Quantity</p>
-                    <QuantityPicker min={0} onChange={getQuantity} />
+                   <QuantityPicker />
                     </div>
                     <Button className='button' onClick={addToCart}>Add to Cart</Button>
                     <a href="tel:123456789">
