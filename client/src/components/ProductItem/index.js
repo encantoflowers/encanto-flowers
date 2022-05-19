@@ -22,7 +22,7 @@ export default function ProductItem(item) {
       name,
       _id,
       price,
-      quantity
+      categories
     } = item;
 
     const [currentProduct, setCurrentProduct] = useState({});
@@ -61,7 +61,7 @@ export default function ProductItem(item) {
         if (itemInCart) {
             dispatch({
                 type: UPDATE_CART_QUANTITY,
-                _id: id,
+                _id: _id,
                 purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
             });
             idbPromise('cart', 'put', {
