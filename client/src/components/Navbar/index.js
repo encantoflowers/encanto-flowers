@@ -1,58 +1,77 @@
-import React from "react";
-import Auth from "../../utils/auth";
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap';
+import { useQuery } from '@apollo/client';
+import { QUERY_CATEGORIES } from '../../utils/queries';
+import { UPDATE_CATEGORIES } from '../../utils/actions';
+import { useStoreContext } from '../../utils/GlobalState';
+import { idbPromise } from '../../utils/helpers';
+import './style.css';
 
-function Nav() {
 
-  function showNavigation() {
-    if (Auth.loggedIn()) {
-      return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/orderHistory">
-              Order History
-            </Link>
-          </li>
-          <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
-              Logout
-            </a>
-          </li>
-        </ul>
-      );
-    } else {
-      return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">
-              Signup
-            </Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/login">
-              Login
-            </Link>
-          </li>
-        </ul>
-      );
-    }
-  }
 
-  return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">
-          <span role="img" aria-label="shopping bag">🛍️</span>
-          Encanto Flowers
-        </Link>
-      </h1>
+function EncantoNav() {
+    
+    const [state, dispatch] = useStoreContext();
 
-      <nav>
-        {showNavigation()}
-      </nav>
-    </header>
-  );
+    const { loading, data } = useQuery(QUERY_CATEGORIES);
+
+    const { categories } = state;
+
+    useEffect(() => {
+        if (data) {
+          dispatch({
+            type: UPDATE_CATEGORIES,
+            products: data.categories,
+          });
+          data.categories.forEach((category) => {
+            idbPromise('categories', 'put', category);
+          });
+        } else if (!loading) {
+            idbPromise('categories', 'get').then((category) => {
+              dispatch({
+                type: UPDATE_CATEGORIES,
+                products: categories,
+              });
+            });
+          }
+      }, [data, loading, dispatch]);
+
+    return (
+        <Navbar bg="light" expand="lg">
+            <Container>
+                <Navbar.Brand href="#home">
+                <img
+                alt=""
+                src="/images/encanto_logo_nav.png"
+                width="90"
+                    height="30"
+                    className="d-inline-block align-top"
+                />
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                  <Nav.Link href="#home">Home</Nav.Link>
+                      <Nav.Link href="#link">Link</Nav.Link>
+                      <NavDropdown title="Categories" id="basic-nav-dropdown">
+                      {data ? (
+                      <div>
+                        {data.categories.map((category) => (
+                            <NavDropdown.Item href={`/categories/${category.Name}`} key={category._id}>{category.Name}</NavDropdown.Item>
+                        ))}
+                      </div>  
+                      ) : ( 
+                        <div>
+                        <NavDropdown.Item href="#" key='None'>'No Categories'</NavDropdown.Item>
+                        </div>
+                      )}
+                      
+                  </NavDropdown>
+                </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    )
 }
 
-export default Nav;
+export default EncantoNav;
