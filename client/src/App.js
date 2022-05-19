@@ -5,7 +5,7 @@ import { StoreProvider } from './utils/GlobalState';
 import { setContext } from '@apollo/client/link/context';
 import EncantoNav from './components/Navbar';
 import Cart from './pages/Cart';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 import Product from './pages/Product'
 import Categories from './pages/Categories'
 import CategoryMenu from './components/CategoryMenu';
@@ -36,22 +36,20 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-
       <StoreProvider>
       <Router>
         <div>
+          
             <EncantoNav />
+            <AllProducts />
+           <Banner />
         </div>
-        <div>
-          <Banner />
-        </div>
-       <Categories />
-
-       <ProductItem />
-       <FinePrint />
-
-        <Routes>
-       
+        </Router>
+        </StoreProvider>
+        {/* <Navbar /> */}
+        {/* <Routes> */}
+          
+      
       {/* <Navbar /> */}
       {/* <Router>
         <div className="flex-column justify-flex-start min-100-vh">
@@ -74,10 +72,10 @@ function App() {
           <Footer />
         </div>
       </Router> */}
-      </ Routes>
-    </ Router>
-    </ StoreProvider>   
-      
+      {/* </Routes> */}
+    {/* </Router> */}
+    
+    <Footer />
     </ApolloProvider>
   );
 }
