@@ -38,8 +38,8 @@ export const QUERY_PRODUCT = gql`
                 description
                 img
             }
-            category {
-                name
+            categories {
+                Name
             }
         }
     }
