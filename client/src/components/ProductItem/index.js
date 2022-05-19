@@ -1,13 +1,17 @@
 import { useQuery } from '@apollo/client';
 import React, { useEffect, useState } from 'react'
-import { QUERY_PRODUCT } from '../utils/queries';
-import { QuantityPicker } from 'react-qty-picker';
+import { QUERY_PRODUCT } from '../../utils/queries';
 import {
     ADD_TO_CART,
     UPDATE_CART_QUANTITY,
     UPDATE_PRODUCTS
-} from '../utils/actions';
-import { Container , Row, Col, Button } from 'react-bootstrap'
+} from '../../utils/actions';
+import { Container , Row, Col, Button } from 'react-bootstrap';
+import { useStoreContext } from '../../utils/GlobalState';
+import { useParams } from 'react-router-dom';
+import { idbPromise } from '../../utils/helpers';
+import QuantityPicker from '../QuantityPicker';
+import './style.css'
 
 
 export default function ProductItem(item) {
@@ -18,6 +22,7 @@ export default function ProductItem(item) {
     const { id } = useParams();
 
     const [currentProduct, setCurrentProduct] = useState({});
+    console.log(currentProduct)
     const { loading, data } = useQuery(QUERY_PRODUCT);
     const { products, cart } = state;
 
@@ -70,27 +75,35 @@ export default function ProductItem(item) {
     };
 
     return (
-        <Container fluid >
+        <Container className='product-item'>
             {/* item image
             item name
             item description
             item price
             quantity picker
             add to cart
-            call to order */}
+            call to order */}   
             <Row>
-                <Col>
-                    <img
+                <Col lg={5}>
+                    {/* <img
                         src={`/images/${currentProduct.image.img}`}
-                    />
+                    /> */}
+                    <img src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" />
                 </Col>
                 <Col>
+                    <h4>Product name</h4>
+                    <p>Product description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed velit dignissim sodales ut eu sem integer vitae.</p>
+                    <h3>$9.99</h3>
                     {currentProduct.name}
                     {currentProduct.description}
                     {currentProduct.price}
-                    <QuantityPicker min={1} onChange={getQuantity} />
-                    <Button variant="primary" onClick={addToCart}>Add to Cart</Button>
-                    <a href="tel:123456789"><Button variant="primary">Call to Order</Button></a>
+                    <div>
+                    <p>Quantity</p>
+                   <QuantityPicker />
+                    </div>
+                    <Button className='button' onClick={addToCart}>Add to Cart</Button>
+                    <a href="tel:123456789">
+                    <Button className='button'>Call to Order</Button></a>
                 </Col>
             </Row>
         </Container>

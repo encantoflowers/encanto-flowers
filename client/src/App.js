@@ -4,10 +4,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { StoreProvider } from './utils/GlobalState';
 import { setContext } from '@apollo/client/link/context';
 import EncantoNav from './components/Navbar';
-// import Cart from './pages/Cart';
-// import Navbar from './components/Navbar';
+import Cart from './pages/Cart';
 import Footer from './components/Footer';
-import AllProducts from './components/Products';
+import Product from './pages/Product'
+import Categories from './pages/Categories'
+import CategoryMenu from './components/CategoryMenu';
+import ProductItem from './components/ProductItem';
+import  QuantityPicker  from './components/QuantityPicker'
+import Banner from './components/Banner';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -37,7 +41,7 @@ function App() {
           
             <EncantoNav />
             <AllProducts />
-          
+           <Banner />
         </div>
         </Router>
         </StoreProvider>

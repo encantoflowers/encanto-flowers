@@ -2,9 +2,14 @@ import React, { useEffect } from 'react'
 import { Card, Container, Row, Button } from 'react-bootstrap';
 import { useQuery } from '@apollo/client'
 import { QUERY_ALL_PRODUCTS } from '../utils/queries';
-import { UPDATE_PRODUCTS } from '../utils/actions';
+import {
+    UPDATE_PRODUCTS
+} from '../utils/actions';
+import { useQuery } from '@apollo/client';
 import { idbPromise } from '../utils/helpers';
 import { useStoreContext } from '../utils/GlobalState';
+import ProductItem from './ProductItem';
+import { Container, Card } from 'react-bootstrap';
 
 function AllProducts() {
 
