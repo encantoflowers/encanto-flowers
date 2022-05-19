@@ -43,7 +43,6 @@ export const QUERY_PRODUCT = gql`
             }
         }
     }
-<<<<<<< HEAD
 `;
 
 export const QUERY_CHECKOUT = gql`
@@ -55,11 +54,6 @@ export const QUERY_CHECKOUT = gql`
 `;
 
 export const QUERY_ALL_PRODUCTS = gql`
-=======
-`
-// good
-export const QUERY_ALL_PRODUCTS = gql` 
->>>>>>> development
      query products {
         products {
             _id
