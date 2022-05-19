@@ -4,15 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { StoreProvider } from './utils/GlobalState';
 import { setContext } from '@apollo/client/link/context';
 import EncantoNav from './components/Navbar';
-<<<<<<< HEAD
-// import Cart from './pages/Cart';
-// import Footer from './components/Footer';
-// import Product from './pages/Product'
-import Home from './pages/Home';
-import Categories from './pages/Categories'
-// import CategoryMenu from './components/CategoryMenu';
-// import ProductItem from './components/ProductItem';
-=======
 import Cart from './pages/Cart';
 import Footer from './components/Footer';
 import Product from './pages/Product'
@@ -24,7 +15,6 @@ import Banner from './components/Banner';
 import FinePrint from './components/FinePrint';
 import AllProducts from './components/Products';
 import Hero from './components/Hero'
->>>>>>> development
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -53,7 +43,6 @@ function App() {
         <div>
         <Banner />
             <EncantoNav />
-<<<<<<< HEAD
             <Routes>
               <Route
                 path="/"
@@ -64,24 +53,15 @@ function App() {
                 element={<Categories />}
               />
             </Routes>
-=======
             <ProductItem />
            
->>>>>>> development
         </div>
         </Router>
         </StoreProvider>
         {/* <Navbar /> */}
-<<<<<<< HEAD
-        {/* <EncantoNav /> */}
-       <h1>Hello world!</h1>
-       {/* <ProductItem /> */}
-       
-=======
         {/* <Routes> */}
           
       
->>>>>>> development
       {/* <Navbar /> */}
       {/* <Router>
         <div className="flex-column justify-flex-start min-100-vh">
@@ -104,16 +84,10 @@ function App() {
           <Footer />
         </div>
       </Router> */}
-<<<<<<< HEAD
-    </ Router>
-    </ StoreProvider>   
-      
-=======
       {/* </Routes> */}
     {/* </Router> */}
     
     <Footer />
->>>>>>> development
     </ApolloProvider>
   );
 }
