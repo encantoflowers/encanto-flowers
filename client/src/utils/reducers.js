@@ -10,6 +10,7 @@ import {
   CLEAR_CART,
   TOGGLE_CART,
 } from './actions';
+import { QUERY_ALL_PRODUCTS } from './queries';
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -17,6 +18,12 @@ export const reducer = (state, action) => {
       return {
         ...state,
         products: [...action.products],
+      };
+
+    case QUERY_ALL_PRODUCTS:
+      return {
+        ...state,
+        products: [action.products],
       };
 
     case ADD_TO_CART:

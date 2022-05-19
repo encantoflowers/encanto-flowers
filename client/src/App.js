@@ -4,8 +4,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { StoreProvider } from './utils/GlobalState';
 import { setContext } from '@apollo/client/link/context';
 import EncantoNav from './components/Navbar';
-import Cart from './pages/Cart';
-// import Footer from './components/Footer';
+// import Cart from './pages/Cart';
+// import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import AllProducts from './components/Products';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -29,13 +31,16 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <StoreProvider>
       <Router>
         <div>
-          <StoreProvider>
+          
             <EncantoNav />
-          </StoreProvider>
+            <AllProducts />
+          
         </div>
         </Router>
+        </StoreProvider>
         {/* <Navbar /> */}
         {/* <Routes> */}
           
@@ -64,7 +69,8 @@ function App() {
       </Router> */}
       {/* </Routes> */}
     {/* </Router> */}
-
+    
+    <Footer />
     </ApolloProvider>
   );
 }
