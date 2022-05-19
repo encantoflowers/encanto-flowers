@@ -7,6 +7,7 @@ import { idbPromise } from '../../utils/helpers';
 import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
+import { Row, Col } from 'react-bootstrap';
 
 const stripePromise = loadStripe('pk_test_51L0VV3LPz0RFKIjd3EYrAXUdRZuvg8UiM7umz4piCUvWVKswkNXlX16hNBy4W4beVZo2xcCLNyXOffGD7MRzTMrv00ynQ9o8ej');
 
@@ -23,10 +24,10 @@ function Cart(props) {
   }, [data]);
 
   useEffect(() => {
-    async function getCart() {
-      const cart = await idbPromise('cart', 'get');
-      dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
-    }
+    // async function getCart() {
+    //   const cart = await idbPromise('cart', 'get');
+    //   dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+    // }
 
     if (!state.cart.length) {
       getCart();
@@ -62,15 +63,17 @@ function Cart(props) {
         <div>
             <h2>Your Cart Items</h2>
             <a href="#">Back to shopping</a>
-            <div>
-                <div>Product</div>
-                <div>Price</div>
-                <div>Quantity</div>
-                <div>Subtotal</div>
-            </div>
-            {props.items.map((item) => (
-                <CartItems item={item} />
-            ))}
+            <Row>
+                <div className="col-6">Product</div>
+                <div className="col-2">Price</div>
+                <div className="col-2">Quantity</div>
+                <div className="col-2">Subtotal</div>
+            </Row>
+            <Col>
+              {props.items.map((item) => (
+                  <CartItems item={item} />
+              ))}
+            </Col>
         </div>
     )
 }
