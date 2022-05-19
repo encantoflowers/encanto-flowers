@@ -45,8 +45,11 @@ function App() {
         <div>
           <Banner />
         </div>
+       <Categories />
+
        <ProductItem />
        <FinePrint />
+
         <Routes>
        
       {/* <Navbar /> */}
