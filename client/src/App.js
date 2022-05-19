@@ -13,6 +13,8 @@ import ProductItem from './components/ProductItem';
 import  QuantityPicker  from './components/QuantityPicker'
 import Banner from './components/Banner';
 import FinePrint from './components/FinePrint';
+import AllProducts from './components/Products';
+import Hero from './components/Hero'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -39,10 +41,10 @@ function App() {
       <StoreProvider>
       <Router>
         <div>
-          
+        <Banner />
             <EncantoNav />
-            <AllProducts />
-           <Banner />
+            <ProductItem />
+           
         </div>
         </Router>
         </StoreProvider>
