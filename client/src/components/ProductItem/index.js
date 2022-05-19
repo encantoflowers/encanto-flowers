@@ -13,12 +13,7 @@ import { idbPromise } from '../../utils/helpers';
 import QuantityPicker from '../QuantityPicker';
 import './style.css'
 
-
-
 export default function ProductItem(item) {
-    const getQuantity = (value) => {
-  
-    }
     const [state, dispatch] = useStoreContext();
     const { id } = useParams();
 
@@ -31,38 +26,38 @@ export default function ProductItem(item) {
     } = item;
 
     const [currentProduct, setCurrentProduct] = useState({});
-    const { loading, data } = useQuery(QUERY_PRODUCT);
+    // const { loading, data } = useQuery(QUERY_PRODUCT);
     const { products, cart } = state;
 
-    useEffect(() => {
-        // already in global store
-        if (products.length) {
-          setCurrentProduct(products.find((product) => product._id === id));
-        }
-        // retrieved from server
-        else if (data) {
-          dispatch({
-            type: UPDATE_PRODUCTS,
-            products: data.products,
-          });
+    // useEffect(() => {
+    //     // already in global store
+    //     if (products.length) {
+    //       setCurrentProduct(products.find((product) => product._id === id));
+    //     }
+    //     // retrieved from server
+    //     else if (data) {
+    //       dispatch({
+    //         type: UPDATE_PRODUCTS,
+    //         products: data.products,
+    //       });
     
-          data.products.forEach((product) => {
-            idbPromise('products', 'put', product);
-          });
-        }
-        // get cache from idb
-        else if (!loading) {
-          idbPromise('products', 'get').then((indexedProducts) => {
-            dispatch({
-              type: UPDATE_PRODUCTS,
-              products: indexedProducts,
-            });
-          });
-        }
-      }, [products, data, loading, dispatch, id]);
+    //       data.products.forEach((product) => {
+    //         idbPromise('products', 'put', product);
+    //       });
+    //     }
+    //     // get cache from idb
+    //     else if (!loading) {
+    //       idbPromise('products', 'get').then((indexedProducts) => {
+    //         dispatch({
+    //           type: UPDATE_PRODUCTS,
+    //           products: indexedProducts,
+    //         });
+    //       });
+    //     }
+    //   }, [products, data, loading, dispatch, id]);
 
     const addToCart = () => {
-        const itemInCart = cart.find((cartItem) => cartItem._id === id);
+        const itemInCart = cart.find((cartItem) => cartItem._id === _id);
         if (itemInCart) {
             dispatch({
                 type: UPDATE_CART_QUANTITY,
