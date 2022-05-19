@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
-import { Card, Container, Row, Button } from 'react-bootstrap';
-import { useQuery } from '@apollo/client'
-import { QUERY_ALL_PRODUCTS } from '../utils/queries';
+import { QUERY_ALL_PRODUCTS } from '../../utils/queries';
 import {
     UPDATE_PRODUCTS
-} from '../utils/actions';
+} from '../../utils/actions';
 import { useQuery } from '@apollo/client';
-import { idbPromise } from '../utils/helpers';
-import { useStoreContext } from '../utils/GlobalState';
-import ProductItem from './ProductItem';
-import { Container, Card } from 'react-bootstrap';
+import { idbPromise } from '../../utils/helpers';
+import { useStoreContext } from '../../utils/GlobalState';
+import ProductItem from '../ProductItem';
+import { Container , Card, Col, Row, Button } from 'react-bootstrap';
+import './style.css'
+
 
 function AllProducts() {
 
@@ -50,7 +50,7 @@ function AllProducts() {
     // }
 
     return (
-        <Container>
+        <Container className='card-container'>
             {/* loop through each product and generate a card */}
                 <Row xs={1} s={2} md={3} lg={4} className='g-4'>
                 {data ? (

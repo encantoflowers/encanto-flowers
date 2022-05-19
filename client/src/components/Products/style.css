@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Swash&family=Poppins:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+.card-container {
+    margin-top: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.single-card {
+    box-shadow: 10px 10px 30px lightgrey ; 
+}
+
+.product-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    text-align: center;
+}
+

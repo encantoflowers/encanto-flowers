@@ -12,6 +12,7 @@ import CategoryMenu from './components/CategoryMenu';
 import ProductItem from './components/ProductItem';
 import  QuantityPicker  from './components/QuantityPicker'
 import Banner from './components/Banner';
+import FinePrint from './components/FinePrint';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
