@@ -18,12 +18,11 @@ export default function ProductItem(item) {
     const { id } = useParams();
 
     const {
-      image,
       name,
       _id,
       price,
-      categories
-    } = item;
+      description,
+    } = item.item;
 
     const [currentProduct, setCurrentProduct] = useState({});
     // const { loading, data } = useQuery(QUERY_PRODUCT);
@@ -57,11 +56,11 @@ export default function ProductItem(item) {
     //   }, [products, data, loading, dispatch, id]);
 
     const addToCart = () => {
-        const itemInCart = cart.find((cartItem) => cartItem._id === _id);
+        const itemInCart = cart.find((cartItem) => cartItem._id === item._id);
         if (itemInCart) {
             dispatch({
                 type: UPDATE_CART_QUANTITY,
-                _id: _id,
+                _id: item._id,
                 purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
             });
             idbPromise('cart', 'put', {
@@ -94,9 +93,9 @@ export default function ProductItem(item) {
                     <img src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" />
                 </Col>
                 <Col>
-                    <h4>{item.name}</h4>
-                    <p>{item.description}</p>
-                    <h3>{item.price}</h3>
+                    <h4>{name}</h4>
+                    <p>{description}</p>
+                    <h3>{price}</h3>
                     
                     
                     
