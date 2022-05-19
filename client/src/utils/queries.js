@@ -1,15 +1,15 @@
 import { gql } from '@apollo/client';
 
-export const ADD_USER = gql`
-    mutation addUser($user: UserInput) {
-        addUser(user: $user) {
-            name
-            email
-            password
-        }
-    }
-`;
-
+// export const ADD_USER = gql`
+//     mutation addUser($user: UserInput) {
+//         addUser(user: $user) {
+//             name
+//             email
+//             password
+//         }
+//     }
+// `;
+// not logged in
 export const ADD_ORDER = gql`
     mutation addOrder($products: [ProductInput]) {
         addOrder(products: $products) {
@@ -25,7 +25,7 @@ export const ADD_ORDER = gql`
         }
     }
 `
-
+// good minus the categories
 export const QUERY_PRODUCT = gql`
     query getProduct($productId: ID) {
         product (productId: $product) {
@@ -38,11 +38,12 @@ export const QUERY_PRODUCT = gql`
                 description
                 img
             }
-            category {
-                name
+            categories {
+                Name
             }
         }
     }
+<<<<<<< HEAD
 `;
 
 export const QUERY_CHECKOUT = gql`
@@ -54,24 +55,27 @@ export const QUERY_CHECKOUT = gql`
 `;
 
 export const QUERY_ALL_PRODUCTS = gql`
+=======
+`
+// good
+export const QUERY_ALL_PRODUCTS = gql` 
+>>>>>>> development
      query products {
         products {
             _id
             name
             description
             price
-            image {
+            image {   
                 name
                 description
                 img
             }
-            category {
-                name
-            }
+            
         }
-        }
+    }
 `
-
+// good
 export const QUERY_CATEGORIES = gql`
     query categories {
         categories {
@@ -80,13 +84,13 @@ export const QUERY_CATEGORIES = gql`
         }
     }
 `
-
-export const LOGIN = gql`
-    mutation login($email: String!, $password: String!) {
-        login(email: $email, password: $password) {
-            name
-            email
-            password
-        }
-    }
-`;
+// maybe in queries
+// export const LOGIN = gql`
+//     mutation login($email: String!, $password: String!) {
+//         login(email: $email, password: $password) {
+//             name
+//             email
+//             password
+//         }
+//     }
+// `;

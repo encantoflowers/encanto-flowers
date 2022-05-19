@@ -14,16 +14,16 @@ export default function CategoryMenu() {
 
     const [state, dispatch] = useStoreContext();
 
-    const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
+    const { loading, data } = useQuery(QUERY_CATEGORIES);
     const { categories } = state;
 
     useEffect(() => {
-        if (categoryData) {
+        if (data) {
             dispatch({
                 type: UPDATE_CATEGORIES,
-                categories: categoryData.categories,
+                categories: data.categories,
             });
-            categoryData.categories.forEach((category) => {
+            data.categories.forEach((category) => {
                 idbPromise('categories', 'put', category);
             });
         } else if (!loading) {
@@ -34,7 +34,7 @@ export default function CategoryMenu() {
                 });
             });
         }
-    }, [categoryData, loading, dispatch]);
+    }, [data, loading, dispatch]);
 
     const handleClick = (id) => {
         dispatch({
@@ -43,23 +43,20 @@ export default function CategoryMenu() {
         });
     };
     return (
-        <Container> 
-        <Dropdown className='dropdown mx-auto'>
+
+        <Dropdown className='dropdown mx-auto mt-4'>
             <Dropdown.Toggle className='dropdown' id="dropdown-basic">
                 Categories: All
             </Dropdown.Toggle>
             <Dropdown.Menu >
-                {categories.map((item) => (
-                    <Dropdown.Item  key={item._id} 
-                    onClick={() => {
-                        handleClick(item._id)
-                    }}>
-                    {item.name}
+                {categories.map((category) => (
+                    <Dropdown.Item href="#" key={category._id}>
+                    {category.name}
                 </Dropdown.Item>
                 ))}
                 
             </Dropdown.Menu>
         </Dropdown>
-        </Container>
+
     )
 }

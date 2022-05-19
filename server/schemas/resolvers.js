@@ -28,8 +28,12 @@ const resolvers = {
             return await Product.find({}).populate('categories');
         },
         product: async (parent, {productId }) => {
-            return Product.findOne({_id: productId});
+            return Product.findOne({_id: productId}).populate("categories");
         },
+
+        // products: async () => {
+        //     return Product.find();
+        // },
 
         order: async (parent, { _id }, context) => {
             if (context.user) {
@@ -87,6 +91,7 @@ const resolvers = {
             const user = await User.findByIdAndUpdate(id, {name, email, password});
             return user;
         },
+        // this one
         addOrder: async (parent, { products }, context) => {
             if (context.user) {
                 const order = new Order({ products });
