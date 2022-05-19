@@ -10,5 +10,6 @@
     text-align: center;
     background-image: linear-gradient(180deg, #4498AA 27.07%, #3358A1 79.18%) !important;
     background-clip: text;
+    font-size: 30px;
     color: transparent;
 }
