@@ -5,8 +5,8 @@ import './style.css'
 export default function Seasonal() {
     return (
         <Container className='card-container'>
-            <h2>Featured Arrangements </h2>
-
+            <h2>Seasonal</h2>
+        <p>Order it for your loved ones.</p>
             <Row xs={1} s={2} md={3} lg={4} className='g-4'>
             <Card className="single-card" style={{ width: '17rem', marginTop: '50px', marginRight: '10px', alignContent: 'center' }}>
                     <Card.Img variant="top" src="https://talbottinn.com/wp-content/uploads/2013/11/dummy-image-square.jpg" style={{ paddingTop: '10px' }} />
