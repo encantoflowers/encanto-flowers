@@ -2,17 +2,17 @@ import React, { useEffect } from 'react';
 import CartItems from '../components/CartItems';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
-import { QUERY_CHECKOUT } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
-import Auth from '../../utils/auth';
-import { useStoreContext } from '../../utils/GlobalState';
-import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
+import { QUERY_CHECKOUT } from '../utils/queries';
+import { idbPromise } from '../utils/helpers';
+import Auth from '../utils/auth';
+import { useStoreContext } from '../utils/GlobalState';
+import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../utils/actions';
 import { Row, Col } from 'react-bootstrap';
 
 const stripePromise = loadStripe('pk_test_51L0VV3LPz0RFKIjd3EYrAXUdRZuvg8UiM7umz4piCUvWVKswkNXlX16hNBy4W4beVZo2xcCLNyXOffGD7MRzTMrv00ynQ9o8ej');
 
-function Cart(props) {
-    const [state, dispatch] = useStoreContext();
+function Cart() {
+  const [state, dispatch] = useStoreContext();
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   useEffect(() => {
@@ -24,10 +24,10 @@ function Cart(props) {
   }, [data]);
 
   useEffect(() => {
-    // async function getCart() {
-    //   const cart = await idbPromise('cart', 'get');
-    //   dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
-    // }
+    async function getCart() {
+      const cart = await idbPromise('cart', 'get');
+      dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+    }
 
     if (!state.cart.length) {
       getCart();
@@ -70,7 +70,7 @@ function Cart(props) {
                 <div className="col-2">Subtotal</div>
             </Row>
             <Col>
-              {props.items.map((item) => (
+              {state.cart.map((item) => (
                   <CartItems item={item} />
               ))}
             </Col>
