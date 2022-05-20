@@ -18,6 +18,25 @@
   margin: auto;
 }
 
+.logo-footer {
+  width: 268px;
+   height: 82px;
+}
+
+@media screen and (max-width: 642px) {
+  footer {
+    flex-direction: column;
+  }
+  img {
+    width: 325px;
+    height: 90px;
+    margin-bottom: 40px;
+  }
+  .container {
+    text-align: center;
+  }
+}
+
 /* @media screen and (max-width: 480px) {
   footer {
     flex-direction: column;

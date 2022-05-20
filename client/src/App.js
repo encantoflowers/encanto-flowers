@@ -19,6 +19,7 @@ import Home from './pages/Home';
 import ShopNowBanner from './components/ShopNowBanner';
 import Featured from './components/Featured';
 import Seasonal from './components/Seasonal';
+import DummyFooter from './components/DummyFooter';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -112,7 +113,7 @@ function App() {
       </Router> */}
       {/* </Routes> */}
     {/* </Router> */}
-    
+    <DummyFooter/>
     <Footer />
     </ApolloProvider>
   );
