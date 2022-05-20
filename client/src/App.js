@@ -17,6 +17,10 @@ import AllProducts from './components/Products';
 
 import Hero from './components/Hero'
 import Home from './pages/Home';
+import ShopNowBanner from './components/ShopNowBanner';
+import Featured from './components/Featured';
+import Seasonal from './components/Seasonal';
+import DummyFooter from './components/DummyFooter';
 
 
 const httpLink = createHttpLink({
@@ -59,7 +63,6 @@ function App() {
       <StoreProvider>
       <Router>
         <div>
-        <Banner />
             <EncantoNav />
             <Routes>
               <Route
@@ -76,6 +79,10 @@ function App() {
               />
             </Routes>
             {/* <ProductItem item={item} /> */}
+           <Hero />
+           <Featured />
+           <ShopNowBanner />
+           <Seasonal />
            
         </div>
         </Router>
@@ -108,7 +115,7 @@ function App() {
       </Router> */}
       {/* </Routes> */}
     {/* </Router> */}
-    
+    <DummyFooter/>
     <Footer />
     </ApolloProvider>
   );
