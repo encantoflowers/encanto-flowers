@@ -55,6 +55,7 @@ function AllProducts() {
                 <Row xs={1} s={2} md={3} lg={4} className='g-4'>
                 {data ? (
                     data.products.map((product) => (
+
                         <Card className="single-card" style={{ width: '17rem', marginTop: '50px', marginRight: '10px', alignContent: 'center' }} key={product._id}>
                         
                         <Card.Img variant="top" src={product.image[0].img} style={{paddingTop: '10px'}} />
