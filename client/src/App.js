@@ -14,8 +14,10 @@ import  QuantityPicker  from './components/QuantityPicker'
 import Banner from './components/Banner';
 import FinePrint from './components/FinePrint';
 import AllProducts from './components/Products';
+
 import Hero from './components/Hero'
 import Home from './pages/Home';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
