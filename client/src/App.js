@@ -23,6 +23,7 @@ import ShopNowBanner from './components/ShopNowBanner';
 import Featured from './components/Featured';
 import Seasonal from './components/Seasonal';
 import DummyFooter from './components/DummyFooter';
+import Success from './pages/Success';
 
 
 const httpLink = createHttpLink({
