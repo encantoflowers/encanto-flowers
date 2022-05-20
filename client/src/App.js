@@ -16,6 +16,9 @@ import FinePrint from './components/FinePrint';
 import AllProducts from './components/Products';
 import Hero from './components/Hero'
 import Home from './pages/Home';
+import ShopNowBanner from './components/ShopNowBanner';
+import Featured from './components/Featured';
+import Seasonal from './components/Seasonal';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -57,7 +60,6 @@ function App() {
       <StoreProvider>
       <Router>
         <div>
-        <Banner />
             <EncantoNav />
             <Routes>
               <Route
@@ -74,6 +76,10 @@ function App() {
               />
             </Routes>
             {/* <ProductItem item={item} /> */}
+           <Hero />
+           <Featured />
+           <ShopNowBanner />
+           <Seasonal />
            
         </div>
         </Router>
