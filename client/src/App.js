@@ -17,6 +17,14 @@ import Banner from './components/Banner';
 import FinePrint from './components/FinePrint';
 import AllProducts from './components/Products';
 
+import Hero from './components/Hero'
+import Home from './pages/Home';
+import ShopNowBanner from './components/ShopNowBanner';
+import Featured from './components/Featured';
+import Seasonal from './components/Seasonal';
+import DummyFooter from './components/DummyFooter';
+
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -36,18 +44,52 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
+
 function App() {
+  const item = {
+     _id : "628000786db16cb4e830694a",
+    name: "Boucuet01",
+    description : "this is a description",
+    price: 9.99,
+    image: [{
+      name: "image",
+      description: "description",
+      img: "image",
+      _id: "628000786db16cb4e830694b"
+    }],
+    categories: []
+  }
   return (
     <ApolloProvider client={client}>
       <StoreProvider>
       <Router>
         <div>
-          
             <EncantoNav />
-            <AllProducts />
-           <Banner />
-           <Signup />
-           <Login />
+            <Routes>
+              <Route
+                path="/"
+                element={<Home />}
+              />
+              <Route 
+                path="/categories/:category"
+                element={<Categories />}
+              />
+              <Route
+                path="/cart"
+                element={<Cart />}
+              />
+              <Route 
+                path="/success"
+                element={<Success />}
+              />
+            </Routes>
+            {/* <ProductItem item={item} /> */}
+           <Hero />
+           <Featured />
+           <ShopNowBanner />
+           <Seasonal />
+           
         </div>
         </Router>
         </StoreProvider>
@@ -79,7 +121,7 @@ function App() {
       </Router> */}
       {/* </Routes> */}
     {/* </Router> */}
-    
+    <DummyFooter/>
     <Footer />
     </ApolloProvider>
   );

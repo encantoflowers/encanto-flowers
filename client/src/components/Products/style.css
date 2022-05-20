@@ -7,6 +7,8 @@
 
 .single-card {
     box-shadow: 10px 10px 30px lightgrey ; 
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .product-name {

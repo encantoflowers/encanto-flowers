@@ -1,20 +1,28 @@
-import React from 'react';
-import { QuantityPicker } from 'react-qty-picker';
+import React, { useState } from 'react';
+import QuantityPicker from './QuantityPicker';
+import { Row, Col, Card } from 'react-bootstrap';
 
 function CartItems(item) {
-    // const [subtotal, setSubtotal] = useState(item.price* item.quantity);
 
-    // return (
-    //     <div className="cart-item" key={item.id}>
-    //         <img src={item.imageLink}/>
-    //         <div>{item.name}</div>
-    //         <div>{item.price}</div>
-    //         <QuantityPicker value={item.quantity} onChange={(value) => {
-    //             setSubtotal(item.price * value);
-    //         }} />
-    //         <div>{subtotal}</div>
-    //     </div>
-    // )
+    const {
+        name,
+        _id,
+        price,
+        description,
+        purchaseQuantity
+      } = item.item;
+
+    const [subtotal, setSubtotal] = useState(price*purchaseQuantity);
+
+    return (
+        <div className="cart-item" key={_id}>
+            {/* <img src={item.item.imageLink}/> */}
+            <div>{name}</div>
+            <div>{price}</div>
+            <QuantityPicker />
+            <div>{subtotal}</div>
+        </div>
+    )
 }
 
 export default CartItems;

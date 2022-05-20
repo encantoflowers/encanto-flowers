@@ -14,6 +14,10 @@ type User {
     # orders: [Order]
 }
 
+type Checkout {
+    session: ID
+  }
+
 type Image {
     _id: ID
     name: String
@@ -60,7 +64,7 @@ type Query {
     products: [Product]!
     product(productId: ID!): Product
     order: [Order]!
-    checkout: [Order]!
+    checkout(products: [ID]!): Checkout
 }
 
 type Mutation {

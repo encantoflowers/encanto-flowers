@@ -8,7 +8,7 @@ db.once('open', async () => {
     const categories = await Category.insertMany([
         { Name: 'Seasonal' },
         { Name: 'Sympathy' },
-        { Name: 'Freindship' },
+        { Name: 'Friendship' },
         { Name: 'Funerals' },
         { Name: 'Get Well' }
     ])

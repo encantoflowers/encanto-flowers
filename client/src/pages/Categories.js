@@ -6,7 +6,7 @@ import { Container } from "react-bootstrap";
 const Categories = () => {
     return (
         <Container>
-            <CategoryMenu/>
+            {/* <CategoryMenu/> */}
             <Products />
         </Container>
     )

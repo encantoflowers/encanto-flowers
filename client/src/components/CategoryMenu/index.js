@@ -44,16 +44,16 @@
 //     };
 //     return (
 
-//         <Dropdown className='dropdown mx-auto mt-4'>
-//             <Dropdown.Toggle className='dropdown' id="dropdown-basic">
-//                 Categories: All
-//             </Dropdown.Toggle>
-//             <Dropdown.Menu >
-//                 {categories.map((category) => (
-//                     <Dropdown.Item href="#" key={category._id}>
-//                     {category.name}
-//                 </Dropdown.Item>
-//                 ))}
+        <Dropdown className='category-dropdown mx-auto mt-4'>
+            <Dropdown.Toggle className='dropdown' id="dropdown-basic">
+                Categories: All
+            </Dropdown.Toggle>
+            <Dropdown.Menu >
+                {categories.map((category) => (
+                    <Dropdown.Item href="#" key={category._id}>
+                    {category.name}
+                </Dropdown.Item>
+                ))}
                 
 //             </Dropdown.Menu>
 //         </Dropdown>
