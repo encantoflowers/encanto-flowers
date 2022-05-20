@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { StoreProvider } from './utils/GlobalState';
 import { setContext } from '@apollo/client/link/context';
 import EncantoNav from './components/Navbar';
-// import Cart from './pages/Cart';
+import Cart from './pages/Cart';
 import Footer from './components/Footer';
 import Product from './pages/Product'
 import Categories from './pages/Categories'
@@ -68,8 +68,12 @@ function App() {
                 path="/categories/:category"
                 element={<Categories />}
               />
+              <Route
+                path="/cart"
+                element={<Cart />}
+              />
             </Routes>
-            <ProductItem item={item} />
+            {/* <ProductItem item={item} /> */}
            
         </div>
         </Router>

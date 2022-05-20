@@ -56,11 +56,11 @@ export default function ProductItem(item) {
     //   }, [products, data, loading, dispatch, id]);
 
     const addToCart = () => {
-        const itemInCart = cart.find((cartItem) => cartItem._id === item._id);
+        const itemInCart = cart.find((cartItem) => cartItem._id === _id);
         if (itemInCart) {
             dispatch({
                 type: UPDATE_CART_QUANTITY,
-                _id: item._id,
+                _id: _id,
                 purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
             });
             idbPromise('cart', 'put', {
@@ -70,9 +70,9 @@ export default function ProductItem(item) {
         } else {
             dispatch({
                 type: ADD_TO_CART,
-                product: { ...item, purchaseQuantity: 1 },
+                product: { ...(item.item), purchaseQuantity: 1 },
             });
-            idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+            idbPromise('cart', 'put', { ...(item.item), purchaseQuantity: 1 });
         }
     };
 
