@@ -55,14 +55,14 @@ function AllProducts() {
                 <Row xs={1} s={2} md={3} lg={4} className='g-4'>
                 {data ? (
                     data.products.map((product) => (
-                        <Card style={{ width: '17rem', marginTop: '50px', marginRight: '10px', alignContent: 'center' }} key={product._id}>
+                        <Card style={{ width: '17rem', marginTop: '50px', marginRight: '10px', alignContent: 'center' }} className='single-card'key={product._id}>
                         
                         <Card.Img variant="top" src={product.image[0].img} style={{paddingTop: '10px'}} />
                         <Card.Body>
                             <Card.Title>{product.name}</Card.Title>
                             <Card.Text>{product.price}</Card.Text>
-                            <Card.Text>{product.description}</Card.Text>
-                            <Button style={{backgroundColor: '#56B280', border: 'none'}}>Add To Cart</Button>
+                             <Card.Text>{product.description}</Card.Text>
+                            {/*  <Button style={{backgroundwColor: '#56B280', border: 'none'}}>Add To Cart</Button> */}
                         </Card.Body>
                     </Card>
                     ))
