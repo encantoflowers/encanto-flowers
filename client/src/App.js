@@ -5,12 +5,14 @@ import { StoreProvider } from './utils/GlobalState';
 import { setContext } from '@apollo/client/link/context';
 import EncantoNav from './components/Navbar';
 import Cart from './pages/Cart';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 import Footer from './components/Footer';
 import Product from './pages/Product'
 import Categories from './pages/Categories'
-import Success from './pages/Success';
-// import ProductItem from './components/ProductItem';
-// import  QuantityPicker  from './components/QuantityPicker'
+import CategoryMenu from './components/CategoryMenu';
+import ProductItem from './components/ProductItem';
+import QuantityPicker  from './components/QuantityPicker'
 import Banner from './components/Banner';
 import FinePrint from './components/FinePrint';
 import AllProducts from './components/Products';

@@ -1,14 +1,32 @@
 import { gql } from '@apollo/client';
 
 // good
+// export const ADD_USER = gql`
+//     mutation addUser($user: UserInput) {
+//         addUser(user: $user) {
+//             name
+//             email
+//             password
+//         }   
+//     }
+// `;
 export const ADD_USER = gql`
-    mutation addUser($user: UserInput) {
-        addUser(user: $user) {
-            name
-            email
-            password
-        }   
+  mutation addUser(
+    $name: String!
+    $email: String!
+    $password: String!
+  ) {
+    addUser(
+      name: $name
+      email: $email
+      password: $password
+    ) {
+      token
+      user {
+        _id
+      }
     }
+  }
 `;
 // not logged in
 export const ADD_ORDER = gql`
