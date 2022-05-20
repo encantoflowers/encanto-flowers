@@ -14,6 +14,7 @@ export default function Footer() {
             className="d-inline-block align-top"
           />
         </div>
+        row
         <div className="container col-3">
           <h5 className="h5">Categories</h5>
           <ul className="nav flex-column">

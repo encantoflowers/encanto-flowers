@@ -14,12 +14,14 @@ import  QuantityPicker  from './components/QuantityPicker'
 import Banner from './components/Banner';
 import FinePrint from './components/FinePrint';
 import AllProducts from './components/Products';
+
 import Hero from './components/Hero'
 import Home from './pages/Home';
 import ShopNowBanner from './components/ShopNowBanner';
 import Featured from './components/Featured';
 import Seasonal from './components/Seasonal';
 import DummyFooter from './components/DummyFooter';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
