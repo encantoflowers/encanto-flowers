@@ -79,7 +79,7 @@ const resolvers = {
         addUser: async (parent,{name, email, password}) => {
             const user = await User.create({name, email, password});
             const token = signToken(user);
-            return user;
+            return { token, user };
         },
         deleteUser: async (parent, {id}) => {
             const user = await User.findByIdAndDelete(id);

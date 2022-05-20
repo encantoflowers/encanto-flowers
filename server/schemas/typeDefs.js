@@ -69,7 +69,7 @@ type Mutation {
         email: String!
         password: String!
         # role: Int!
-        ): User
+        ): Auth
     deleteUser(id: ID!): User
     updateUser(id: ID!, name: String, email: String, password: String): User
     addOrder (products: [ID]!): Order

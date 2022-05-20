@@ -1,5 +1,6 @@
 export const UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
 export const QUERY_ALL_PRODUCTS = "QUERY_ALL_PRODUCTS";
+export const ADD_USER = "ADD_USER";
 
 export const ADD_TO_CART = "ADD_TO_CART";
 export const ADD_MULTIPLE_TO_CART = "ADD_MULTIPLE_TO_CART";
