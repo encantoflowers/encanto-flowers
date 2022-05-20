@@ -31,10 +31,6 @@ const resolvers = {
             return Product.findOne({_id: productId}).populate("categories");
         },
 
-        // products: async () => {
-        //     return Product.find();
-        // },
-
         order: async (parent, { _id }, context) => {
             if (context.user) {
                 const user = await User.findById(context.user._id).populate({
@@ -94,7 +90,7 @@ const resolvers = {
         // this one
         addOrder: async (parent, { products }, context) => {
             if (context.user) {
-                const order = new Order({ products });
+                const order = await Order.create({ products });
                 await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
                 return order;
             }
