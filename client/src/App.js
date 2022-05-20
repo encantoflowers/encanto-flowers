@@ -8,9 +8,9 @@ import Cart from './pages/Cart';
 import Footer from './components/Footer';
 import Product from './pages/Product'
 import Categories from './pages/Categories'
-import CategoryMenu from './components/CategoryMenu';
-import ProductItem from './components/ProductItem';
-import  QuantityPicker  from './components/QuantityPicker'
+import Success from './pages/Success';
+// import ProductItem from './components/ProductItem';
+// import  QuantityPicker  from './components/QuantityPicker'
 import Banner from './components/Banner';
 import FinePrint from './components/FinePrint';
 import AllProducts from './components/Products';
@@ -76,6 +76,10 @@ function App() {
               <Route
                 path="/cart"
                 element={<Cart />}
+              />
+              <Route 
+                path="/success"
+                element={<Success />}
               />
             </Routes>
             {/* <ProductItem item={item} /> */}

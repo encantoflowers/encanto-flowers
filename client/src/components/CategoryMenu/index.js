@@ -44,7 +44,7 @@ export default function CategoryMenu() {
     };
     return (
 
-        <Dropdown className='dropdown mx-auto mt-4'>
+        <Dropdown className='category-dropdown mx-auto mt-4'>
             <Dropdown.Toggle className='dropdown' id="dropdown-basic">
                 Categories: All
             </Dropdown.Toggle>
