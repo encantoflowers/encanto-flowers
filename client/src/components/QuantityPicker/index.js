@@ -5,12 +5,7 @@ import './style.css'
 
 export default function QuantityPicker() {
     // Change the default state of temp to 75 degrees.
-    const [qty, setQty] = useState(0);
-
-    // Use useEffect hook to set the document.title to the current temp
-    //   useEffect(() => {
-    //     document.title = `${temp}° Fahrenheit`;
-    //   });
+    const [qty, setQty] = useState(1);
 
     // Handler for increasing the temp by 1
     const increaseQty = () => {
@@ -46,4 +41,3 @@ export default function QuantityPicker() {
 
     );
 }
-

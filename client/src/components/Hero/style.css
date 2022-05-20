@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Swash&family=Poppins:ital@0;1&display=swap');
+
+.hero-img {
+    width: 100%;
+    height: 100%
+}
+
+.category-img {
+    width: 315px;
+    height: 122px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -61px;
+}
+
+ @media only screen and (max-width: 992px) {
+    .category-img {
+        margin: auto;
+        padding-top: 20px;
+    }
+} 

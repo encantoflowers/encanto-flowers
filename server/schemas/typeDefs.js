@@ -14,6 +14,10 @@ type User {
     # orders: [Order]
 }
 
+type Checkout {
+    session: ID
+  }
+
 type Image {
     _id: ID
     name: String

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
-import { QUERY_CATEGORIES } from '../utils/queries';
-import { UPDATE_CATEGORIES } from '../utils/actions';
-import { useStoreContext } from '../utils/GlobalState';
-import { idbPromise } from '../utils/helpers';
+import { QUERY_CATEGORIES } from '../../utils/queries';
+import { UPDATE_CATEGORIES } from '../../utils/actions';
+import { useStoreContext } from '../../utils/GlobalState';
+import { idbPromise } from '../../utils/helpers';
+import './style.css';
 
 
 
@@ -56,7 +57,7 @@ function EncantoNav() {
                       {data ? (
                       <div>
                         {data.categories.map((category) => (
-                            <NavDropdown.Item href="#" key={category._id}>{category.Name}</NavDropdown.Item>
+                            <NavDropdown.Item href={`/categories/${category.Name}`} key={category._id}>{category.Name}</NavDropdown.Item>
                         ))}
                       </div>  
                       ) : ( 
