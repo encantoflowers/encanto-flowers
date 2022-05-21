@@ -7,7 +7,9 @@ import {
 } from '../../utils/actions';
 import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
+
 import { DropdownButton, Dropdown, ButtonGroup, Container } from 'react-bootstrap'
+
 import './style.css'
 
 export default function CategoryMenu() {

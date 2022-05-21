@@ -21,6 +21,7 @@ export const ADD_USER = gql`
       email: $email
       password: $password
     ) {
+      role
       token
       user {
         _id

@@ -24,7 +24,11 @@ import Featured from './components/Featured';
 import Seasonal from './components/Seasonal';
 import DummyFooter from './components/DummyFooter';
 import Success from './pages/Success';
+
+import AdminNav from './components/AdminNav';
+
 import OrderHistory from './components/OrderHistory';
+
 
 
 const httpLink = createHttpLink({
@@ -74,6 +78,7 @@ function App() {
                 path="/success"
                 element={<Success />}
               />
+
               <Route
                 path="/product/:productId"
                 element={<ProductItem />}
