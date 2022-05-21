@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { QUERY_CATEGORIES } from '../../utils/queries';
-import { UPDATE_CATEGORIES } from '../../utils/actions';
+import { UPDATE_CATEGORIES,
+UPDATE_CURRENT_CATEGORY } from '../../utils/actions';
 import { useStoreContext } from '../../utils/GlobalState';
 import { idbPromise } from '../../utils/helpers';
 import './style.css';
@@ -21,21 +22,28 @@ function EncantoNav() {
         if (data) {
           dispatch({
             type: UPDATE_CATEGORIES,
-            products: data.categories,
+            categories: data.categories,
           });
           data.categories.forEach((category) => {
             idbPromise('categories', 'put', category);
           });
         } else if (!loading) {
-            idbPromise('categories', 'get').then((category) => {
+            idbPromise('categories', 'get').then((categories) => {
               dispatch({
                 type: UPDATE_CATEGORIES,
-                products: categories,
+                categories: categories,
               });
             });
           }
       }, [data, loading, dispatch]);
 
+      const handleClick = (id) => {
+        dispatch({
+            type: UPDATE_CURRENT_CATEGORY,
+            currentCategory: id,
+        });
+        
+    };
     return (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -57,7 +65,10 @@ function EncantoNav() {
                       {data ? (
                       <div>
                         {data.categories.map((category) => (
-                            <NavDropdown.Item href={`/categories/${category.Name}`} key={category._id}>{category.Name}</NavDropdown.Item>
+                            <NavDropdown.Item href={`/categories/${category.Name}`} key={category._id}
+                            onClick={() => {
+                              handleClick(category._id)
+                          }}>{category.Name}</NavDropdown.Item>
                         ))}
                       </div>  
                       ) : ( 

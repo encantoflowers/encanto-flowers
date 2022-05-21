@@ -11,7 +11,7 @@ import { gql } from '@apollo/client';
 // `;
 // not logged in
 export const ADD_ORDER = gql`
-    mutation addOrder($products: [ProductInput]) {
+    mutation addOrder($products: [ID]) {
         addOrder(products: $products) {
             _id
             purchaseDate
@@ -19,8 +19,6 @@ export const ADD_ORDER = gql`
                 _id
                 name
                 price
-                image
-                description
             }
         }
     }
@@ -39,6 +37,7 @@ export const QUERY_PRODUCT = gql`
                 img
             }
             categories {
+                _id
                 Name
             }
         }
@@ -65,7 +64,10 @@ export const QUERY_ALL_PRODUCTS = gql`
                 description
                 img
             }
-            
+            categories {
+                _id
+                Name
+            }
         }
     }
 `

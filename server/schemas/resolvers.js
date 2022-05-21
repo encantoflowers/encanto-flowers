@@ -89,12 +89,12 @@ const resolvers = {
         },
         // this one
         addOrder: async (parent, { products }, context) => {
-            if (context.user) {
+            // if (context.user) {
                 const order = await Order.create({ products });
-                await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+                // await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
                 return order;
-            }
-            throw new AuthenticationError('Not logged in');
+            // }
+            // throw new AuthenticationError('Not logged in');
         },
         addCategory: async (parent, { Name }) => {
             const category = await Category.create({

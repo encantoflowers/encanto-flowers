@@ -7,7 +7,9 @@ import {
 } from '../../utils/actions';
 import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
-import { Dropdown , DropdowButton, DropdownButton } from 'react-bootstrap'
+
+import { DropdownButton, Dropdown, ButtonGroup, Container } from 'react-bootstrap'
+
 import './style.css'
 
 export default function CategoryMenu() {
@@ -37,26 +39,35 @@ export default function CategoryMenu() {
     }, [data, loading, dispatch]);
 
     const handleClick = (id) => {
+        console.log(id)
         dispatch({
             type: UPDATE_CURRENT_CATEGORY,
             currentCategory: id,
         });
+
     };
+    console.log(data)
+
     return (
 
-        <Dropdown className='category-dropdown mx-auto mt-4'>
-            <Dropdown.Toggle className='dropdown' id="dropdown-basic">
-                Categories: All
-            </Dropdown.Toggle>
-            <Dropdown.Menu >
-                {categories.map((category) => (
-                    <Dropdown.Item href="#" key={category._id}>
-                    {category.name}
-                </Dropdown.Item>
-                ))}
-                
-             </Dropdown.Menu>
-         </Dropdown>
+        <DropdownButton as={ButtonGroup} className='category-dropdown mx-auto mt-4'>
+                {data ? (
+                    <div>
+
+                        {data.categories.map((category) => (
+                            <Dropdown.Item key={category._id}
+                                onClick={() => {
+                                    console.log("category ID", category._id)
+                                    handleClick(category._id)
+                                }}>{category.Name}</Dropdown.Item>
+                        ))}
+                    </div>
+                ) : (
+                    <div>
+                        <Dropdown.Item href="#" key='None'>'No Categories'</Dropdown.Item>
+                    </div>
+                )}
+        </DropdownButton>
 
     )
 }
