@@ -12,7 +12,7 @@ import Product from './pages/Product'
 import Categories from './pages/Categories'
 import CategoryMenu from './components/CategoryMenu';
 import ProductItem from './components/ProductItem';
-import QuantityPicker  from './components/QuantityPicker'
+import QuantityPicker from './components/QuantityPicker'
 import Banner from './components/Banner';
 import FinePrint from './components/FinePrint';
 import AllProducts from './components/Products';
@@ -24,6 +24,7 @@ import Featured from './components/Featured';
 import Seasonal from './components/Seasonal';
 import DummyFooter from './components/DummyFooter';
 import Success from './pages/Success';
+import OrderHistory from './components/OrderHistory';
 
 
 const httpLink = createHttpLink({
@@ -49,9 +50,9 @@ const client = new ApolloClient({
 
 function App() {
   const item = {
-     _id : "628000786db16cb4e830694a",
+    _id: "628000786db16cb4e830694a",
     name: "Boucuet01",
-    description : "this is a description",
+    description: "this is a description",
     price: 9.99,
     image: [{
       name: "image",
@@ -64,15 +65,15 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <StoreProvider>
-      <Router>
-        <div>
+        <Router>
+          <div>
             <EncantoNav />
             <Routes>
               <Route
                 path="/"
                 element={<Home />}
               />
-              <Route 
+              <Route
                 path="/categories/:category"
                 element={<Categories />}
               />
@@ -80,28 +81,25 @@ function App() {
                 path="/cart"
                 element={<Cart />}
               />
-              <Route 
+              <Route
                 path="/success"
                 element={<Success />}
               />
               <Route
-                path="products/:productId"
+                path="/product"
                 element={<ProductItem />}
-                />
+              />
             </Routes>
             {/* <ProductItem item={item} /> */}
-           <Hero />
-           <Featured />
-           <ShopNowBanner />
-           <Seasonal />
-           
-        </div>
+            <OrderHistory />
+
+          </div>
         </Router>
-        </StoreProvider>
-        {/* <Navbar /> */}
-        {/* <Routes> */}
-          
-      
+      </StoreProvider>
+      {/* <Navbar /> */}
+      {/* <Routes> */}
+
+
       {/* <Navbar /> */}
       {/* <Router>
         <div className="flex-column justify-flex-start min-100-vh">
@@ -125,9 +123,9 @@ function App() {
         </div>
       </Router> */}
       {/* </Routes> */}
-    {/* </Router> */}
-    <DummyFooter/>
-    <Footer />
+      {/* </Router> */}
+      <DummyFooter />
+      <Footer />
     </ApolloProvider>
   );
 }
