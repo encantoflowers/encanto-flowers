@@ -37,6 +37,7 @@ export const QUERY_PRODUCT = gql`
                 img
             }
             categories {
+                _id
                 Name
             }
         }
@@ -63,7 +64,10 @@ export const QUERY_ALL_PRODUCTS = gql`
                 description
                 img
             }
-            
+            categories {
+                _id
+                Name
+            }
         }
     }
 `

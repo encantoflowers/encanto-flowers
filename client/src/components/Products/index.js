@@ -45,7 +45,7 @@ function AllProducts() {
             type: UPDATE_SELECETED_PRODUCT,
             selectedProduct: productId,
         })
-        window.location.assign("/product")
+        window.location.assign("/product/" + productId)
     }
     // function filterProducts() {
     //     if (!currentCategory) {

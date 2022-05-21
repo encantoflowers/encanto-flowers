@@ -67,7 +67,7 @@ function App() {
       <StoreProvider>
         <Router>
           <div>
-            <EncantoNav />
+            {/* <EncantoNav /> */}
             <Routes>
               <Route
                 path="/"
@@ -86,12 +86,12 @@ function App() {
                 element={<Success />}
               />
               <Route
-                path="/product"
+                path="/product/:productId"
                 element={<ProductItem />}
               />
             </Routes>
             {/* <ProductItem item={item} /> */}
-            <OrderHistory />
+            {/* <OrderHistory /> */}
 
           </div>
         </Router>
@@ -125,7 +125,7 @@ function App() {
       {/* </Routes> */}
       {/* </Router> */}
       <DummyFooter />
-      <Footer />
+      {/* <Footer /> */}
     </ApolloProvider>
   );
 }
