@@ -7,21 +7,21 @@ import {
 import { useQuery } from '@apollo/client';
 import { idbPromise } from '../../utils/helpers';
 import { useStoreContext } from '../../utils/GlobalState';
-import { Container, Card, Col, Row, Button } from 'react-bootstrap';
+import { Container, Card, Row } from 'react-bootstrap';
 import './style.css'
 
 
 function AllProducts() {
 
     const [state, dispatch] = useStoreContext();
-
+    const { products , currentCategory } = state;
     const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
 
-    const { products , currentCategory } = state;
+    
+    console.log(currentCategory, "current Category")
 
     useEffect(() => {
         if (data) {
-            console.log(data);
             dispatch({
                 type: UPDATE_PRODUCTS,
                 products: data.products,
@@ -48,12 +48,19 @@ function AllProducts() {
     }
     function filterProducts() {
         if (!currentCategory) {
+            console.log(currentCategory)
             return state.products;
         }
+        const something = state.products.filter(
+            (product) => product.categories.map(c => c._id).includes(currentCategory) 
+        )
+        console.log(something)
+        return something
+    
 
-        return state.products.filter(
-            (product) => product.categories.find((category) => category._id === currentCategory
-        ));
+        // return state.products.filter(
+        //     (product) => product.categories.find((category) => category._id === currentCategory
+        // ));
     }
 
     return (
