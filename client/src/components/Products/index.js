@@ -6,8 +6,8 @@ import {
 import { useQuery } from '@apollo/client';
 import { idbPromise } from '../../utils/helpers';
 import { useStoreContext } from '../../utils/GlobalState';
-import ProductItem from '../ProductItem';
-import { Container , Card, Col, Row, Button } from 'react-bootstrap';
+// import ProductItem from '../ProductItem';
+import { Container , Card, Row} from 'react-bootstrap';
 import './style.css'
 
 

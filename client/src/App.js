@@ -24,6 +24,7 @@ import Featured from './components/Featured';
 import Seasonal from './components/Seasonal';
 import DummyFooter from './components/DummyFooter';
 import Success from './pages/Success';
+import AdminNav from './components/AdminNav';
 
 
 const httpLink = createHttpLink({
@@ -90,6 +91,7 @@ function App() {
            <Featured />
            <ShopNowBanner />
            <Seasonal />
+           
            
         </div>
         </Router>
