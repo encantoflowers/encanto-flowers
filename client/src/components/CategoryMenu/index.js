@@ -41,6 +41,7 @@ export default function CategoryMenu() {
             type: UPDATE_CURRENT_CATEGORY,
             currentCategory: id,
         });
+        
     };
     return (
 
@@ -48,14 +49,23 @@ export default function CategoryMenu() {
             <Dropdown.Toggle className='dropdown' id="dropdown-basic">
                 Categories: All
             </Dropdown.Toggle>
-            <Dropdown.Menu >
-                {categories.map((category) => (
-                    <Dropdown.Item href="#" key={category._id}>
-                    {category.name}
-                </Dropdown.Item>
-                ))}
-                
-             </Dropdown.Menu>
+            <Dropdown.Menu>
+            {data ? (
+                <div>
+                  {data.categories.map((category) => (
+                      <Dropdown.Item href={`/categories/${category.Name}`} key={category._id} 
+                      onClick={() => {
+                          handleClick(category._id)
+                      }}>{category.Name}</Dropdown.Item>
+                  ))}
+                </div>  
+                ) : ( 
+                  <div>
+                  <Dropdown.Item href="#" key='None'>'No Categories'</Dropdown.Item>
+                  </div>
+                )}
+            </Dropdown.Menu>
+            
          </Dropdown>
 
     )

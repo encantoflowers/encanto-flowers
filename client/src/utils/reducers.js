@@ -11,7 +11,7 @@ import {
   TOGGLE_CART,
   QUERY_ALL_PRODUCTS,
   QUERY_PRODUCT,
-  UPDATE_SELECETED_PRODUCT
+  UPDATE_SELECTED_PRODUCT
 } from './actions';
 
 export const reducer = (state, action) => {
@@ -34,7 +34,7 @@ export const reducer = (state, action) => {
         product: [action.product],
       }  
 
-    case UPDATE_SELECETED_PRODUCT:
+    case UPDATE_SELECTED_PRODUCT:
       return {
         ...state,
         selectedProduct: [action.selectedProduct],

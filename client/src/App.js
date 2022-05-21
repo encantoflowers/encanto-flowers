@@ -49,19 +49,8 @@ const client = new ApolloClient({
 
 
 function App() {
-  const item = {
-    _id: "628000786db16cb4e830694a",
-    name: "Boucuet01",
-    description: "this is a description",
-    price: 9.99,
-    image: [{
-      name: "image",
-      description: "description",
-      img: "image",
-      _id: "628000786db16cb4e830694b"
-    }],
-    categories: []
-  }
+
+  
   return (
     <ApolloProvider client={client}>
       <StoreProvider>
@@ -91,41 +80,10 @@ function App() {
               />
             </Routes>
             {/* <ProductItem item={item} /> */}
-            <OrderHistory />
 
           </div>
         </Router>
       </StoreProvider>
-      {/* <Navbar /> */}
-      {/* <Routes> */}
-
-
-      {/* <Navbar /> */}
-      {/* <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          {/* <Header /> 
-          <div className="container">
-
-            <h1>Hello World! Here I come!</h1>
-            <Navbar />
-            <Routes>
-              <Route 
-                path="/" 
-                element={<Home />} 
-              />
-              <Route
-                path="/cart/"
-                element={<Cart />}
-              />
-            </Routes>
-          </div>
-          <Footer />
-        </div>
-      </Router> */}
-      {/* </Routes> */}
-      {/* </Router> */}
-      <DummyFooter />
-      <Footer />
     </ApolloProvider>
   );
 }

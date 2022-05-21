@@ -2,12 +2,11 @@ import React, { useEffect } from 'react'
 import { QUERY_ALL_PRODUCTS } from '../../utils/queries';
 import {
     UPDATE_PRODUCTS,
-    UPDATE_SELECETED_PRODUCT
+    UPDATE_SELECTED_PRODUCT
 } from '../../utils/actions';
 import { useQuery } from '@apollo/client';
 import { idbPromise } from '../../utils/helpers';
 import { useStoreContext } from '../../utils/GlobalState';
-import ProductItem from '../ProductItem';
 import { Container, Card, Col, Row, Button } from 'react-bootstrap';
 import './style.css'
 
@@ -18,7 +17,7 @@ function AllProducts() {
 
     const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
 
-    const { products } = state;
+    const { products , currentCategory } = state;
 
     useEffect(() => {
         if (data) {
@@ -42,27 +41,27 @@ function AllProducts() {
 
     function goToProduct(productId) {
         dispatch({
-            type: UPDATE_SELECETED_PRODUCT,
+            type: UPDATE_SELECTED_PRODUCT,
             selectedProduct: productId,
         })
         window.location.assign("/product")
     }
-    // function filterProducts() {
-    //     if (!currentCategory) {
-    //         return state.products;
-    //     }
+    function filterProducts() {
+        if (!currentCategory) {
+            return state.products;
+        }
 
-    //     return state.products.filter(
-    //         (product) => product.category._id === allProducts
-    //     );
-    // }
+        return state.products.filter(
+            (product) => product.categories.find((category) => category._id === currentCategory
+        ));
+    }
 
     return (
         <Container className='card-container'>
             {/* loop through each product and generate a card */}
             <Row xs={1} s={2} md={3} lg={4} className='g-4'>
                 {data ? (
-                    data.products.map((product) => (
+                    filterProducts().map((product) => (
                         <Card className="single-card" style={{ width: '17rem', marginTop: '50px', marginRight: '10px', alignContent: 'center' }} key={product._id}
                             onClick={() => {
                                 goToProduct(product._id)

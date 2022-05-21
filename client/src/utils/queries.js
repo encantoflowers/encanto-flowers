@@ -63,7 +63,9 @@ export const QUERY_ALL_PRODUCTS = gql`
                 description
                 img
             }
-            
+            categories {
+                Name
+            }
         }
     }
 `
