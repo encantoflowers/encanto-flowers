@@ -19,9 +19,6 @@ function AllProducts() {
     const { products , currentCategory } = state;
     const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
 
-    
-    console.log(currentCategory, "current Category")
-
     useEffect(() => {
         if (data) {
             dispatch({
@@ -50,14 +47,11 @@ function AllProducts() {
     }
     function filterProducts() {
         if (!currentCategory) {
-            console.log(currentCategory)
             return state.products;
         }
         const something = state.products.filter(
             (product) => product.categories.map(c => c._id).includes(currentCategory) 
         )
-        console.log(something)
-        return something
     
 
         // return state.products.filter(

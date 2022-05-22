@@ -1,11 +1,10 @@
 import { useQuery } from "@apollo/client";
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import { QUERY_ALL_PRODUCTS } from "../../utils/queries";
 import {
   ADD_TO_CART,
   UPDATE_CART_QUANTITY,
-  UPDATE_PRODUCTS,
 } from "../../utils/actions";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useStoreContext } from "../../utils/GlobalState";

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Row, Col, } from 'react-bootstrap'
+import { Button, Row, Col } from 'react-bootstrap'
 import './style.css'
 
 export default function ShopNowBanner() {
@@ -14,7 +14,7 @@ export default function ShopNowBanner() {
                     </p>
                     <Button className='button-shop'>Shop Now!</Button>
                 </Col>
-                <Col><img className='img-circle' src="images/flower_circle.png" /></Col>
+                <Col><img className='img-circle' alt="happy flower lady" src="images/flower_circle.png" /></Col>
             </Row>
         </div>
     )
