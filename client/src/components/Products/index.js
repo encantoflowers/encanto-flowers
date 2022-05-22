@@ -7,7 +7,9 @@ import {
 import { useQuery } from '@apollo/client';
 import { idbPromise } from '../../utils/helpers';
 import { useStoreContext } from '../../utils/GlobalState';
+
 import { Container, Card, Row } from 'react-bootstrap';
+
 import './style.css'
 
 
@@ -16,9 +18,6 @@ function AllProducts() {
     const [state, dispatch] = useStoreContext();
     const { products , currentCategory } = state;
     const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
-
-    
-    console.log(currentCategory, "current Category")
 
     useEffect(() => {
         if (data) {
@@ -48,14 +47,11 @@ function AllProducts() {
     }
     function filterProducts() {
         if (!currentCategory) {
-            console.log(currentCategory)
             return state.products;
         }
         const something = state.products.filter(
             (product) => product.categories.map(c => c._id).includes(currentCategory) 
         )
-        console.log(something)
-        return something
     
 
         // return state.products.filter(

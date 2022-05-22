@@ -7,7 +7,9 @@ import {
 } from '../../utils/actions';
 import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
+
 import { DropdownButton, Dropdown, ButtonGroup, Container } from 'react-bootstrap'
+
 import './style.css'
 
 export default function CategoryMenu() {
@@ -47,8 +49,8 @@ export default function CategoryMenu() {
     console.log(data)
 
     return (
-
-        <DropdownButton as={ButtonGroup} className='category-dropdown mx-auto mt-4'>
+<Container className='buttongroup-container'>
+        <DropdownButton as={ButtonGroup} title="Categories: All" className='category-dropdown mx-auto mt-4' variant="light" >
                 {data ? (
                     <div>
 
@@ -66,6 +68,6 @@ export default function CategoryMenu() {
                     </div>
                 )}
         </DropdownButton>
-
+        </Container>
     )
 }

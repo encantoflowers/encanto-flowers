@@ -5,7 +5,6 @@ import { QUERY_PRODUCT } from "../../utils/queries";
 import {
   ADD_TO_CART,
   UPDATE_CART_QUANTITY,
-  UPDATE_PRODUCTS,
 } from "../../utils/actions";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useStoreContext } from "../../utils/GlobalState";

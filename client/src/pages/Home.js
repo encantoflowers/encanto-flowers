@@ -1,18 +1,26 @@
 import React from "react";
-import CategoryMenu from "../components/CategoryMenu";
-// import Cart from "./pages/Cart";
+import Hero from "../components/Hero";
+import Featured from "../components/Featured";
+import ShopNowBanner from "../components/ShopNowBanner";
+import Seasonal from "../components/Seasonal";
+import FinePrint from "../components/FinePrint";
+
+
 
 const Home = () => {
   return (
-    <div className="container">
+    
+<div>
+<Hero />
+<Featured />
+<ShopNowBanner />
+<Seasonal />
+<FinePrint />
 
 
+</div>
 
 
-
-      
-      {/* <Cart /> */}
-    </div>
   );
 };
 

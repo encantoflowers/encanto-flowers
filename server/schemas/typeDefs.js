@@ -72,6 +72,7 @@ type Mutation {
         name: String!
         email: String!
         password: String!
+        role: String
         # role: Int!
         ): Auth
     deleteUser(id: ID!): User
