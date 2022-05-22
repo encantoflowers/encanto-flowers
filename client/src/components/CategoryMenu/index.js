@@ -7,7 +7,9 @@ import {
 } from '../../utils/actions';
 import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
-import { Dropdown, Container } from 'react-bootstrap'
+
+import { DropdownButton, Dropdown, ButtonGroup, Container } from 'react-bootstrap'
+
 import './style.css'
 
 export default function CategoryMenu() {
@@ -48,19 +50,12 @@ export default function CategoryMenu() {
 
     return (
 
-        <Dropdown className='category-dropdown mx-auto mt-4'
-        onClick={() => {
-            console.log("category ID")
-        }}>
-            <Dropdown.Toggle className='dropdown' id="dropdown-basic">
-                Categories: All
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
+        <DropdownButton as={ButtonGroup} className='category-dropdown mx-auto mt-4'>
                 {data ? (
                     <div>
 
                         {data.categories.map((category) => (
-                            <Dropdown.Item href={`/categories/${category.Name}`} key={category._id}
+                            <Dropdown.Item key={category._id}
                                 onClick={() => {
                                     console.log("category ID", category._id)
                                     handleClick(category._id)
@@ -72,8 +67,7 @@ export default function CategoryMenu() {
                         <Dropdown.Item href="#" key='None'>'No Categories'</Dropdown.Item>
                     </div>
                 )}
-            </Dropdown.Menu>
-        </Dropdown>
+        </DropdownButton>
 
     )
 }

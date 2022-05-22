@@ -7,7 +7,9 @@ import {
 import { useQuery } from '@apollo/client';
 import { idbPromise } from '../../utils/helpers';
 import { useStoreContext } from '../../utils/GlobalState';
+
 import { Container, Card, Row } from 'react-bootstrap';
+
 import './style.css'
 
 
@@ -41,7 +43,7 @@ function AllProducts() {
             type: UPDATE_SELECTED_PRODUCT,
             selectedProduct: productId,
         })
-        window.location.assign("/product")
+        window.location.assign("/product/" + productId)
     }
     function filterProducts() {
         if (!currentCategory) {
