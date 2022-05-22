@@ -25,8 +25,8 @@ export const ADD_ORDER = gql`
 `
 // good minus the categories
 export const QUERY_PRODUCT = gql`
-    query getProduct($productId: ID) {
-        product (productId: $product) {
+    query getProduct($_id: ID!) {
+        product (_id: $_id) {
             _id
             name
             description

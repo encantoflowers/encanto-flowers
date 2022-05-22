@@ -1,12 +1,12 @@
 import React from 'react'
 import './style.css'
-import { Container , Row, Col, Button , Image } from 'react-bootstrap';
+import { Container , Row, Col , Image } from 'react-bootstrap';
 
 export default function DummyFooter() {
   return (
-    <footer className="container-fluid background " style={{marginTop: '50px'}}>
+    <footer className="container-fluid background mt-5">
         <hr className="hr"></hr>
-        <Container className='py-5'>
+        <Container className='py-3'>
             <Row>
                 <Col lg={6} md={6} sm={6} >
                 <Image src="/images/encanto_logo_footer.png" className='d-inline-block align-top logo-footer mt-5 mb-5'/>

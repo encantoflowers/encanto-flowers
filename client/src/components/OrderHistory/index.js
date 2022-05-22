@@ -1,9 +1,9 @@
 import React from 'react'
 import './style.css'
-import { Container, Row, Col, Button, Table } from 'react-bootstrap';
+import { Container, Table } from 'react-bootstrap';
 
 
-export default function OrderHistory() {
+export default function OrderHistoryTable() {
     return (
         <div>
             <Container className='order-history my-5'>
