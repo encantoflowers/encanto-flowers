@@ -60,7 +60,7 @@ function App() {
       <StoreProvider>
         <Router>
           <div>
-            {/* <EncantoNav /> */}
+            <EncantoNav />
             <Routes>
               <Route
                 path="/"
