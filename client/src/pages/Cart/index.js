@@ -8,7 +8,8 @@ import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import { Button , Table, Container  } from 'react-bootstrap';
 import './style.css'
-import QuantityPicker from '../../components/QuantityPicker';
+// import QuantityPicker from '../../components/QuantityPicker';
+import CartQtyPicker from '../../components/CartQtyPicker';
 
 const stripePromise = loadStripe('pk_test_51L0VV3LPz0RFKIjd3EYrAXUdRZuvg8UiM7umz4piCUvWVKswkNXlX16hNBy4W4beVZo2xcCLNyXOffGD7MRzTMrv00ynQ9o8ej');
 
@@ -88,10 +89,10 @@ function Cart() {
               {item.name}
             </td>
             <td>
-              {item.price}
+              ${item.price}
             </td>
-            <td><QuantityPicker /> </td>
-            <td>{item.subtotal}</td>
+            <td><CartQtyPicker /> </td>
+            <td>${item.subtotal}</td>
           </tr>
         ))}
   

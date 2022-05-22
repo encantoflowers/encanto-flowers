@@ -62,25 +62,25 @@ export default function ProductItem() {
             >
               <Row>
                 <Col lg={5}>
-                  {/* <img
-                                src={`/images/${currentProduct.image.img}`}
-                            /> */}
-                  <img src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" />
+                  <img
+                    src={`/images/${data.product.image.img}`}
+                            />
+                  {/* <img src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" /> */}
                 </Col>
                 <Col>
                   <h4>{data.product.name}</h4>
                   <p>{data.product.description}</p>
-                  <h3>{data.product.price}</h3>
+                  <h3>${data.product.price}</h3>
                   <div>
                     <p>Quantity</p>
                     <QuantityPicker />
                   </div>
-
-                  <Button className="button" onClick={addToCart}>
+                  <div className="my-2">
+                  <Button className="button my-2" onClick={addToCart}>
                     Add to Cart
                   </Button>
                   <a href="tel:123456789">
-                    <Button className="button">
+                    <Button className="button my-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -94,6 +94,7 @@ export default function ProductItem() {
                       Call to Order
                     </Button>
                   </a>
+                  </div>
                 </Col>
               </Row>
             </Container>
