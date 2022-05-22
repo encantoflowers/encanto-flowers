@@ -1,4 +1,6 @@
 const { connect, connection } = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
 
 // connect to the database
 const connectionString =
