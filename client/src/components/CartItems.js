@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import QuantityPicker from './QuantityPicker';
-import { Row, Col, Card } from 'react-bootstrap';
 
 function CartItems(item) {
 

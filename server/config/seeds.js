@@ -63,14 +63,14 @@ db.once('open', async () => {
         {
             name: 'Cherished Memories',
             description: 'White flowers have a certain timelessness and elegance, perfect for expressing your heartfelt condolences during times of sorrow. Pristine white roses, lilies and snapdragons are hand-gathered by our florists with touches of lush greenery inside a sleek cylinder vase. It’s a classic and comforting gesture that conveys the purity of your sentiment.',
-            price: 59.99,
+            price: 39.99,
             image: [{name: 'Cherished Memories', description: 'White flowers', img: '/images/Bouquet07.jpg' }],
             categories: [categories[3]._id , categories[1]._id ]
         },
         {
             name: 'Vibrant Floral Medley',
             description: 'Putting a bright start in somebody’s day starts with a beautiful gift. Our delightfully vibrant bouquet is filled with a medley of blooms in cheerful pops of orange, pink and yellow, with plenty of lush greenery mixed in. ',
-            price: 39.99,
+            price: 35.99,
             image: [{name: 'Vibrant Floral Medley', description: 'orange, pink and yellow', img: '/images/Bouquet09.jpg' }],
             categories: [categories[0]._id , categories[2]._id , categories[4]._id ]
         },
@@ -84,21 +84,21 @@ db.once('open', async () => {
         {
             name: 'Daydream Bouquet',
             description: 'An exquisite gift with beautifully bespoke style. Our vibrant gathering of blooms is arranged in our signature European hatbox: an elegant, new dove gray container finished with a matching ribbon. Its versatile design is perfect for displaying a variety of colors, adding to the custom feeling of this special keepsake.',
-            price: 59.99,
+            price: 45.99,
             image: [{name: 'Daydream Bouquet', description: 'pink flowers', img: '/images/Bouquet11.jpg' }],
             categories: [categories[0]._id , categories[2]._id , categories[4]._id  , categories[5]._id]
         },
         {
             name: 'Bright as Day',
             description: 'Featuring emerald green Hydrangea, California Sunflowers, pink South American Roses, purple Stock, orange Spray Roses, and more, this arrangement is a blast of color in a vase. This arrangement is perfect for any occasion!',
-            price: 59.99,
+            price: 39.99,
             image: [{name: 'Bright as Day', description: 'pink flowers', img: '/images/Bouquet12.jpg' }],
             categories: [categories[0]._id , categories[2]._id , categories[4]._id ]
         },
         {
             name: 'Let the sun shine',
             description: 'California-grown sunflowers, bright yellow spray roses, premium accent flowers and more.',
-            price: 59.99,
+            price: 55.99,
             image: [{name: 'Let the sun shine', description: 'sunflowers', img: '/images/Bouquet13.jpg' }],
             categories: [categories[0]._id , categories[2]._id , categories[5]._id ]
         },
@@ -112,7 +112,7 @@ db.once('open', async () => {
         {
             name: 'Queen Bee',
             description: 'Get these bright, beautiful sunflowers, white spray roses, yellow billy balls, and mini hydrangeas in formation for that person in your life who’s irreplaceable.',
-            price: 59.99,
+            price: 49.99,
             image: [{name: 'Queen Bee', description: 'yellow sunflowers', img: '/images/Bouquet15.jpg' }],
             categories: [categories[0]._id , categories[2]._id , categories[4]._id , categories[5]._id  ]
         }
