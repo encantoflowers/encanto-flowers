@@ -79,7 +79,7 @@ function EncantoNav() {
               )}
             </NavDropdown>
             <Nav.Link href="#link">Contact Us</Nav.Link>
-            <Nav.Link href="/signup">Sign Up</Nav.Link>
+            <Nav.Link href="../../pages/Signup.js">Sign Up</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
           </Nav>
         </Navbar.Collapse>
