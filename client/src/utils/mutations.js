@@ -31,7 +31,7 @@ export const ADD_USER = gql`
 `;
 // not logged in
 export const ADD_ORDER = gql`
-    mutation addOrder($products: [ProductInput]) {
+    mutation addOrder($products: [ID]!) {
         addOrder(products: $products) {
             _id
             purchaseDate
@@ -39,8 +39,12 @@ export const ADD_ORDER = gql`
                 _id
                 name
                 price
-                image
                 description
+                image {
+                  _id
+                  description
+                  img
+                }
             }
         }
     }

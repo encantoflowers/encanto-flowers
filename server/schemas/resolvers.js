@@ -1,6 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { Product, Category, Order,  User } = require('../models');
-const { find } = require('../models/Product');
 const { signToken } = require('../utils/auth');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -27,8 +26,8 @@ const resolvers = {
         products: async () => {
             return await Product.find({}).populate('categories');
         },
-        product: async (parent, {productId }) => {
-            return Product.findOne({_id: productId}).populate("categories");
+        product: async (parent, { _id }) => {
+            return Product.findById( _id ).populate("categories");
         },
 
         order: async (parent, { _id }, context) => {
