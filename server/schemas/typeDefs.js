@@ -62,7 +62,7 @@ type Query {
     user: User
     categories: [Category]! 
     products: [Product]!
-    product(productId: ID!): Product
+    product(_id: ID!): Product
     order: [Order]!
     checkout(products: [ID]!): Checkout
 }

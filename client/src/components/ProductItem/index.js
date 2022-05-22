@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { QUERY_ALL_PRODUCTS } from "../../utils/queries";
+import { QUERY_PRODUCT } from "../../utils/queries";
 import {
   ADD_TO_CART,
   UPDATE_CART_QUANTITY,
@@ -15,19 +15,23 @@ import "./style.css";
 
 export default function ProductItem() {
   const [state, dispatch] = useStoreContext();
-  const { id } = useParams();
+  const { productId } = useParams();
   const [currentProduct, setCurrentProduct] = useState({});
-  const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
+  const { loading, data, error } = useQuery(QUERY_PRODUCT, { variables: { _id: productId }, });
   const { products, cart } = state;
 
-  console.log(loading, data);
+  useEffect(() => {
+    if (data && loading === false) {
+      setCurrentProduct(data.product);
+    } 
+  }, [data, loading]);
 
   const addToCart = () => {
-    const itemInCart = cart.find((cartItem) => cartItem._id === id);
+    const itemInCart = cart.find((cartItem) => cartItem._id === productId);
     if (itemInCart) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
-        _id: id,
+        _id: productId,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
       });
       idbPromise("cart", "put", {
@@ -45,11 +49,14 @@ export default function ProductItem() {
 
   if (loading) {
     return <div> ... loading ...</div>;
+  } else if (error) {
+    console.log("error: ", error)
   } else {
+    console.log(data);
     return (
       <div>
-        {data.products.map((product) => {
-          return (
+        {/* {data.products.map((product) => { */}
+          {/* return ( */}
             <Container
               className="product-item"
               key={(Math.random() * 100) / 20 + 3}
@@ -62,9 +69,9 @@ export default function ProductItem() {
                   <img src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" />
                 </Col>
                 <Col>
-                  <h4>{product.name}</h4>
-                  <p>{product.description}</p>
-                  <h3>{product.price}</h3>
+                  <h4>{data.product.name}</h4>
+                  <p>{data.product.description}</p>
+                  <h3>{data.product.price}</h3>
                   <div>
                     <p>Quantity</p>
                     <QuantityPicker />
@@ -91,8 +98,8 @@ export default function ProductItem() {
                 </Col>
               </Row>
             </Container>
-          );
-        })}
+          {/* ); */}
+        {/* })} */}
       </div>
     );
   }
