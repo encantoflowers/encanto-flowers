@@ -8,7 +8,7 @@ import { useQuery } from '@apollo/client';
 import { idbPromise } from '../../utils/helpers';
 import { useStoreContext } from '../../utils/GlobalState';
 
-import { Container, Card, Row } from 'react-bootstrap';
+import { Container, Card, Row , Col } from 'react-bootstrap';
 
 import './style.css'
 
@@ -54,9 +54,9 @@ function AllProducts() {
         )
     
 
-        // return state.products.filter(
-        //     (product) => product.categories.find((category) => category._id === currentCategory
-        // ));
+        return state.products.filter(
+            (product) => product.categories.find((category) => category._id === currentCategory
+        ));
     }
 
     return (
@@ -65,7 +65,7 @@ function AllProducts() {
             <Row xs={1} s={2} md={3} lg={4} className='g-4'>
                 {data ? (
                     filterProducts().map((product) => (
-                        <Card className="single-card" style={{ width: '17rem', marginTop: '50px', marginRight: '10px', alignContent: 'center' }} key={product._id}
+                        <Col><Card className="single-card"  key={product._id}
                             onClick={() => {
                                 goToProduct(product._id)
                             }} >
@@ -74,12 +74,11 @@ function AllProducts() {
                                 <Card.Title className="product-name">{product.name}</Card.Title>
                                 <Card.Text className="price">{product.price}</Card.Text>
                             </Card.Body>
-                        </Card>
+                        </Card></Col>
                     ))
                 ) : (
                     <div>Loading...</div>
                 )}
-
             </Row>
         </Container>
     )
