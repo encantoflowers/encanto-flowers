@@ -10,8 +10,6 @@ import { useStoreContext } from '../../utils/GlobalState';
 import { idbPromise } from '../../utils/helpers';
 import './style.css';
 
-
-
 function EncantoNav() {
 
   const [state, dispatch] = useStoreContext();
@@ -61,7 +59,7 @@ function EncantoNav() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/cart">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <NavDropdown title="Categories" id="basic-nav-dropdown">
               {data ? (
                 <div>
@@ -78,8 +76,10 @@ function EncantoNav() {
                 </div>
               )}
             </NavDropdown>
-            <Nav.Link href="#link">Contact Us</Nav.Link>
-            <Nav.Link href="../../pages/Signup.js">Sign Up</Nav.Link>
+
+            <Nav.Link href="/cart">Cart</Nav.Link>
+            <Nav.Link href="/signup">Sign Up</Nav.Link>
+
             <Nav.Link href="/login">Login</Nav.Link>
           </Nav>
         </Navbar.Collapse>

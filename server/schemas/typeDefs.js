@@ -8,7 +8,7 @@ type Category {
 
 type User {
     _id: ID
-    name: String
+    userName: String
     email: String
     password: String
     # orders: [Order]
@@ -69,10 +69,10 @@ type Query {
 
 type Mutation {
     addUser (
-        name: String!
+        userName: String!
         email: String!
         password: String!
-        role: String
+        # role: String
         # role: Int!
         ): Auth
     deleteUser(id: ID!): User

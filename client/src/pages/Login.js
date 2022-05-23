@@ -19,6 +19,9 @@ function Login(props) {
     } catch (e) {
       console.log(e);
     }
+    setTimeout(() => {
+      window.location.assign('/userprofile');
+    }, 1000);
   };
 
   const handleChange = (event) => {
@@ -35,8 +38,8 @@ function Login(props) {
 
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email address:</label>
+        <div className="form-group mb-2">
+          <label className="p-2" htmlFor="email">Email address</label>
           <input
             placeholder="Email"
             name="email"
@@ -45,8 +48,8 @@ function Login(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
+        <div className="form-group mb-4">
+          <label className="p-2" htmlFor="pwd">Password</label>
           <input
             placeholder="******"
             name="password"
@@ -61,7 +64,7 @@ function Login(props) {
           </div>
         ) : null}
         <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
+          <button  className="btn btn-primary" type="submit">Submit</button>
         </div>
       </form>
     </div>

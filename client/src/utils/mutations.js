@@ -12,16 +12,15 @@ import { gql } from '@apollo/client';
 // `;
 export const ADD_USER = gql`
   mutation addUser(
-    $name: String!
+    $userName: String!
     $email: String!
     $password: String!
   ) {
     addUser(
-      name: $name
+      userName: $userName
       email: $email
       password: $password
     ) {
-      role
       token
       user {
         _id
