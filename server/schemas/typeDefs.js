@@ -6,26 +6,8 @@ type Category {
     Name: String
 }
 
-type User {
-    _id: ID
-    userName: String
-    email: String
-    password: String
-    # orders: [Order]
-}
-
-type Checkout {
-    session: ID
-  }
-
 type Image {
     _id: ID
-    name: String
-    description: String
-    img: String
-}
-
-input ImageInput {
     name: String
     description: String
     img: String
@@ -44,6 +26,24 @@ type Order {
     _id: ID
     purchaseDate: String
     products: [Product]
+}
+
+type User {
+    _id: ID
+    userName: String
+    email: String
+    password: String
+    orders: [Order]
+}
+
+type Checkout {
+    session: ID
+}
+
+input ImageInput {
+    name: String
+    description: String
+    img: String
 }
 
 type Checkout {
