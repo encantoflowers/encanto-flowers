@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect , useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../../utils/queries';
@@ -9,13 +9,15 @@ import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import { Button , Table, Container  } from 'react-bootstrap';
 import './style.css'
 // import QuantityPicker from '../../components/QuantityPicker';
-import CartQtyPicker from '../../components/CartQtyPicker';
+import QuantityPicker from '../../components/QuantityPicker';
 
 const stripePromise = loadStripe('pk_test_51L0VV3LPz0RFKIjd3EYrAXUdRZuvg8UiM7umz4piCUvWVKswkNXlX16hNBy4W4beVZo2xcCLNyXOffGD7MRzTMrv00ynQ9o8ej');
 
 function Cart() {
+  const [qty, setQty] = useState(1);
   const [state, dispatch] = useStoreContext();
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+  
 
   useEffect(() => {
     if (data) {
@@ -44,9 +46,17 @@ function Cart() {
     let sum = 0;
     state.cart.forEach((item) => {
       sum += item.price * item.purchaseQuantity;
+      console.log(item.name)
+      console.log(item.price)
+      console.log(item.purchaseQuantity)
     });
     return sum.toFixed(2);
   }
+
+  function calculateItemTotal(item) {
+    return item.price * item.purchaseQuantity
+  }
+
 
   function submitCheckout() {
     const productIds = [];
@@ -91,8 +101,11 @@ function Cart() {
             <td>
               ${item.price}
             </td>
-            <td><CartQtyPicker /> </td>
-            <td>${item.subtotal}</td>
+            <td>{item.purchaseQuantity}</td>
+            {/* <td><QuantityPicker
+            qty = {qty}
+            setQty =  {setQty} /> </td> */}
+            <td>${calculateItemTotal(item)}</td>
           </tr>
         ))}
   
@@ -104,7 +117,7 @@ function Cart() {
           <CartItems item={item} />
         ))}
       </Col> */}
-      <p style={{textAlign: "right"}}>Subtotal: $$$</p>
+      <p style={{textAlign: "right"}}>Subtotal: ${calculateTotal()}</p>
       <p className='fineprint'>Tax and shipping cost will be calulated later.</p>
       <Button variant="success" onClick={submitCheckout}>Checkout</Button>
       </Container>
