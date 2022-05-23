@@ -11,10 +11,10 @@ const resolvers = {
             if (context.user) {
                 const user = await User.findById(context.user._id).populate({
                     path: 'orders.products',
-                    populate: 'category'
+                    populate: 'categories'
                     });
 
-                    users.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+                    user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
                     return user;
             }
             throw new AuthenticationError('Not logged in');
@@ -34,7 +34,7 @@ const resolvers = {
             if (context.user) {
                 const user = await User.findById(context.user._id).populate({
                     path: 'orders.products',
-                    populate: 'category'
+                    populate: 'categories'
                     });
                 return user.orders.id(_id);
             }
@@ -73,8 +73,8 @@ const resolvers = {
 
     },
     Mutation: {
-        addUser: async (parent,{name, email, password}) => {
-            const user = await User.create({name, email, password});
+        addUser: async (parent,{userName, email, password}) => {
+            const user = await User.create({userName, email, password});
             const token = signToken(user);
             return { token, user };
         },
@@ -83,17 +83,17 @@ const resolvers = {
             return user;
         },
         updateUser: async (parent, {id, name, email, password}) => {
-            const user = await User.findByIdAndUpdate(id, {name, email, password});
+            const user = await User.findByIdAndUpdate(id, {userName, email, password});
             return user;
         },
         // this one
         addOrder: async (parent, { products }, context) => {
-            // if (context.user) {
+            if (context.user) {
                 const order = await Order.create({ products });
-                // await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+                await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
                 return order;
-            // }
-            // throw new AuthenticationError('Not logged in');
+            }
+            throw new AuthenticationError('Not logged in');
         },
         addCategory: async (parent, { Name }) => {
             const category = await Category.create({

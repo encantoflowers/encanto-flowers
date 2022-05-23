@@ -80,6 +80,31 @@ export const QUERY_CATEGORIES = gql`
         }
     }
 `
+export const QUERY_USER = gql`
+    query user {
+        user {
+            userName
+            email
+            password
+            orders {
+                _id
+                purchaseDate
+                products {
+                    _id
+                    name
+                    description
+                    price
+                    # quantity
+                   image {
+                       img 
+                   }
+                }
+
+            }
+        }
+    }
+`
+
 // maybe in queries
 // export const LOGIN = gql`
 //     mutation login($email: String!, $password: String!) {

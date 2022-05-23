@@ -10,7 +10,10 @@ import ProductItem from './components/ProductItem';
 import Home from './pages/Home';
 import DummyFooter from './components/DummyFooter';
 import Success from './pages/Success/index.js';
-import OrderHistory from './pages/OrderHistory'
+import OrderHistory from './pages/OrderHistory';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import UserProfile from './pages/UserProfile';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -42,6 +45,18 @@ function App() {
               <Route
                 path="/"
                 element={<Home />}
+              />
+              <Route
+                path="/signup"
+                element={<Signup />}
+              />
+              <Route
+                path="/login"
+                element={<Login />}
+              />
+              <Route
+                path="/userprofile"
+                element={<UserProfile />}
               />
               <Route
                 path="/categories/:category"

@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Container, Button, Row, Col } from 'react-bootstrap';
 import './style.css'
 
-export default function QuantityPicker() {
-    const [qty, setQty] = useState();
+export default function CartQtyPicker() {
+    const [qty, setQty] = useState(1);
 
     const increaseQty = () => {
         setQty(qty + 1);
@@ -17,21 +17,24 @@ export default function QuantityPicker() {
     };
 
     return (
-   <Container className='button-container'>
+   <Container className='button-container-cart'>
             <Row>
-                <Col lg={3}>
-                    <Button onClick={decreaseQty} className="button-qty button-sel">
+                <Col>
+                    <Button onClick={increaseQty} className="button-qty-cart button-sel-cart">
                         -
                     </Button>
                 </Col>
-               <Col lg={3}>{qty}</Col> 
-                <Col lg={3}>
-                    <Button onClick={increaseQty} className="button-qty button-sel">
+                {qty}
+                <Col>
+                    <Button onClick={decreaseQty} className="button-qty-cart button-sel-cart">
                         +
                     </Button></Col>
 
             </Row>
+
             </Container>
+
+
 
     );
 }
