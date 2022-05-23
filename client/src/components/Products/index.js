@@ -54,9 +54,9 @@ function AllProducts() {
         )
     
 
-        // return state.products.filter(
-        //     (product) => product.categories.find((category) => category._id === currentCategory
-        // ));
+        return state.products.filter(
+            (product) => product.categories.find((category) => category._id === currentCategory
+        ));
     }
 
     return (
