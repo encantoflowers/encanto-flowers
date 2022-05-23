@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Container, Button, Row, Col } from 'react-bootstrap';
 import './style.css'
 
-export default function QuantityPicker() {
+export default function CartQtyPicker() {
     const [qty, setQty] = useState(1);
 
     const increaseQty = () => {
@@ -17,16 +17,16 @@ export default function QuantityPicker() {
     };
 
     return (
-   <Container className='button-container'>
+   <Container className='button-container-cart'>
             <Row>
                 <Col>
-                    <Button onClick={increaseQty} className="button-qty button-sel">
+                    <Button onClick={increaseQty} className="button-qty-cart button-sel-cart">
                         -
                     </Button>
                 </Col>
                 {qty}
                 <Col>
-                    <Button onClick={decreaseQty} className="button-qty button-sel">
+                    <Button onClick={decreaseQty} className="button-qty-cart button-sel-cart">
                         +
                     </Button></Col>
 

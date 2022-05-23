@@ -8,14 +8,16 @@ function CartItems(item) {
         _id,
         price,
         description,
-        purchaseQuantity
+        purchaseQuantity,
+        image, 
+        img
       } = item.item;
 
     const [subtotal, setSubtotal] = useState(price*purchaseQuantity);
 
     return (
         <div className="cart-item" key={_id}>
-            {/* <img src={item.item.imageLink}/> */}
+            <img src={image.img}/> 
             <div>{name}</div>
             <div>{price}</div>
             <QuantityPicker />
