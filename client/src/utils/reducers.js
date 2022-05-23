@@ -11,7 +11,9 @@ import {
   TOGGLE_CART,
   QUERY_ALL_PRODUCTS,
   QUERY_PRODUCT,
-  UPDATE_SELECTED_PRODUCT
+  UPDATE_SELECTED_PRODUCT,
+  ADD_USER,
+  QUERY_USER
 } from './actions';
 
 export const reducer = (state, action) => {
@@ -99,6 +101,16 @@ export const reducer = (state, action) => {
       return {
         ...state,
         currentCategory: action.currentCategory,
+      };
+    case ADD_USER:
+      return {
+        ...state,
+        userName: action.userName,
+      };
+    case QUERY_USER:
+      return {
+        ...state,
+        userName: action.userName,
       };
 
     default:

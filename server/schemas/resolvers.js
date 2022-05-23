@@ -73,8 +73,8 @@ const resolvers = {
 
     },
     Mutation: {
-        addUser: async (parent,{name, email, password}) => {
-            const user = await User.create({name, email, password});
+        addUser: async (parent,{userName, email, password}) => {
+            const user = await User.create({userName, email, password});
             const token = signToken(user);
             return { token, user };
         },
@@ -83,7 +83,7 @@ const resolvers = {
             return user;
         },
         updateUser: async (parent, {id, name, email, password}) => {
-            const user = await User.findByIdAndUpdate(id, {name, email, password});
+            const user = await User.findByIdAndUpdate(id, {userName, email, password});
             return user;
         },
         // this one
