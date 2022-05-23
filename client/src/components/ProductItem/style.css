@@ -2,6 +2,7 @@
 
 .product-item {
     margin-top: 5em;
+    margin-bottom: 6em;
 }
 
 .button { 
@@ -32,4 +33,76 @@
     font-family: 'Poppins', sans-serif;
     font-size: 30px;
     color: #56B280;
+}
+
+.item-img {
+    width: 450px; 
+    height: auto;
+    position: absolute;
+}
+
+
+@media screen and (max-width: 1500px) and (min-width: 1200px) {
+    .item-img {
+        width: 325px; 
+        height: auto;
+        position: absolute;
+    }
+    .product-item {
+        margin-top: 5em;
+        margin-bottom: 3em;
+    }
+}
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    .item-img {
+        width: 300px; 
+        height: auto;
+        position: absolute;
+    }
+    .product-item {
+        margin-top: 5em;
+        margin-bottom: 3em;
+    }
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+    .item-img {
+        width: 200px; 
+        height: auto;
+        position: absolute;
+    }
+    .product-item {
+        margin-top: 5em;
+        margin-bottom: 3em;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 600px) {
+    .item-img {
+        width: 321px; 
+        height: auto;
+        position: absolute;
+    }
+    .product-item {
+        margin-top: 5em;
+        margin-bottom: 3em;
+    }
+    .description {
+        padding-top: 400px;
+    }
+}
+
+@media screen and (max-width: 599px) and (min-width: 350px) {
+    .item-img {
+        width: 321px; 
+        height: auto;
+        position: absolute;
+    }
+    .product-item {
+        margin-top: 5em;
+        margin-bottom: 3em;
+    }
+    .description {
+        padding-top: 380px;
+    }
 }

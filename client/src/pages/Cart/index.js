@@ -83,7 +83,7 @@ function Cart() {
         {state.cart.map((item) => (
           <tr> 
             <td>
-            <img src={item.image.img} alt={item.name} ></img>
+            <img src={item.image[0].img} alt={item.name} style={{width: "50px"}} className="thumbnail-img"></img>
             </td>
             <td>
               {item.name}
