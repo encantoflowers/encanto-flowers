@@ -21,13 +21,13 @@ export default function QuantityPicker() {
             <Row>
                 <Col>
                     <Button onClick={increaseQty} className="button-qty button-sel">
-                        +
+                        -
                     </Button>
                 </Col>
                 {qty}
                 <Col>
                     <Button onClick={decreaseQty} className="button-qty button-sel">
-                        -
+                        +
                     </Button></Col>
 
             </Row>
