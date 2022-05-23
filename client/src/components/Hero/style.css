@@ -26,14 +26,13 @@ h2 {
     text-align: left;
     background-image: linear-gradient(180deg, #4498AA 27.07%, #3358A1 79.18%) !important;
     background-clip: text;
-    font-size: 50px !important;
+    font-size: 50px;
     color: transparent;
 }
 
 h4 {
     font-family: 'Poppins', sans-serif;
     font-size: 25px;
-
 }
 
 
@@ -67,4 +66,21 @@ h4 {
         bottom: 3em;
         margin: 0 3rem;
     }
+}
+
+@media only screen and (max-width: 473px) {
+    .fig-caption h2 {
+        font-size: 30px !important;
+    }
+    
+}
+
+@media only screen and (max-width: 393px) {
+    .fig-caption h2 {
+        font-size: 20px !important;
+    }
+    .fig-caption h4 {
+        font-size: 18px;
+    }
+    
 }

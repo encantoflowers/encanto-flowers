@@ -8,7 +8,7 @@ export default function Hero() {
         <div>
             <figure className='position-relative'>
             <img src="/images/Hero_Image.jpg" alt="hero bouquet" className='img-fluid' />
-                <figcaption>
+                <figcaption className='fig-caption'>
                     <h2>Flower Delivery</h2>
                     <h4>Flowers for every occassion</h4>
                 </figcaption>
