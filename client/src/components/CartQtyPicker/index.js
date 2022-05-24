@@ -1,5 +1,5 @@
 // Import useEffect from React.
-import React, { useState } from "react";
+import React from "react";
 import { Container, Button, Row, Col } from "react-bootstrap";
 import { UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
@@ -8,23 +8,10 @@ import "./style.css";
 
 export default function CartQtyPicker(item) {
     const thisItem = item.item;
-    console.log(item);
     const [state, dispatch] = useStoreContext();
-  const [qty, setQty] = useState(1);
-
-  const increaseQty = () => {
-    setQty(qty + 1);
-  };
-
-  const decreaseQty = () => {
-    if (qty > 0) {
-      setQty(qty - 1);
-    }
-  };
 
   const updateQuantity = (plusminus) => {
     if (plusminus === "plus") {
-      console.log('here');
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: thisItem._id,

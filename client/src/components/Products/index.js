@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 import { idbPromise } from '../../utils/helpers';
 import { useStoreContext } from '../../utils/GlobalState';
 
-import { Container, Card, Row , Col } from 'react-bootstrap';
+import { Card, Row , Col } from 'react-bootstrap';
 
 import './style.css'
 
@@ -21,9 +21,10 @@ function AllProducts() {
     const { category } = useParams();
     const decodedCategory = category.replace("%20", " ")
     const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
+    const selectedCategory = categories.find((thisCategory) => thisCategory.Name === decodedCategory);
 
     function filterProducts() {
-        if (!currentCategory) {
+        if (state && !currentCategory) {
             return state.products;
         }
         return state.products.filter(
@@ -40,11 +41,12 @@ function AllProducts() {
             data.products.forEach((product) => {
                 idbPromise('products', 'put', product);
             });
-            const selectedCategory = async () => {return await categories.find((thisCategory) => thisCategory.Name === decodedCategory)};
-            dispatch({
-                type: UPDATE_CURRENT_CATEGORY,
-                currentCategory: selectedCategory()._id
-            })
+            if (selectedCategory) {
+                dispatch({
+                    type: UPDATE_CURRENT_CATEGORY,
+                    currentCategory: selectedCategory._id
+                })
+            }
         } else if (!loading) {
             idbPromise('products', 'get').then((product) => {
                 dispatch({
@@ -53,7 +55,7 @@ function AllProducts() {
                 });
             });
         } 
-    }, [data, loading, dispatch]);
+    }, [data, loading, dispatch, selectedCategory]);
 
     function goToProduct(productId) {
         dispatch({
@@ -65,10 +67,10 @@ function AllProducts() {
     
 
     return (
-        <Container className='card-container'>
-            {/* loop through each product and generate a card */}
+        // <Container className='card-container'>
+            // {/* loop through each product and generate a card */}
             <Row xs={1} s={2} md={3} lg={4} className='g-4'>
-                {loading ? (
+                {loading || !selectedCategory ? (
                     <div>Loading...</div>
                 ) : data ? (
                     filterProducts().map((product) => (
@@ -85,7 +87,7 @@ function AllProducts() {
                     ))
                 ) : (<div></div>)}
             </Row>
-        </Container>
+        // </Container>
     )
 }
 

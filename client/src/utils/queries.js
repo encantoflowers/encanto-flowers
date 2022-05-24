@@ -1,16 +1,5 @@
 import { gql } from '@apollo/client';
 
-// export const ADD_USER = gql`
-//     mutation addUser($user: UserInput) {
-//         addUser(user: $user) {
-//             name
-//             email
-//             password
-//         }
-//     }
-// `;
-// not logged in
-// good minus the categories
 export const QUERY_PRODUCT = gql`
     query getProduct($_id: ID!) {
         product (_id: $_id) {
@@ -57,8 +46,8 @@ export const QUERY_ALL_PRODUCTS = gql`
             }
         }
     }
-`
-// good
+`;
+
 export const QUERY_CATEGORIES = gql`
     query categories {
         categories {
@@ -66,7 +55,7 @@ export const QUERY_CATEGORIES = gql`
             Name
         }
     }
-`
+`;
 export const QUERY_USER = gql`
     query user {
         user {
@@ -82,25 +71,15 @@ export const QUERY_USER = gql`
                     name
                     description
                     price
-                    # quantity
                    image {
+                       _id
+                       name
+                       description
                        img 
                    }
                 }
                 total
-
             }
         }
     }
-`
-
-// maybe in queries
-// export const LOGIN = gql`
-//     mutation login($email: String!, $password: String!) {
-//         login(email: $email, password: $password) {
-//             name
-//             email
-//             password
-//         }
-//     }
-// `;
+`;

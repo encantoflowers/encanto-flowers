@@ -1,5 +1,4 @@
 import React from 'react'
-import OrderHistoryTable from '../components/OrderHistory'
 
 function AdminPanel() {
   return (

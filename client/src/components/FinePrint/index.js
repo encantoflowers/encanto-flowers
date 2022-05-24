@@ -1,7 +1,6 @@
-import './style.css'
 import { Container , Button } from 'react-bootstrap';
 import React from 'react'
-
+import './style.css'
 
 export default function FinePrint () {
 

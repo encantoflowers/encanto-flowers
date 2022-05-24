@@ -1,9 +1,6 @@
 import React from "react";
 import AuthService from "../../utils/auth";
-// import Orders from "./Orders";
 import { Link } from "react-router-dom";
-// import { loggedIn } from "../../utils/auth";
-// import { logout } from "../../utils/auth";
 
 function adminNav() {
   if (AuthService.loggedIn()) {

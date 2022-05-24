@@ -3,7 +3,6 @@ import { useMutation } from '@apollo/client';
 import { ADD_ORDER } from '../../utils/mutations';
 import { idbPromise } from '../../utils/helpers';
 import { Container } from 'react-bootstrap';
-import { useStoreContext } from '../../utils/GlobalState';
 import './style.css'
 
 function Success() {
@@ -13,7 +12,6 @@ function Success() {
   useEffect(() => {
     async function saveOrder() {
       const total = await idbPromise('total', 'get');
-      console.log(total);
       const cart = await idbPromise('cart', 'get');
       const products = cart.map((item) => item._id);
 

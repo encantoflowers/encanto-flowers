@@ -45,7 +45,7 @@ function EncantoNav() {
     }
   }, [data, loading, dispatch]);
 
-  const handleClick = (id) => {
+  const handleNavClick = (id) => {
     dispatch({
       type: UPDATE_CURRENT_CATEGORY,
       currentCategory: id,
@@ -55,6 +55,14 @@ function EncantoNav() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
+        {userData && user.role === 1 ? (<Navbar.Brand href="/adminpanel">
+          <img
+            alt=""
+            src="/images/encanto_logo_nav.png"
+            width="90"
+            height="30"
+            className="d-inline-block align-top"
+          /></Navbar.Brand>) : (
         <Navbar.Brand href="/">
           <img
             alt=""
@@ -63,7 +71,7 @@ function EncantoNav() {
             height="30"
             className="d-inline-block align-top"
           />
-        </Navbar.Brand>
+        </Navbar.Brand> )}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -77,9 +85,9 @@ function EncantoNav() {
                 <div>
                   {categories.map((category) => (
                     <NavDropdown.Item href={`/categories/${category.Name}`} key={category._id}
-                      onClick={() => {
-                        handleClick(category._id)
-                      }}>{category.Name}</NavDropdown.Item>
+                      onClick={() => {handleNavClick(category._id)}}>
+                        {category.Name}
+                    </NavDropdown.Item>
                   ))}
                 </div>
               )}

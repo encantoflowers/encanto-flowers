@@ -55,8 +55,4 @@ const productSchema = new Schema(
     }
 );
 
-// Price
-// Tags
-// Image
-
 module.exports = model ('Product', productSchema);
