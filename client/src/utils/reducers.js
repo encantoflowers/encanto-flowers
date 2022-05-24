@@ -8,12 +8,7 @@ import {
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY,
   CLEAR_CART,
-  TOGGLE_CART,
-  QUERY_ALL_PRODUCTS,
-  QUERY_PRODUCT,
   UPDATE_SELECTED_PRODUCT,
-  ADD_USER,
-  QUERY_USER,
   UPDATE_TOTAL,
   UPDATE_CURRENT_QUANTITY
 } from './actions';
@@ -25,18 +20,6 @@ export const reducer = (state, action) => {
         ...state,
         products: [...action.products],
       };
-
-    case QUERY_ALL_PRODUCTS:
-      return {
-        ...state,
-        products: [action.products],
-      };
-
-    case QUERY_PRODUCT:
-      return {
-        ...state,
-        product: [action.product],
-      }  
 
     case UPDATE_SELECTED_PRODUCT:
       return {
@@ -53,7 +36,6 @@ export const reducer = (state, action) => {
     case ADD_TO_CART:
       return {
         ...state,
-        cartOpen: true,
         cart: [...state.cart, action.product],
       };
 
@@ -67,7 +49,6 @@ export const reducer = (state, action) => {
       console.log(action);
       return {
         ...state,
-        cartOpen: true,
         cart: state.cart.map((product) => {
           if (action._id === product._id) {
             product.purchaseQuantity = action.purchaseQuantity;
@@ -83,21 +64,13 @@ export const reducer = (state, action) => {
 
       return {
         ...state,
-        cartOpen: newState.length > 0,
         cart: newState,
       };
 
     case CLEAR_CART:
       return {
         ...state,
-        cartOpen: false,
         cart: [],
-      };
-
-    case TOGGLE_CART:
-      return {
-        ...state,
-        cartOpen: !state.cartOpen,
       };
 
     case UPDATE_CATEGORIES:
@@ -111,16 +84,7 @@ export const reducer = (state, action) => {
         ...state,
         currentCategory: action.currentCategory,
       };
-    case ADD_USER:
-      return {
-        ...state,
-        userName: action.userName,
-      };
-    case QUERY_USER:
-      return {
-        ...state,
-        userName: action.userName,
-      };
+
     case UPDATE_TOTAL:
       return {
         ...state,

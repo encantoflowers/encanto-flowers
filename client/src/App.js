@@ -10,7 +10,6 @@ import ProductItem from './components/ProductItem';
 import Home from './pages/Home';
 import DummyFooter from './components/DummyFooter';
 import Success from './pages/Success/index.js';
-import OrderHistory from './pages/OrderHistory';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import UserProfile from './pages/UserProfile';
@@ -76,16 +75,10 @@ function App() {
                 element={<ProductItem />}
               />
               <Route
-                path="/orderhistory"
-                element={<OrderHistory />}
-              />
-              <Route
                 path="/adminpanel"
                 element={<AdminPanel />}
               />
             </Routes>
-            {/* <ProductItem item={item} /> */}
-
           </div>
           <DummyFooter />
         </Router>

@@ -1,5 +1,5 @@
 import './style.css'
-import { Container , Row, Col, Button } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import React from 'react'
 
 

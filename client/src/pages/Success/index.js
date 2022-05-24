@@ -3,7 +3,6 @@ import { useMutation } from '@apollo/client';
 import { ADD_ORDER } from '../../utils/mutations';
 import { idbPromise } from '../../utils/helpers';
 import { Container } from 'react-bootstrap';
-import { useStoreContext } from '../../utils/GlobalState';
 import './style.css'
 
 function Success() {

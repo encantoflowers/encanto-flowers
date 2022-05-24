@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { QUERY_PRODUCT } from "../../utils/queries";
 import {
   ADD_TO_CART,

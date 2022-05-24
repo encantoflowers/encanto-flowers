@@ -1,9 +1,6 @@
 import React from "react";
 import AuthService from "../../utils/auth";
-// import Orders from "./Orders";
 import { Link } from "react-router-dom";
-// import { loggedIn } from "../../utils/auth";
-// import { logout } from "../../utils/auth";
 
 function OrderHistory() {
   const { data } = useQuery(QUERY_USER);
@@ -60,7 +57,6 @@ function adminNav() {
           </Link>
         </li>
         <li className="mx-1">
-          {/* this is not using the Link component to logout or user and then refresh the application to the start */}
           <a href="/" onClick={() => AuthService.logout()}>
             Logout
           </a>
@@ -72,7 +68,7 @@ function adminNav() {
   return (
     <header className="flex-row px-1">
       <h1>What would you like to do today?</h1>
-      {OrederHistory()}
+      {OrderHistory()}
       
     <nav>
       {adminNav()}
