@@ -16,9 +16,9 @@ export default function Hero() {
            
 
             <Row className='d-flex'>
-                <Col><img src="/images/romance.jpg" className='category-img d-flex' alt="romatic flowers" /></Col>
-                <Col><img src="/images/get_well.jpg" className='category-img d-flex' alt="white and blue flowers"/></Col>
-                <Col><img src="/images/simpathy.jpg" className='category-img d-flex' alt="sympathy" /></Col>
+                <Col><a href="/categories/romance"><img href="/categories/romance" src="/images/romance.jpg" className='category-img d-flex' alt="romatic flowers" /></a></Col>
+                <Col><a href="/categories/get%20well"><img src="/images/get_well.jpg" className='category-img d-flex' alt="white and blue flowers"/></a></Col>
+                <Col><a href="/categories/sympathy"><img src="/images/simpathy.jpg" className='category-img d-flex' alt="sympathy" /></a></Col>
 
             </Row>
         </div>
