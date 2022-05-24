@@ -15,6 +15,7 @@ function Signup(props) {
         userName: formState.userName,
         email: formState.email,
         password: formState.password,
+        role: 0
       },
     });
     console.log(data);

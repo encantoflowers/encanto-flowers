@@ -6,6 +6,8 @@ import './style.css'
 export default function QuantityPicker() {
     const [qty, setQty] = useState();
 
+    
+
     const increaseQty = () => {
         setQty(qty + 1);
     };

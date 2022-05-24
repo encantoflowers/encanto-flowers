@@ -26,8 +26,6 @@ function EncantoNav() {
 
   const { categories } = state;
 
-  const { loading, data } = useQuery(QUERY_CATEGORIES);
-
   useEffect(() => {
     if (data) {
       dispatch({
@@ -54,8 +52,7 @@ function EncantoNav() {
     });
 
   };
-  if (userData && user.role === 1) {
-    return (
+  return (
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand href="/">
@@ -87,100 +84,33 @@ function EncantoNav() {
                 </div>
               )}
             </NavDropdown>
-            <Nav.Link href="/addproduct">Add Product</Nav.Link>
+            {userData && user.role === 1 ? (
+              <Nav.Link href="/addproduct">Add Product</Nav.Link>
+            ) : (<div></div>)}
+            {userData && user.role === 1 ? (
               <Nav.Link href="/addcategory">Add Category</Nav.Link>
+            ) : (<div></div>)}
+            {userData && user.role === 1 ? (
               <Nav.Link href="/updateproduct">Update Product</Nav.Link>
+            ) : (<div></div>)}
+            {userData && user.role === 1 ? (
               <Nav.Link href="/updatecategory">Update Category</Nav.Link>
+            ) : (<div></div>)}
+            {userData && (user.role === 0 || user.role === 1) ? (
               <Nav.Link href="/" onClick={() => Auth.logout()}>Logout</Nav.Link>
+            ) : (
+              <Nav.Link href="/signup">Sign Up</Nav.Link>
+            )}
+            {!userData ? (
+              <Nav.Link href="/login">Sign In</Nav.Link>
+            ) : (
+              <div></div>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
-  } else if (userData && user.role == 0) {
-    return (
-      <Navbar bg="light" expand="lg">
-        <Container>
-          <Navbar.Brand href="/">
-            <img
-              alt=""
-              src="/images/encanto_logo_nav.png"
-              width="90"
-              height="30"
-              className="d-inline-block align-top"
-            />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <NavDropdown title="Categories" id="basic-nav-dropdown">
-              {data ? (
-                <div>
-                  {data.categories.map((category) => (
-                    <NavDropdown.Item href={`/categories/${category.Name}`} key={category._id}
-                      onClick={() => {
-                        handleClick(category._id)
-                      }}>{category.Name}</NavDropdown.Item>
-                  ))}
-                </div>
-              ) : (
-                <div>
-                  <NavDropdown.Item href="#" key='None'>'No Categories'</NavDropdown.Item>
-                </div>
-              )}
-            </NavDropdown>
-            <Nav.Link href="/userprofile">User Profile</Nav.Link>
-            <Nav.Link href="/cart">Cart</Nav.Link>
-            <Nav.Link href="/" onClick={() => Auth.logout()}>Logout</Nav.Link>
-              
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    );
-  } else {
-    return (
-      <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="/">
-          <img
-            alt=""
-            src="/images/encanto_logo_nav.png"
-            width="90"
-            height="30"
-            className="d-inline-block align-top"
-          />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <NavDropdown title="Categories" id="basic-nav-dropdown">
-              {data ? (
-                <div>
-                  {data.categories.map((category) => (
-                    <NavDropdown.Item href={`/categories/${category.Name}`} key={category._id}
-                      onClick={() => {
-                        handleClick(category._id)
-                      }}>{category.Name}</NavDropdown.Item>
-                  ))}
-                </div>
-              ) : (
-                <div>
-                  <NavDropdown.Item href="#" key='None'>'No Categories'</NavDropdown.Item>
-                </div>
-              )}
-            </NavDropdown>
-            <Nav.Link href="/signup">Sign Up</Nav.Link>
-            <Nav.Link href="/login">Sign In</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-    )
-
-  }
 }
 
 export default EncantoNav;
