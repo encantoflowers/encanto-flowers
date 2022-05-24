@@ -86,6 +86,7 @@ export const QUERY_USER = gql`
             userName
             email
             password
+            role
             orders {
                 _id
                 purchaseDate

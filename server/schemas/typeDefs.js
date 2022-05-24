@@ -33,6 +33,7 @@ type User {
     userName: String
     email: String
     password: String
+    role: Int
     orders: [Order]
 }
 
@@ -73,7 +74,7 @@ type Mutation {
         email: String!
         password: String!
         # role: String
-        # role: Int!
+        role: Int!
         ): Auth
     deleteUser(id: ID!): User
     updateUser(id: ID!, name: String, email: String, password: String): User
