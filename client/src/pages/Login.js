@@ -20,7 +20,7 @@ function Login(props) {
       console.log(e);
     }
     setTimeout(() => {
-      window.location.assign('/userprofile');
+      window.location.assign('/');
     }, 1000);
   };
 
