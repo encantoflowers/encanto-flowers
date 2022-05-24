@@ -22,7 +22,7 @@ export default function Seasonal() {
                     <Card.Img variant="top" src="images/Bouquet06.jpg" style={{ paddingTop: '10px' }} />
                     <Card.Body>
                         <Card.Title className="product-name">Peace, Prayers & Blessings</Card.Title>
-                        <Card.Text className="$59.99">Price</Card.Text>
+                        <Card.Text className="price">$59.99</Card.Text>
                     </Card.Body>
                 </Card>
                 </Col>
@@ -44,7 +44,7 @@ export default function Seasonal() {
                     </Card.Body>
                 </Card>
                 </Col>
-                <Button className='button-shopnow mx-auto'>Shop Now</Button>
+                <Button href="" className='button-shopnow mx-auto'>Shop Now</Button>
 </Row>
         </Container>
 
