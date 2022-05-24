@@ -48,3 +48,4 @@ MERN, Bootstrap for React, bcrypt, JSON web token, Apollo, GraphQL, Stripe, UUID
 
 [Webpage >](https://encanto-flowers.herokuapp.com/)<br>
 [Figma >](https://www.figma.com/file/rXf9ilYTRyEMyFRxp25xow/Encanto-Flowers?node-id=116%3A92)<br>
+[Slide Deck >](https://docs.google.com/presentation/d/1Vw06qyUKYt38v8Equls7MgHX83eW8siDWssOLA647Ow/edit?usp=sharing)
