@@ -2,7 +2,7 @@
 
 .product-item {
     margin-top: 5em;
-    margin-bottom: 6em;
+    margin-bottom: 10em;
 }
 
 .button { 
@@ -36,7 +36,7 @@
 }
 
 .item-img {
-    width: 450px; 
+    width: 400px; 
     height: auto;
     position: absolute;
 }
@@ -50,7 +50,7 @@
     }
     .product-item {
         margin-top: 5em;
-        margin-bottom: 3em;
+        margin-bottom: 7em;
     }
 }
 @media screen and (max-width: 1199px) and (min-width: 992px) {
