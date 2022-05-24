@@ -57,6 +57,7 @@ export const reducer = (state, action) => {
       };
       
     case UPDATE_CART_QUANTITY:
+      console.log(action);
       return {
         ...state,
         cartOpen: true,

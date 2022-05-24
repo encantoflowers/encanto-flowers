@@ -7,10 +7,21 @@ import { QUERY_USER } from '../utils/queries';
 function UserProfile() {
   const { data } = useQuery(QUERY_USER);
   let user;
+  let fancyAssTable = <div></div>
 
   if (data) {
     user = data.user;
+    fancyAssTable = user.orders.map((order) => (
+        <tr key={order._id}>
+              <td>{order._id}</td>
+              <td>{new Date(parseInt(order.purchaseDate)).toLocaleDateString()}</td>
+              <td> ${order.total} </td>
+              {/* ))} */}
+          </tr>));
   }
+
+
+  console.log(user);
 
   return (
     <div>
@@ -30,16 +41,7 @@ function UserProfile() {
                     </tr>
                 </thead>
                 <tbody>
-                    {user.orders.map((order) => (
-                      <div> <tr key={order._id}>
-                            <td>{order._id}</td>
-                            <td>{new Date(parseInt(order.purchaseDate)).toLocaleDateString()}</td>
-                            {/* {order.products.map(({ _id, image, name, price }, index) => (
-                            <td key={index}>{order.name} </td> */}
-                            <td> ${order.total} </td>
-                            {/* ))} */}
-                        </tr></div> 
-                    ))}
+                    {fancyAssTable}
                 </tbody>
             </Table>
         </Container>

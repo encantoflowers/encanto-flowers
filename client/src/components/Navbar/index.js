@@ -106,6 +106,11 @@ function EncantoNav() {
             ) : (
               <div></div>
             )}
+            {userData && (user.role === 0 || user.role === 1) ? (
+              <Nav.Link href="/userprofile">Profile</Nav.Link>
+            ) : (
+              <div></div>
+            )}
             {!userData ? (
               <Nav.Link href="/login">Sign In</Nav.Link>
             ) : (

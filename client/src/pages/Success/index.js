@@ -8,21 +8,17 @@ import './style.css'
 
 function Success() {
 
-  const [state, dispatch] = useStoreContext();
-
-  const { total } = state;
-
-  console.log(total);
-  
   const [addOrder] = useMutation(ADD_ORDER);
 
   useEffect(() => {
     async function saveOrder() {
+      const total = await idbPromise('total', 'get');
+      console.log(total);
       const cart = await idbPromise('cart', 'get');
       const products = cart.map((item) => item._id);
 
       if (products.length) {
-        const { data } = await addOrder({ variables: { products: products, total: 0 } });
+        const { data } = await addOrder({ variables: { products: products, total: parseFloat(total[total.length - 1])} });
         const productData = data.addOrder.products;
 
         productData.forEach((item) => {
