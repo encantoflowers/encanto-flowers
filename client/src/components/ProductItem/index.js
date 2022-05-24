@@ -18,6 +18,8 @@ export default function ProductItem() {
   const [currentProduct, setCurrentProduct] = useState({});
   const { loading, data, error } = useQuery(QUERY_PRODUCT, { variables: { _id: productId }, });
   const { cart, currentQuantity } = state;
+  
+  const [addedToCart, toggleAdded] = useState(<div></div>);
 
   useEffect(() => {
     if (data && loading === false) {
@@ -26,6 +28,7 @@ export default function ProductItem() {
   }, [data, loading]);
 
   const addToCart = () => {
+    toggleAdded(<div>Item added to Cart</div>);
     const itemInCart = cart.find((cartItem) => cartItem._id === productId);
     if (itemInCart) {
       dispatch({
@@ -59,7 +62,7 @@ export default function ProductItem() {
         >
           <Row>
             <Col xs={12} sm={12} md={4} lg={4}>
-              <img className="item-img"
+              <img className="item-img" alt={`${data.product.image[0].name}`}
                 src={`${data.product.image[0].img}`}
               />
             </Col>
@@ -91,6 +94,7 @@ export default function ProductItem() {
                   </Button>
                 </a>
               </div>
+                  {addedToCart}
             </Col>
           </Row>
         </Container>

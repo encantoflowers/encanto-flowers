@@ -23,7 +23,7 @@ function UserProfile() {
     <div>
         {user ? (
             <Container className='order-history my-5'>
-                <Link to="/">← Back to Products</Link>
+                <Link to="/">← Back to Shopping</Link>
                 <h3>Hello, {user.userName}</h3>
                 <h4>Order History</h4>
                 <Table striped>

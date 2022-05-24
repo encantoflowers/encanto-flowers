@@ -18,7 +18,6 @@ function Signup(props) {
         role: 0
       },
     });
-    console.log(data);
     const token = data.addUser.token;
     Auth.login(token);  
 

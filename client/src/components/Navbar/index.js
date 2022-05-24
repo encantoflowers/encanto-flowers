@@ -45,7 +45,7 @@ function EncantoNav() {
     }
   }, [data, loading, dispatch]);
 
-  const handleClick = (id) => {
+  const handleNavClick = (id) => {
     dispatch({
       type: UPDATE_CURRENT_CATEGORY,
       currentCategory: id,
@@ -77,9 +77,9 @@ function EncantoNav() {
                 <div>
                   {categories.map((category) => (
                     <NavDropdown.Item href={`/categories/${category.Name}`} key={category._id}
-                      onClick={() => {
-                        handleClick(category._id)
-                      }}>{category.Name}</NavDropdown.Item>
+                      onClick={() => {handleNavClick(category._id)}}>
+                        {category.Name}
+                    </NavDropdown.Item>
                   ))}
                 </div>
               )}

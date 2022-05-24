@@ -12,7 +12,6 @@ function Success() {
   useEffect(() => {
     async function saveOrder() {
       const total = await idbPromise('total', 'get');
-      console.log(total);
       const cart = await idbPromise('cart', 'get');
       const products = cart.map((item) => item._id);
 

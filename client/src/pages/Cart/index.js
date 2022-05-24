@@ -39,9 +39,6 @@ function Cart() {
     let sum = 0;
     state.cart.forEach((item) => {
       sum += item.price * item.purchaseQuantity;
-      console.log(item.name)
-      console.log(item.price)
-      console.log(item.purchaseQuantity)
     });
     return sum.toFixed(2);
   }
@@ -72,7 +69,7 @@ function Cart() {
     <div className='shopping-cart my-5 pb-5'>
       <Container> 
       <h3>Your Cart Items</h3>
-      <a href="#">Back to shopping</a>
+      <a href="/">Back to shopping</a>
       <Table striped>
         <thead className='table-header'>
           <tr>
@@ -85,7 +82,7 @@ function Cart() {
         </thead>
         <tbody>
           {state.cart.map((item) => (
-            <tr> 
+            <tr key={item._id}> 
               <td>
               <img src={item.image[0].img} alt={item.name} style={{width: "50px"}} className="thumbnail-img"></img>
               </td>
