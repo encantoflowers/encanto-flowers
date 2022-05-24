@@ -123,7 +123,7 @@ db.once('open', async () => {
     await User.deleteMany();
     const users = await User.create(
         {
-            name: 'Ian Nicholas',
+            userName: 'Ian Nicholas',
             email: 'inicholas8686@gmail.com',
             password: 'password',
         }

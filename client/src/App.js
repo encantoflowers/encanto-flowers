@@ -70,7 +70,6 @@ function App() {
                 path="/success"
                 element={<Success />}
               />
-
               <Route
                 path="/product/:productId"
                 element={<ProductItem />}
