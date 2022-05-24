@@ -14,7 +14,8 @@ import {
   UPDATE_SELECTED_PRODUCT,
   ADD_USER,
   QUERY_USER,
-  UPDATE_TOTAL
+  UPDATE_TOTAL,
+  UPDATE_CURRENT_QUANTITY
 } from './actions';
 
 export const reducer = (state, action) => {
@@ -42,6 +43,12 @@ export const reducer = (state, action) => {
         ...state,
         selectedProduct: [action.selectedProduct],
       }  
+    
+    case UPDATE_CURRENT_QUANTITY:
+      return {
+        ...state,
+        currentQuantity: action.currentQuantity,
+      }
 
     case ADD_TO_CART:
       return {
