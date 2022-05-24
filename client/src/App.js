@@ -8,7 +8,7 @@ import Cart from './pages/Cart';
 import Categories from './pages/Categories'
 import ProductItem from './components/ProductItem';
 import Home from './pages/Home';
-import DummyFooter from './components/DummyFooter';
+import Footer from './components/Footer';
 import Success from './pages/Success/index.js';
 import OrderHistory from './pages/OrderHistory';
 import Signup from './pages/Signup';
@@ -87,7 +87,7 @@ function App() {
             {/* <ProductItem item={item} /> */}
 
           </div>
-          <DummyFooter />
+          <Footer />
         </Router>
       </StoreProvider>
     </ApolloProvider>
