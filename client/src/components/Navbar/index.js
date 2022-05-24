@@ -14,9 +14,9 @@ function EncantoNav() {
 
   const [state, dispatch] = useStoreContext();
 
-  const { loading, data } = useQuery(QUERY_CATEGORIES);
-
   const { categories } = state;
+
+  const { loading, data } = useQuery(QUERY_CATEGORIES);
 
   useEffect(() => {
     if (data) {
@@ -61,26 +61,24 @@ function EncantoNav() {
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <NavDropdown title="Categories" id="basic-nav-dropdown">
-              {data ? (
+              {loading ? (
                 <div>
-                  {data.categories.map((category) => (
+                  <NavDropdown.Item href="#" key='None'>'Categories loading...'</NavDropdown.Item>
+                </div>
+              ) : (
+                <div>
+                  {categories.map((category) => (
                     <NavDropdown.Item href={`/categories/${category.Name}`} key={category._id}
                       onClick={() => {
                         handleClick(category._id)
                       }}>{category.Name}</NavDropdown.Item>
                   ))}
                 </div>
-              ) : (
-                <div>
-                  <NavDropdown.Item href="#" key='None'>'No Categories'</NavDropdown.Item>
-                </div>
               )}
             </NavDropdown>
-
-            <Nav.Link href="/cart">Cart</Nav.Link>
-            <Nav.Link href="/signup">Sign Up</Nav.Link>
-
-            <Nav.Link href="/login">Login</Nav.Link>
+                <Nav.Link href="/cart">Cart</Nav.Link>
+                <Nav.Link href="/signup">Sign Up</Nav.Link>
+                <Nav.Link href="/login">Login</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -9,7 +9,7 @@ import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import { Button , Table, Container  } from 'react-bootstrap';
 import './style.css'
 // import QuantityPicker from '../../components/QuantityPicker';
-import QuantityPicker from '../../components/QuantityPicker';
+import CartQtyPicker from '../../components/CartQtyPicker';
 
 const stripePromise = loadStripe('pk_test_51L0VV3LPz0RFKIjd3EYrAXUdRZuvg8UiM7umz4piCUvWVKswkNXlX16hNBy4W4beVZo2xcCLNyXOffGD7MRzTMrv00ynQ9o8ej');
 
@@ -37,10 +37,6 @@ function Cart() {
       getCart();
     }
   }, [state.cart.length, dispatch]);
-
-  function toggleCart() {
-    dispatch({ type: TOGGLE_CART });
-  }
 
   function calculateTotal() {
     let sum = 0;
@@ -102,9 +98,7 @@ function Cart() {
               ${item.price}
             </td>
             <td>{item.purchaseQuantity}</td>
-            {/* <td><QuantityPicker
-            qty = {qty}
-            setQty =  {setQty} /> </td> */}
+            <td><CartQtyPicker item = {{...item}} /> </td>
             <td>${calculateItemTotal(item)}</td>
           </tr>
         ))}

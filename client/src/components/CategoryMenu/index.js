@@ -5,7 +5,7 @@ import {
     UPDATE_CATEGORIES,
     UPDATE_CURRENT_CATEGORY,
 } from '../../utils/actions';
-import { QUERY_CATEGORIES } from '../../utils/queries';
+// import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 
 import { DropdownButton, Dropdown, ButtonGroup, Container } from 'react-bootstrap'
@@ -16,27 +16,11 @@ export default function CategoryMenu() {
 
     const [state, dispatch] = useStoreContext();
 
-    const { loading, data } = useQuery(QUERY_CATEGORIES);
     const { categories } = state;
 
     useEffect(() => {
-        if (data) {
-            dispatch({
-                type: UPDATE_CATEGORIES,
-                categories: data.categories,
-            });
-            data.categories.forEach((category) => {
-                idbPromise('categories', 'put', category);
-            });
-        } else if (!loading) {
-            idbPromise('categories', 'get').then((categories) => {
-                dispatch({
-                    type: UPDATE_CATEGORIES,
-                    categories: categories,
-                });
-            });
-        }
-    }, [data, loading, dispatch]);
+        console.log(categories);
+    }, [categories, dispatch]);
 
     const handleClick = (id) => {
         console.log(id)
@@ -44,17 +28,15 @@ export default function CategoryMenu() {
             type: UPDATE_CURRENT_CATEGORY,
             currentCategory: id,
         });
-
     };
-    console.log(data)
 
     return (
 <Container className='buttongroup-container'>
         <DropdownButton as={ButtonGroup} title="Categories: All" className='category-dropdown mx-auto mt-4' variant="light" >
-                {data ? (
+                {categories ? (
                     <div>
 
-                        {data.categories.map((category) => (
+                        {categories.map((category) => (
                             <Dropdown.Item key={category._id}
                                 onClick={() => {
                                     console.log("category ID", category._id)
@@ -64,7 +46,7 @@ export default function CategoryMenu() {
                     </div>
                 ) : (
                     <div>
-                        <Dropdown.Item href="#" key='None'>'No Categories'</Dropdown.Item>
+                        <Dropdown.Item href="#" key='None'>'Categories loading...'</Dropdown.Item>
                     </div>
                 )}
         </DropdownButton>
