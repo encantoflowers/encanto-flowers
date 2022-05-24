@@ -13,7 +13,8 @@ import {
   QUERY_PRODUCT,
   UPDATE_SELECTED_PRODUCT,
   ADD_USER,
-  QUERY_USER
+  QUERY_USER,
+  UPDATE_TOTAL
 } from './actions';
 
 export const reducer = (state, action) => {
@@ -111,6 +112,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         userName: action.userName,
+      };
+    case UPDATE_TOTAL:
+      return {
+        ...state,
+        total: action.total,
       };
 
     default:

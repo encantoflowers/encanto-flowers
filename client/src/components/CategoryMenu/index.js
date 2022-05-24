@@ -5,8 +5,6 @@ import {
     UPDATE_CATEGORIES,
     UPDATE_CURRENT_CATEGORY,
 } from '../../utils/actions';
-// import { QUERY_CATEGORIES } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
 
 import { DropdownButton, Dropdown, ButtonGroup, Container } from 'react-bootstrap'
 
@@ -35,13 +33,13 @@ export default function CategoryMenu() {
         <DropdownButton as={ButtonGroup} title="Categories: All" className='category-dropdown mx-auto mt-4' variant="light" >
                 {categories ? (
                     <div>
-
                         {categories.map((category) => (
                             <Dropdown.Item key={category._id}
                                 onClick={() => {
                                     console.log("category ID", category._id)
                                     handleClick(category._id)
-                                }}>{category.Name}</Dropdown.Item>
+                                }}>{category.Name}
+                            </Dropdown.Item>
                         ))}
                     </div>
                 ) : (

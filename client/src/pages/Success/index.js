@@ -3,9 +3,17 @@ import { useMutation } from '@apollo/client';
 import { ADD_ORDER } from '../../utils/mutations';
 import { idbPromise } from '../../utils/helpers';
 import { Container } from 'react-bootstrap';
+import { useStoreContext } from '../../utils/GlobalState';
 import './style.css'
 
 function Success() {
+
+  const [state, dispatch] = useStoreContext();
+
+  const { total } = state;
+
+  console.log(total);
+  
   const [addOrder] = useMutation(ADD_ORDER);
 
   useEffect(() => {
@@ -14,7 +22,7 @@ function Success() {
       const products = cart.map((item) => item._id);
 
       if (products.length) {
-        const { data } = await addOrder({ variables: { products } });
+        const { data } = await addOrder({ variables: { products: products, total: 0 } });
         const productData = data.addOrder.products;
 
         productData.forEach((item) => {
