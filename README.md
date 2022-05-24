@@ -32,7 +32,7 @@ MERN, Bootstrap for React, bcrypt, JSON web token, Apollo, GraphQL, Stripe, UUID
 
 <h2 id="mockup">Mock Up</h2>
 
-<img src="https://encanto-flowers.herokuapp.com/images/mockup.png">
+<img src="client/public/images/mockup.png">
 
 <h2 id="assignments">Assignments</h2>
 
