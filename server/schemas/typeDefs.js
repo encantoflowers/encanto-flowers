@@ -26,6 +26,7 @@ type Order {
     _id: ID
     purchaseDate: String
     products: [Product]
+    total: Float
 }
 
 type User {
@@ -65,7 +66,7 @@ type Query {
     products: [Product]!
     product(_id: ID!): Product
     order: [Order]!
-    checkout(products: [ID]!): Checkout
+    checkout(products: [ID]!, total: Float!): Checkout
 }
 
 type Mutation {
@@ -73,12 +74,11 @@ type Mutation {
         userName: String!
         email: String!
         password: String!
-        # role: String
         role: Int!
         ): Auth
     deleteUser(id: ID!): User
     updateUser(id: ID!, name: String, email: String, password: String): User
-    addOrder (products: [ID]!): Order
+    addOrder (products: [ID]!, total: Float!): Order
     addCategory(Name: String!): Category
     addProduct(
         name: String!

@@ -17,7 +17,7 @@ export default function ProductItem() {
   const { productId } = useParams();
   const [currentProduct, setCurrentProduct] = useState({});
   const { loading, data, error } = useQuery(QUERY_PRODUCT, { variables: { _id: productId }, });
-  const { products, cart, image } = state;
+  const { cart } = state;
 
   useEffect(() => {
     if (data && loading === false) {

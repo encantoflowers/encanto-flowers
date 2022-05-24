@@ -4,7 +4,7 @@ import { Container, Button, Row, Col } from 'react-bootstrap';
 import './style.css'
 
 export default function QuantityPicker() {
-    const [qty, setQty] = useState();
+    const [qty, setQty] = useState(1);
 
     const increaseQty = () => {
         setQty(qty + 1);

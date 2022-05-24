@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
 import { QUERY_ALL_PRODUCTS } from '../../utils/queries';
 import {
+    UPDATE_CURRENT_CATEGORY,
     UPDATE_PRODUCTS,
     UPDATE_SELECTED_PRODUCT
 } from '../../utils/actions';
 import { useQuery } from '@apollo/client';
+import { useParams } from 'react-router-dom';
 import { idbPromise } from '../../utils/helpers';
 import { useStoreContext } from '../../utils/GlobalState';
 
@@ -14,10 +16,20 @@ import './style.css'
 
 
 function AllProducts() {
-
     const [state, dispatch] = useStoreContext();
-    const { products , currentCategory } = state;
+    const { products , currentCategory, categories } = state;
+    const { category } = useParams();
+    const decodedCategory = category.replace("%20", " ")
     const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
+
+    function filterProducts() {
+        if (!currentCategory) {
+            return state.products;
+        }
+        return state.products.filter(
+            (product) => product.categories.find((category) => category._id === currentCategory)
+        );
+    }
 
     useEffect(() => {
         if (data) {
@@ -28,6 +40,11 @@ function AllProducts() {
             data.products.forEach((product) => {
                 idbPromise('products', 'put', product);
             });
+            const selectedCategory = async () => {return await categories.find((thisCategory) => thisCategory.Name === decodedCategory)};
+            dispatch({
+                type: UPDATE_CURRENT_CATEGORY,
+                currentCategory: selectedCategory()._id
+            })
         } else if (!loading) {
             idbPromise('products', 'get').then((product) => {
                 dispatch({
@@ -35,7 +52,7 @@ function AllProducts() {
                     products: products,
                 });
             });
-        }
+        } 
     }, [data, loading, dispatch]);
 
     function goToProduct(productId) {
@@ -45,25 +62,15 @@ function AllProducts() {
         })
         window.location.assign("/product/" + productId)
     }
-    function filterProducts() {
-        if (!currentCategory) {
-            return state.products;
-        }
-        const something = state.products.filter(
-            (product) => product.categories.map(c => c._id).includes(currentCategory) 
-        )
     
-
-        return state.products.filter(
-            (product) => product.categories.find((category) => category._id === currentCategory
-        ));
-    }
 
     return (
         <Container className='card-container'>
             {/* loop through each product and generate a card */}
             <Row xs={1} s={2} md={3} lg={4} className='g-4'>
-                {data ? (
+                {loading ? (
+                    <div>Loading...</div>
+                ) : data ? (
                     filterProducts().map((product) => (
                         <Col><Card className="single-card"  key={product._id}
                             onClick={() => {
@@ -76,9 +83,7 @@ function AllProducts() {
                             </Card.Body>
                         </Card></Col>
                     ))
-                ) : (
-                    <div>Loading...</div>
-                )}
+                ) : (<div></div>)}
             </Row>
         </Container>
     )

@@ -13,7 +13,8 @@ import {
   QUERY_PRODUCT,
   UPDATE_SELECTED_PRODUCT,
   ADD_USER,
-  QUERY_USER
+  QUERY_USER,
+  UPDATE_TOTAL
 } from './actions';
 
 export const reducer = (state, action) => {
@@ -56,6 +57,7 @@ export const reducer = (state, action) => {
       };
       
     case UPDATE_CART_QUANTITY:
+      console.log(action);
       return {
         ...state,
         cartOpen: true,
@@ -94,7 +96,7 @@ export const reducer = (state, action) => {
     case UPDATE_CATEGORIES:
       return {
         ...state,
-        categories: [action.categories],
+        categories: action.categories,
       };
 
     case UPDATE_CURRENT_CATEGORY:
@@ -111,6 +113,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         userName: action.userName,
+      };
+    case UPDATE_TOTAL:
+      return {
+        ...state,
+        total: action.total,
       };
 
     default:

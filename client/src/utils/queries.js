@@ -10,19 +10,6 @@ import { gql } from '@apollo/client';
 //     }
 // `;
 // not logged in
-export const ADD_ORDER = gql`
-    mutation addOrder($products: [ID]) {
-        addOrder(products: $products) {
-            _id
-            purchaseDate
-            products {
-                _id
-                name
-                price
-            }
-        }
-    }
-`
 // good minus the categories
 export const QUERY_PRODUCT = gql`
     query getProduct($_id: ID!) {
@@ -45,8 +32,8 @@ export const QUERY_PRODUCT = gql`
 `;
 
 export const QUERY_CHECKOUT = gql`
-  query getCheckout($products: [ID]!) {
-    checkout(products: $products) {
+  query getCheckout($products: [ID]!, $total: Float! ) {
+    checkout(products: $products, total: $total) {
       session
     }
   }
@@ -100,6 +87,7 @@ export const QUERY_USER = gql`
                        img 
                    }
                 }
+                total
 
             }
         }
