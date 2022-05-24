@@ -2,11 +2,11 @@
 
 .container-background {
     background: linear-gradient(360deg, #64BC92 -1.97%, rgba(255, 255, 255, 0) 74.87%);
-    height: 800px
+    height: 600px
 }
 
 .img-circle {
-    width: 80%;
+    width: 70%;
     margin-top: 80px;
 }
 
@@ -32,25 +32,23 @@
     border-style: none !important;
 }
 
-@media only screen and (max-width:1375px ) and (min-width: 992){
+@media only screen and (max-width:1500px ) and (min-width: 1199){
     .container-background {
         background: linear-gradient(360deg, #64BC92 -1.97%, rgba(255, 255, 255, 0) 74.87%);
-        height: 600px
+        height: 600px;
     }
 
     .img-circle {
-        width: 80%;
+        width: 70% !important;
         margin-top: 50px;
     }
 }
 
-@media only screen and (max-width: 625px ){
-    .container-background {
-        background: linear-gradient(360deg, #64BC92 -1.97%, rgba(255, 255, 255, 0) 74.87%);
-        height: 625px
-    }
-
+@media screen and (max-width: 576px ) {
     .img-circle {
         display: none;
+    }
+    .container-background {
+        margin-top: 50px;
     }
 }
