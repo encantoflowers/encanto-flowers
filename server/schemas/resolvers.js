@@ -40,20 +40,20 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
-        checkout: async (parent, args, context) => {
+        checkout: async (parent, { products, total }, context) => {
             const url = new URL(context.headers.referer).origin;    
-            const order = new Order({ products: args.products });
+            const order = new Order({ products: products, total: parseFloat(total) });
             const line_items = [];
-            const { products } = await order.populate('products');
-            for (let i = 0; i < products.length; i++) {
+            const { products: checkoutProducts } = await order.populate('products');
+            for (let i = 0; i < checkoutProducts.length; i++) {
                 const product = await stripe.products.create({
-                    name: products[i].name,
-                    description: products[i].description,
-                    images: products[i].images,
+                    name: checkoutProducts[i].name,
+                    description: checkoutProducts[i].description,
+                    images: checkoutProducts[i].images,
                 });
                 const price = await stripe.prices.create({
                     product: product.id,
-                    unit_amount: products[i].price * 100,
+                    unit_amount: checkoutProducts[i].price * 100,
                     currency: 'usd',
                 });
                 line_items.push({
@@ -87,9 +87,9 @@ const resolvers = {
             return user;
         },
         // this one
-        addOrder: async (parent, { products }, context) => {
+        addOrder: async (parent, { products, total }, context) => {
             if (context.user) {
-                const order = await Order.create({ products });
+                const order = await Order.create({ products, total });
                 await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
                 return order;
             }

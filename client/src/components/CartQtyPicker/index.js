@@ -23,8 +23,8 @@ export default function CartQtyPicker(item) {
   };
 
   const updateQuantity = (plusminus) => {
-      console.log(state.cart);
-    if (plusminus == "plus") {
+    if (plusminus === "plus") {
+      console.log('here');
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: thisItem._id,
@@ -34,7 +34,7 @@ export default function CartQtyPicker(item) {
         ...thisItem,
         purchaseQuantity: thisItem.purchaseQuantity + 1,
       });
-    } else if (plusminus=="minus" && thisItem.purchaseQuantity > 1) {
+    } else if (plusminus==="minus" && thisItem.purchaseQuantity > 1) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: thisItem._id,
@@ -52,7 +52,7 @@ export default function CartQtyPicker(item) {
       <Row>
         <Col>
           <Button
-            onClick={()=>{updateQuantity({ plusminus: "minus" })}}
+            onClick={()=>{updateQuantity("minus")}}
             className="button-qty-cart button-sel-cart"
           >
             -
@@ -61,7 +61,7 @@ export default function CartQtyPicker(item) {
         {thisItem.purchaseQuantity}
         <Col>
           <Button
-            onClick={() => {updateQuantity({ plusminus: "plus" })}}
+            onClick={() => {updateQuantity("plus")}}
             className="button-qty-cart button-sel-cart"
           >
             +

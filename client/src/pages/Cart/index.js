@@ -3,6 +3,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
+import { UPDATE_TOTAL } from '../../utils/actions';
 import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
@@ -55,6 +56,11 @@ function Cart() {
 
 
   function submitCheckout() {
+    dispatch({
+      type: UPDATE_TOTAL,
+      total: calculateTotal(),
+    });
+    idbPromise('total', 'put', calculateTotal());
     const productIds = [];
 
     state.cart.forEach((item) => {
@@ -64,7 +70,7 @@ function Cart() {
     });
 
     getCheckout({
-      variables: { products: productIds },
+      variables: { products: productIds, total: parseFloat(calculateTotal()) },
     });
   }
   return (
