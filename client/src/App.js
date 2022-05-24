@@ -14,6 +14,7 @@ import OrderHistory from './pages/OrderHistory';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import UserProfile from './pages/UserProfile';
+import AdminPanel from './pages/AdminPanel';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -70,7 +71,6 @@ function App() {
                 path="/success"
                 element={<Success />}
               />
-
               <Route
                 path="/product/:productId"
                 element={<ProductItem />}
@@ -78,6 +78,10 @@ function App() {
               <Route
                 path="/orderhistory"
                 element={<OrderHistory />}
+              />
+              <Route
+                path="/adminpanel"
+                element={<AdminPanel />}
               />
             </Routes>
             {/* <ProductItem item={item} /> */}

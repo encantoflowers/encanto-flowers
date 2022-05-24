@@ -34,11 +34,11 @@ class AuthService {
     window.location.assign('/');
   }
 
-  logout() {
+  logout(idToken) {
     // Clear user token and profile data from localStorage
-    localStorage.removeItem('id_token');
+    localStorage.removeItem('id_token', idToken);
     // this will reload the page and reset the state of the application
-    window.location.assign('/');
+    window.location.redirect('/');
   }
 }
 

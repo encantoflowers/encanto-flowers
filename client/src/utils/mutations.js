@@ -15,11 +15,13 @@ export const ADD_USER = gql`
     $userName: String!
     $email: String!
     $password: String!
+    $role: Int!
   ) {
     addUser(
       userName: $userName
       email: $email
       password: $password
+      role: $role
     ) {
       token
       user {
@@ -30,8 +32,8 @@ export const ADD_USER = gql`
 `;
 // not logged in
 export const ADD_ORDER = gql`
-    mutation addOrder($products: [ID]!) {
-        addOrder(products: $products) {
+    mutation addOrder($products: [ID]!, $total: Float!) {
+        addOrder(products: $products, total: $total) {
             _id
             purchaseDate
             products {
@@ -45,6 +47,7 @@ export const ADD_ORDER = gql`
                   img
                 }
             }
+            total
         }
     }
 `;

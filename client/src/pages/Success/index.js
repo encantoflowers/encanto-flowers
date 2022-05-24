@@ -3,18 +3,22 @@ import { useMutation } from '@apollo/client';
 import { ADD_ORDER } from '../../utils/mutations';
 import { idbPromise } from '../../utils/helpers';
 import { Container } from 'react-bootstrap';
+import { useStoreContext } from '../../utils/GlobalState';
 import './style.css'
 
 function Success() {
+
   const [addOrder] = useMutation(ADD_ORDER);
 
   useEffect(() => {
     async function saveOrder() {
+      const total = await idbPromise('total', 'get');
+      console.log(total);
       const cart = await idbPromise('cart', 'get');
       const products = cart.map((item) => item._id);
 
       if (products.length) {
-        const { data } = await addOrder({ variables: { products } });
+        const { data } = await addOrder({ variables: { products: products, total: parseFloat(total[total.length - 1])} });
         const productData = data.addOrder.products;
 
         productData.forEach((item) => {

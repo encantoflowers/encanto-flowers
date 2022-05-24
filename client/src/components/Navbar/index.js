@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
-import { QUERY_CATEGORIES } from '../../utils/queries';
+import { QUERY_CATEGORIES, QUERY_USER } from '../../utils/queries';
 import {
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY
@@ -9,12 +9,20 @@ import {
 import { useStoreContext } from '../../utils/GlobalState';
 import { idbPromise } from '../../utils/helpers';
 import './style.css';
+import Auth from '../../utils/auth';
+
 
 function EncantoNav() {
 
   const [state, dispatch] = useStoreContext();
 
   const { loading, data } = useQuery(QUERY_CATEGORIES);
+  const { data: userData } = useQuery(QUERY_USER);
+  let user;
+
+  if (userData) {
+    user = userData.user;
+  }
 
   const { categories } = state;
 
@@ -47,7 +55,7 @@ function EncantoNav() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <img
             alt=""
             src="/images/encanto_logo_nav.png"
@@ -61,31 +69,58 @@ function EncantoNav() {
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <NavDropdown title="Categories" id="basic-nav-dropdown">
-              {data ? (
+              {loading ? (
                 <div>
-                  {data.categories.map((category) => (
+                  <NavDropdown.Item href="#" key='None'>'Categories loading...'</NavDropdown.Item>
+                </div>
+              ) : (
+                <div>
+                  {categories.map((category) => (
                     <NavDropdown.Item href={`/categories/${category.Name}`} key={category._id}
                       onClick={() => {
                         handleClick(category._id)
                       }}>{category.Name}</NavDropdown.Item>
                   ))}
                 </div>
-              ) : (
-                <div>
-                  <NavDropdown.Item href="#" key='None'>'No Categories'</NavDropdown.Item>
-                </div>
               )}
             </NavDropdown>
-
-            <Nav.Link href="/cart">Cart</Nav.Link>
-            <Nav.Link href="/signup">Sign Up</Nav.Link>
-
-            <Nav.Link href="/login">Login</Nav.Link>
+            {userData && user.role === 1 ? (
+              <Nav.Link href="/addproduct">Add Product</Nav.Link>
+            ) : (<div></div>)}
+            {userData && user.role === 1 ? (
+              <Nav.Link href="/addcategory">Add Category</Nav.Link>
+            ) : (<div></div>)}
+            {userData && user.role === 1 ? (
+              <Nav.Link href="/updateproduct">Update Product</Nav.Link>
+            ) : (<div></div>)}
+            {userData && user.role === 1 ? (
+              <Nav.Link href="/updatecategory">Update Category</Nav.Link>
+            ) : (<div></div>)}
+            {userData && (user.role === 0 || user.role === 1) ? (
+              <Nav.Link href="/" onClick={() => Auth.logout()}>Logout</Nav.Link>
+            ) : (
+              <Nav.Link href="/signup">Sign Up</Nav.Link>
+            )}
+            {userData && (user.role === 0 || user.role === 1) ? (
+              <Nav.Link href="/cart">Cart</Nav.Link>
+            ) : (
+              <div></div>
+            )}
+            {userData && (user.role === 0 || user.role === 1) ? (
+              <Nav.Link href="/userprofile">Profile</Nav.Link>
+            ) : (
+              <div></div>
+            )}
+            {!userData ? (
+              <Nav.Link href="/login">Sign In</Nav.Link>
+            ) : (
+              <div></div>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  )
+  );
 }
 
 export default EncantoNav;
