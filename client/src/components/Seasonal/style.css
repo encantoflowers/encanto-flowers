@@ -58,13 +58,13 @@
     }
 }
 
-@media screen and (max-width: 532px) and (min-width: 461px) {
+@media screen and (max-width: 576px) {
     .single-card {
         box-shadow: 10px 10px 30px lightgrey ; 
         margin-right: 5px;
         margin-left: 5px;
         width: auto;
-        height: 40rem;
+        height: auto;
         margin-top: 30px;
         align-content: center;
     }
@@ -88,3 +88,4 @@
     }
     
 }
+
