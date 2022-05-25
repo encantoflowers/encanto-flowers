@@ -21,6 +21,18 @@ export const ADD_USER = gql`
   }
 `;
 
+export const DELETE_USER = gql`
+  mutation deleteUser(
+    $id: ID!
+  ) {
+    deleteUser(
+      id: $id
+    ) {
+        _id
+    }
+  }
+`;
+
 export const ADD_ORDER = gql`
     mutation addOrder($products: [ID]!, $total: Float!) {
         addOrder(products: $products, total: $total) {
