@@ -59,6 +59,7 @@ export const QUERY_CATEGORIES = gql`
 export const QUERY_USER = gql`
     query user {
         user {
+            _id
             userName
             email
             password
