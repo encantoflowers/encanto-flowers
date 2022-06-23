@@ -32,9 +32,6 @@ export default function CategoryMenu() {
       });
       updateCategoryName((categories.find((category)=> category._id === id)).Name);
   };
-=======
-import React from 'react'
-
 
   return (
 
@@ -57,11 +54,12 @@ import React from 'react'
                   </div>
               )}
       </DropdownButton>
-      </Container>
-=======
-    <div>
+      <div>
         <h1 className="p-5">You are an Admin, You Made It Here, Don't Stop Now!!!</h1>
     </div>
+      </Container>
+
+    
 
   )
 }
