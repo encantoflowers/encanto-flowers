@@ -46,10 +46,6 @@ const productSchema = new Schema(
                 ref: 'Category',
             }
         ],
-        featured: {type: Boolean,
-                   default: false},
-        seasonal: {type: Boolean,
-                   default: false}
     },
     {
         toJSON: {

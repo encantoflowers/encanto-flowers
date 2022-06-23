@@ -55,7 +55,7 @@ function AllProducts() {
                 });
             });
         } 
-    }, [data, loading, selectedCategory]);
+    }, [data, loading, dispatch, selectedCategory]);
 
     function goToProduct(productId) {
         dispatch({

@@ -6,8 +6,7 @@
     "heroku": "^7.60.2",
     "mongoose": "^6.3.0",
     "nosql": "^6.1.0",
-    "react-qty-picker": "^1.0.6",
-    "telnet": "^0.0.1"
+    "react-qty-picker": "^1.0.6"
   },
   "scripts": {
     "start": "node server/server.js",

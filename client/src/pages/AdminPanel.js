@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import { QUERY_ALL_PRODUCTS, QUERY_CATEGORIES } from '../../utils/queries';
 import { ADD_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT, ADD_CATEGORY, UPDATE_CATEGPRY, DELETE_CATEGORY } from '../../utils/actions';
@@ -31,8 +32,12 @@ export default function CategoryMenu() {
       });
       updateCategoryName((categories.find((category)=> category._id === id)).Name);
   };
+=======
+import React from 'react'
+
 
   return (
+
 <Container className='buttongroup-container'>
       <DropdownButton as={ButtonGroup} title={`Category: ${categoryName}`} className='category-dropdown mx-auto mt-4' variant="light" >
               {categories ? (
@@ -53,5 +58,10 @@ export default function CategoryMenu() {
               )}
       </DropdownButton>
       </Container>
+=======
+    <div>
+        <h1 className="p-5">You are an Admin, You Made It Here, Don't Stop Now!!!</h1>
+    </div>
+
   )
 }
