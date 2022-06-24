@@ -16,32 +16,32 @@ export default function Footer () {
                 <h5 className="h5">Categories</h5>
                 <ul className="nav flex-column">
             <li className="nav-item mb-2">
-              <a href="/categories/seasonal" className="nav-link p-0 links">
+              <a href="/categories/Seasonal" className="nav-link p-0 links">
                 Seasonal
               </a>
             </li>
             <li className="nav-item mb-2">
-              <a href="/categories/romance" className="nav-link p-0 links">
+              <a href="/categories/Romance" className="nav-link p-0 links">
                 Romance
               </a>
             </li>
             <li className="nav-item mb-2 links">
-              <a href="/categories/get%20well" className="nav-link p-0 links">
+              <a href="/categories/Get%20Well" className="nav-link p-0 links">
                 Get Well
               </a>
             </li>
             <li className="nav-item mb-2">
-              <a href="/categories/sympathy" className="nav-link p-0 links">
+              <a href="/categories/Sympathy" className="nav-link p-0 links">
                 Sympathy
               </a>
             </li>
             <li className="nav-item mb-2">
-              <a href="/categories/friendship" className="nav-link p-0 links">
+              <a href="/categories/Friendship" className="nav-link p-0 links">
                 Friendship
               </a>
             </li>
             <li className="nav-item mb-2">
-              <a href="/categories/funerals" className="nav-link p-0 links">
+              <a href="/categories/Funerals" className="nav-link p-0 links">
                 Funerals
               </a>
             </li>
@@ -74,4 +74,4 @@ export default function Footer () {
     </footer>
   )
 }
-//  hljhklgjsdg
+

@@ -35,29 +35,45 @@ export default function CategoryMenu() {
 
   return (
 
-<Container className='buttongroup-container'>
-      <DropdownButton as={ButtonGroup} title={`Category: ${categoryName}`} className='category-dropdown mx-auto mt-4' variant="light" >
-              {categories ? (
-                  <div>
-                      {categories.map((category) => (
-                          <Dropdown.Item key={category._id}
-                              onClick={(e) => {
-                                  e.preventDefault()
-                                  handleClick(category._id)
-                              }}>{category.Name}
-                          </Dropdown.Item>
-                      ))}
-                  </div>
-              ) : (
-                  <div>
-                      <Dropdown.Item href="#" key='None'>'Categories loading...'</Dropdown.Item>
-                  </div>
-              )}
-      </DropdownButton>
-      <div>
-        <h1 className="p-5">You are an Admin, You Made It Here, Don't Stop Now!!!</h1>
+    <div>
+        <h1 className="p-5">What would you like to do today?</h1>
+    <form onSubmit={handleFormSubmit}>
+    <div className="form-group">
+      <label htmlFor="userName" className="p-2">User Name</label> 
+      <input
+      
+        type="userName"
+        name="userName"
+        id="userName"
+        placeholder="User Name"
+        onChange={handleChange}
+      />
     </div>
-      </Container>
+    <div className="form-group mb-2">
+      <label htmlFor="email" className="p-2">Email address</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email"
+        onChange={handleChange}
+      />
+    </div>
+    <div className="form-group mb-4">
+      <label htmlFor="pwd" className="p-2">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="pwd"
+        placeholder="Password"
+        onChange={handleChange}
+      />
+    </div>
+    <button type="submit" className="btn btn-primary">
+      Submit
+    </button>
+  </form>
+  </div>
 
     
 
