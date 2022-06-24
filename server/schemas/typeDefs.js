@@ -20,6 +20,8 @@ type Product {
     price: Float
     categories: [Category]
     image: [Image]
+    featured: Boolean
+    seasonal: Boolean
 }
 
 type Order {
