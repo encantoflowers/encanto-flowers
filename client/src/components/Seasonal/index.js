@@ -44,7 +44,7 @@ export default function Seasonal() {
                     </Card.Body>
                 </Card>
                 </Col>
-                <a href='/categories/Seasonal'><Button className='button-shopnow mx-auto'>Shop Now</Button></a>
+                <a href='/categories/seasonal'><Button className='button-shopnow mx-auto'>Shop Now</Button></a>
 </Row>
         </Container>
 
