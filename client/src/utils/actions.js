@@ -41,11 +41,3 @@ export const UPDATE_TOTAL = "UPDATE_TOTAL";
 // FUNCTION: Updates the current quantity global state variable with the quantity of the currently selected product
 // INPUT VARIABLES: currentQuantity(int)
 export const UPDATE_CURRENT_QUANTITY = "UPDATE_CURRENT_QUANTITY";
-
-export const ADD_CATEGORY = "ADD_CATEGORY";
-export const UPDATE_CATEGORY = "UPDATE_CATEGORY";
-export const DELETE_CATEGORY = "DELETE_CATEGORY";
-export const ADD_PRODUCT = "ADD_PRODUCT";
-export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
-export const DELETE_PRODUCT = "DELETE_PRODUCT";
-

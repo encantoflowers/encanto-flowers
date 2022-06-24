@@ -13,7 +13,7 @@ function adminNav() {
           <Link to="/add/product">
             Add Product
           </Link>
-          <Link to ='/delete/product'>
+          <Link to ='delete/product'>
             Delete Product
           </Link>
         </li>
