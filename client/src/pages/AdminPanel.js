@@ -1,23 +1,23 @@
 
 import React, { useEffect, useState } from 'react'
-import { QUERY_ALL_PRODUCTS, QUERY_CATEGORIES } from '../../utils/queries';
-import { ADD_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT, ADD_CATEGORY, UPDATE_CATEGPRY, DELETE_CATEGORY } from '../../utils/actions';
-import { useStoreContext } from '../../utils/GlobalState';
-import {
-    UPDATE_CURRENT_CATEGORY,
-} from '../../utils/actions';
+// import { QUERY_ALL_PRODUCTS, QUERY_CATEGORIES } from '../../utils/queries';
+// import { ADD_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT, ADD_CATEGORY, UPDATE_CATEGPRY, DELETE_CATEGORY } from '../../utils/actions';
+// import { useStoreContext } from '../../utils/GlobalState';
+// import {
+//     UPDATE_CURRENT_CATEGORY,
+// } from '../../utils/actions';
 import { useParams } from 'react-router-dom';
 import { Dropdown, DropdownButton, ButtonGroup, Container } from 'react-bootstrap'
-import './style.css'
+// import './style.css' 
 
 export default function CategoryMenu() {
 
-  const [state, dispatch] = useStoreContext();
+  // const [state, dispatch] = useStoreContext();
 
   const { category } = useParams();
   const decodedCategory = category.replace("%20", " ")
 
-  const { categories } = state;
+  // const { categories } = state;
 
   const [categoryName, updateCategoryName] = useState('All');
 
@@ -25,20 +25,21 @@ export default function CategoryMenu() {
           updateCategoryName(decodedCategory);
   }, [])
 
-  const handleClick = (id) => {
-      dispatch({
-          type: UPDATE_CURRENT_CATEGORY,
-          currentCategory: id,
-      });
-      updateCategoryName((categories.find((category)=> category._id === id)).Name);
-  };
+  // const handleClick = (id) => {
+  //     dispatch({
+  //         // type: UPDATE_CURRENT_CATEGORY,
+  //         currentCategory: id,
+  //     });
+  //     updateCategoryName((categories.find((category)=> category._id === id)).Name);
+  // };
 
   return (
 
     <div>
         <h1 className="p-5">What would you like to do today?</h1>
-    <form onSubmit={handleFormSubmit}>
-    <div className="form-group">
+        <form>
+    {/* <form onSubmit={handleFormSubmit}> */}
+    {/* <div className="form-group">
       <label htmlFor="userName" className="p-2">User Name</label> 
       <input
       
@@ -68,7 +69,7 @@ export default function CategoryMenu() {
         placeholder="Password"
         onChange={handleChange}
       />
-    </div>
+    </div> */}
     <button type="submit" className="btn btn-primary">
       Submit
     </button>
