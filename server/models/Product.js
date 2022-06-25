@@ -46,6 +46,12 @@ const productSchema = new Schema(
                 ref: 'Category',
             }
         ],
+        featured: {
+            type: Boolean,
+            default: false},
+        seasonal: {
+            type: Boolean,
+            default: false}
     },
     {
         toJSON: {
@@ -54,9 +60,5 @@ const productSchema = new Schema(
         id: false,
     }
 );
-
-// Price
-// Tags
-// Image
 
 module.exports = model ('Product', productSchema);

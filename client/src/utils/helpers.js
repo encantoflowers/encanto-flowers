@@ -14,7 +14,7 @@ export function idbPromise(storeName, method, object) {
       db.createObjectStore('products', { keyPath: '_id'});
       db.createObjectStore('categories', { keyPath: '_id' });
       db.createObjectStore('cart', { keyPath: '_id' , });
-      let objectStore = db.createObjectStore('total', {autoIncrement:true });
+      db.createObjectStore('total', {autoIncrement:true });
     };
 
     request.onerror = function(e) {

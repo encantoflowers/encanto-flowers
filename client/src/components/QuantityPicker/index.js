@@ -1,5 +1,4 @@
-// Import useEffect from React.
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Button, Row, Col } from 'react-bootstrap';
 import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_CURRENT_QUANTITY } from '../../utils/actions';
@@ -8,7 +7,6 @@ import './style.css'
 
 export default function QuantityPicker() {
     const [state, dispatch] = useStoreContext();
-    const [qty, setQty] = useState(1);
     const { currentQuantity } = state;
 
     const increaseQty = () => {

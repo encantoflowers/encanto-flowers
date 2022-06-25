@@ -18,7 +18,6 @@ function Signup(props) {
         role: 0
       },
     });
-    console.log(data);
     const token = data.addUser.token;
     Auth.login(token);  
 
@@ -35,7 +34,6 @@ function Signup(props) {
   return (
     <div className="container my-1">
       <Link to="/login">← Go to Login</Link>
-
       <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
