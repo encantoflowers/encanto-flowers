@@ -5,6 +5,7 @@
   "dependencies": {
     "heroku": "^7.60.2",
     "mongoose": "^6.3.0",
+    "node": "^16.15.1",
     "nosql": "^6.1.0",
     "react-qty-picker": "^1.0.6"
   },
