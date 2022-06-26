@@ -1,11 +1,13 @@
 import { useReducer } from 'react';
 import {
+  UPDATE_PRODUCTS,
   ADD_PRODUCT,
   UPDATE_PRODUCT,
   DELETE_PRODUCT,
   ADD_CATEGORY,
   UPDATE_CATEGORY,
   DELETE_CATEGORY,
+  UPDATE_CATEGORIES,
   ADD_TO_CART,
   UPDATE_CART_QUANTITY,
   REMOVE_FROM_CART,
@@ -19,6 +21,12 @@ import {
 
 export const reducer = (state, action) => {
   switch (action.type) {
+    case UPDATE_PRODUCTS:
+      return {
+        ...state,
+        products: [...action.products],
+      };
+
     case ADD_PRODUCT:
       return {
         ...state,
@@ -47,6 +55,12 @@ export const reducer = (state, action) => {
       return {
         ...state,
         categories: action.payload
+      };
+
+    case UPDATE_CATEGORIES:
+      return {
+        ...state,
+        categories: action.categories,
       };
 
     case DELETE_CATEGORY:
