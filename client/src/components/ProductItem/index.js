@@ -1,4 +1,4 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { QUERY_PRODUCT } from "../../utils/queries";
@@ -11,6 +11,9 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { idbPromise } from "../../utils/helpers";
 import QuantityPicker from "../QuantityPicker";
 import "./style.css";
+import Auth from "../../utils/auth";
+import { ADD_USER } from "../../utils/mutations";
+import {createRandomUser }from "../../utils/helpers";
 
 export default function ProductItem() {
   const [state, dispatch] = useStoreContext();
@@ -20,6 +23,7 @@ export default function ProductItem() {
   const { cart, currentQuantity } = state;
   
   const [addedToCart, toggleAdded] = useState(<div></div>);
+  const [addUser] = useMutation(ADD_USER);
 
   useEffect(() => {
     if (data && loading === false) {
@@ -27,7 +31,18 @@ export default function ProductItem() {
     }
   }, [data, loading]);
 
-  const addToCart = () => {
+  const addToCart = async () => {
+    if (!Auth.loggedIn) {
+      const guestUser = createRandomUser()
+      const { data } = await addUser ({
+        variables: {
+          userName: guestUser.userName,
+          email: guestUser.email,
+          password: guestUser.password,
+          role: 0
+        },
+      });
+    }
     toggleAdded(<div>Item added to Cart</div>);
     const itemInCart = cart.find((cartItem) => cartItem._id === productId);
     if (itemInCart) {
