@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import { LOGIN } from '../utils/mutations';
-import Auth from '../utils/auth';
+import { LOGIN } from '../../utils/mutations';
+import Auth from '../../utils/auth';
+import { Form, Button } from "react-bootstrap"
+import "./style.css"
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -33,11 +35,42 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
+    <div className="container my-1 mt-3">
+      
 
       <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
+
+      <Form className="signup-form mt-4" onSubmit={handleFormSubmit}>
+        <Form.Group className="mb-3">
+          <Form.Label>Email Address</Form.Label>
+          <Form.Control placeholder="Email"
+            name="email"
+            type="email"
+            id="email"
+            onChange={handleChange} />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Password</Form.Label>
+          <Form.Control   type="password"
+            name="password"
+            id="pwd"
+            placeholder="Password"
+            onChange={handleChange} />
+        </Form.Group>
+        {error ? (
+          <div>
+            <p className="error-text">The provided credentials are incorrect</p>
+          </div>
+        ) : null}
+        <Button className="button-submit" type="submit" variant="success">
+          Submit
+        </Button>
+      </Form>
+
+      <Link className="link-login mt-4" to="/signup">Don't have an account? Sign up here →</Link>
+
+
+      {/* <form onSubmit={handleFormSubmit}>
         <div className="form-group mb-2">
           <label className="p-2" htmlFor="email">Email address</label>
           <input
@@ -64,9 +97,9 @@ function Login(props) {
           </div>
         ) : null}
         <div className="flex-row flex-end">
-          <button  className="btn btn-primary" type="submit">Submit</button>
+          <button className="btn btn-primary" type="submit">Submit</button>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 }

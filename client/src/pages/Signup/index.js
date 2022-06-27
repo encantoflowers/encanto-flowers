@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import Auth from "../utils/auth";
-import { ADD_USER } from "../utils/mutations";
+import Auth from "../../utils/auth";
+import { ADD_USER } from "../../utils/mutations";
+import { Form , Button} from "react-bootstrap"
+import './style.css'
 
 function Signup(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -32,10 +34,44 @@ function Signup(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/login">← Go to Login</Link>
+    <div className="container my-1 mt-3">
+
       <h2>Signup</h2>
-      <form onSubmit={handleFormSubmit}>
+
+      <Form  className="signup-form mt-4" onSubmit={handleFormSubmit}>
+        <Form.Group className="mb-3">
+          <Form.Label>User Name</Form.Label>
+          <Form.Control type="userName"
+            name="userName"
+            id="userName"
+            placeholder="User Name"
+            onChange={handleChange} />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Email</Form.Label>
+          <Form.Control type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            onChange={handleChange} />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Password</Form.Label>
+          <Form.Control   type="password"
+            name="password"
+            id="pwd"
+            placeholder="Password"
+            onChange={handleChange} />
+        </Form.Group>
+        <Button className="button-submit" type="submit" variant="success">
+          Submit
+        </Button>
+
+      </Form>
+      <Link className="link-login" to="/login">Go to Login →</Link>
+      {/* <form onSubmit={handleFormSubmit}>
         <div className="form-group">
           <label htmlFor="userName" className="p-2">User Name</label> 
           <input
@@ -67,10 +103,10 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <Button type="submit" variant="success">
           Submit
-        </button>
-      </form>
+        </Button>
+      </form> */}
     </div>
   );
 }
