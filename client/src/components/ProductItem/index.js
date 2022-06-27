@@ -5,6 +5,7 @@ import { QUERY_PRODUCT } from "../../utils/queries";
 import {
   ADD_TO_CART,
   UPDATE_CART_QUANTITY,
+  LOGIN,
 } from "../../utils/actions";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useStoreContext } from "../../utils/GlobalState";
@@ -20,7 +21,7 @@ export default function ProductItem() {
   const { productId } = useParams();
   const [currentProduct, setCurrentProduct] = useState({});
   const { loading, data, error } = useQuery(QUERY_PRODUCT, { variables: { _id: productId }, });
-  const { cart, currentQuantity } = state;
+  const { cart, currentQuantity, loggedIn } = state;
   
   const [addedToCart, toggleAdded] = useState(<div></div>);
   const [addUser] = useMutation(ADD_USER);
@@ -32,15 +33,19 @@ export default function ProductItem() {
   }, [data, loading]);
 
   const addToCart = async () => {
-    if (!Auth.loggedIn) {
+    if (!loggedIn) {
       const guestUser = createRandomUser()
       const { data } = await addUser ({
         variables: {
           userName: guestUser.userName,
           email: guestUser.email,
           password: guestUser.password,
-          role: 0
+          role: 2
         },
+      });
+      console.log(data);
+      dispatch({
+        type: LOGIN
       });
     }
     toggleAdded(<div>Item added to Cart</div>);

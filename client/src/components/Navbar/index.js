@@ -17,6 +17,7 @@ function EncantoNav() {
   const [state, dispatch] = useStoreContext();
 
   const { loading, data } = useQuery(QUERY_CATEGORIES);
+  
   const { data: userData } = useQuery(QUERY_USER);
   let user;
 
@@ -24,7 +25,12 @@ function EncantoNav() {
     user = userData.user;
   }
 
-  const { categories } = state;
+  let role = 3;
+  if (loggedIn) {
+    role = Auth.getRole();
+  }
+
+  const { categories, loggedIn } = state;
 
   useEffect(() => {
     if (data) {
@@ -43,7 +49,7 @@ function EncantoNav() {
         });
       });
     }
-  }, [data, loading, dispatch]);
+  }, [data, loading, dispatch, loggedIn]);
 
   const handleNavClick = (id) => {
     dispatch({
@@ -55,7 +61,7 @@ function EncantoNav() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        {userData && user.role === 1 ? (<Navbar.Brand href="/adminpanel">
+        {loggedIn && Auth.getRole() === 1 ? (<Navbar.Brand href="/adminpanel">
           <img
             alt=""
             src="/images/encanto_logo_nav.png"
@@ -92,34 +98,39 @@ function EncantoNav() {
                 </div>
               )}
             </NavDropdown>
-            {userData && user.role === 1 ? (
+            {loggedIn && role === 1 ? (
               <Nav.Link href="/addproduct">Add Product</Nav.Link>
             ) : (<div></div>)}
-            {userData && user.role === 1 ? (
+            {loggedIn && role === 1 ? (
               <Nav.Link href="/addcategory">Add Category</Nav.Link>
             ) : (<div></div>)}
-            {userData && user.role === 1 ? (
+            {loggedIn && role === 1 ? (
               <Nav.Link href="/updateproduct">Update Product</Nav.Link>
             ) : (<div></div>)}
-            {userData && user.role === 1 ? (
+            {loggedIn && role === 1 ? (
               <Nav.Link href="/updatecategory">Update Category</Nav.Link>
             ) : (<div></div>)}
-            {userData && (user.role === 0 || user.role === 1) ? (
+            {loggedIn && role < 2 ? (
               <Nav.Link href="/" onClick={() => Auth.logout()}>Logout</Nav.Link>
             ) : (
-              <Nav.Link href="/signup">Sign Up</Nav.Link>
+              <div></div>
             )}
-            {userData && (user.role === 0 || user.role === 1) ? (
+            {loggedIn ? (
               <Nav.Link href="/cart">Cart</Nav.Link>
             ) : (
               <div></div>
             )}
-            {userData && (user.role === 0 || user.role === 1) ? (
+            {loggedIn && role < 2 ? (
               <Nav.Link href="/userprofile">Profile</Nav.Link>
             ) : (
               <div></div>
             )}
-            {!userData ? (
+            {!loggedIn ? (
+              <Nav.Link href="/signup">Sign Up</Nav.Link>
+            ) : (
+              <div></div>
+            )}
+            {!loggedIn ? (
               <Nav.Link href="/login">Sign In</Nav.Link>
             ) : (
               <div></div>

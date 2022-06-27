@@ -16,7 +16,9 @@ import {
   CLEAR_CART,
   UPDATE_SELECTED_PRODUCT,
   UPDATE_TOTAL,
-  UPDATE_CURRENT_QUANTITY
+  UPDATE_CURRENT_QUANTITY,
+  LOGIN,
+  LOGOUT,
 } from './actions';
 
 export const reducer = (state, action) => {
@@ -130,6 +132,18 @@ export const reducer = (state, action) => {
       return {
         ...state,
         total: action.total,
+      };
+    
+    case LOGIN:
+      return {
+        ...state,
+        loggedIn: true,
+      };
+    
+    case LOGOUT:
+      return {
+        ...state,
+        loggedIn: false,
       };
 
     default:

@@ -130,6 +130,7 @@ const resolvers = {
                 throw new AuthenticationError('Invalid credentials');
             }
             const token = signToken(user);
+            console.log(user);
             return { user, token };
         }
     }
