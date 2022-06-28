@@ -1,25 +1,30 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { QUERY_PRODUCT } from "../../utils/queries";
 import {
   ADD_TO_CART,
   UPDATE_CART_QUANTITY,
+  LOGIN,
 } from "../../utils/actions";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useStoreContext } from "../../utils/GlobalState";
 import { idbPromise } from "../../utils/helpers";
 import QuantityPicker from "../QuantityPicker";
 import "./style.css";
+import Auth from "../../utils/auth";
+import { ADD_USER } from "../../utils/mutations";
+import {createRandomUser }from "../../utils/helpers";
 
 export default function ProductItem() {
   const [state, dispatch] = useStoreContext();
   const { productId } = useParams();
   const [currentProduct, setCurrentProduct] = useState({});
   const { loading, data, error } = useQuery(QUERY_PRODUCT, { variables: { _id: productId }, });
-  const { cart, currentQuantity } = state;
+  const { cart, currentQuantity, loggedIn } = state;
   
   const [addedToCart, toggleAdded] = useState(<div></div>);
+  const [addUser] = useMutation(ADD_USER);
 
   useEffect(() => {
     if (data && loading === false) {
@@ -27,7 +32,22 @@ export default function ProductItem() {
     }
   }, [data, loading]);
 
-  const addToCart = () => {
+  const addToCart = async () => {
+    if (!loggedIn) {
+      const guestUser = createRandomUser()
+      const { data } = await addUser ({
+        variables: {
+          userName: guestUser.userName,
+          email: guestUser.email,
+          password: guestUser.password,
+          role: 2
+        },
+      });
+      console.log(data);
+      dispatch({
+        type: LOGIN
+      });
+    }
     toggleAdded(<div>Item added to Cart</div>);
     const itemInCart = cart.find((cartItem) => cartItem._id === productId);
     if (itemInCart) {

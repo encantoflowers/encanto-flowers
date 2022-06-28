@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Table, Button } from 'react-bootstrap';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_USER } from '../utils/queries';
-import { DELETE_USER } from '../utils/mutations';
-import Auth from '../utils/auth';
+import { QUERY_USER } from '../../utils/queries';
+import { DELETE_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
+import './style.css'
 
 function UserProfile() {
   const { data } = useQuery(QUERY_USER);
@@ -38,11 +39,11 @@ function UserProfile() {
     <div>
         {user ? (
             <Container className='order-history my-5'>
-                <Link to="/">← Back to Shopping</Link>
-                <h3>Hello, {user.userName}</h3>
-                <Button onClick={()=> {useProgramMutation({ variables: {id: user._id}}); Auth.logout()}}>Delete Account</Button>
-                <h4>Order History</h4>
-                <Table striped>
+                <Link className='link-back' to="/">Back to Shopping →</Link>
+                <h2 className='mt-3'>Hello, {user.userName}</h2>
+
+                <h4 className='order-history'>Order History</h4>
+                <Table className='table-order-history' striped>
                     <thead>
                         <tr>
                             <th>Order</th>
@@ -54,6 +55,8 @@ function UserProfile() {
                         {orderHistoryTable}
                     </tbody>
                 </Table>
+
+                <Button className='button-delete' onClick={()=> {useProgramMutation({ variables: {id: user._id}}); Auth.logout()}}>Delete Account</Button>
             </Container>
         ) : null}
     </div>

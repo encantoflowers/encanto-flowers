@@ -12,7 +12,7 @@ export default function ShopNowBanner() {
                     <p>○ We deliver in San Diego: Poway, Ramona, Rancho Bernardo, Rancho Peñasquitos, Carmel Mountain, Scripps Ranch, Mira Mesa </p>
                     <p>○ Handmade: All our bouquets are craftly made with love.
                     </p>
-                    <a href="/categories/seasonal"><Button className='button-shop'>Shop Now!</Button></a>
+                    <a href="/categories/Seasonal"><Button className='button-shop'>Shop Now!</Button></a>
                 </Col>
                 <Col><img className='img-circle' alt="happy flower lady" src="images/flower_circle.png" /></Col>
             </Row>

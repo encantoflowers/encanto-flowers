@@ -5,6 +5,11 @@ class AuthService {
     return decode(this.getToken());
   }
 
+  getRole() {
+    const decodedToken = decode(this.getToken());
+    return decodedToken.data.role;
+  }
+
   loggedIn() {
     // Checks if there is a saved token and it's still valid
     const token = this.getToken();
