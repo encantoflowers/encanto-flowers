@@ -17,7 +17,7 @@ import {
   UPDATE_SELECTED_PRODUCT,
   UPDATE_TOTAL,
   UPDATE_CURRENT_QUANTITY,
-  LOGIN,
+  LOGGEDIN,
   LOGOUT,
 } from './actions';
 
@@ -134,7 +134,7 @@ export const reducer = (state, action) => {
         total: action.total,
       };
     
-    case LOGIN:
+    case LOGGEDIN:
       return {
         ...state,
         loggedIn: true,

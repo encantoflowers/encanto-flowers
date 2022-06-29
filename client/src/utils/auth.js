@@ -6,13 +6,23 @@ class AuthService {
   }
 
   getRole() {
-    const decodedToken = decode(this.getToken());
-    return decodedToken.data.role;
+    const token = this.getToken();
+    if (token != null) {
+      const decodedToken = decode(this.getToken());
+      return decodedToken.data.role;
+    }
+    else {
+      return 4;
+    }
+    
   }
 
   loggedIn() {
     // Checks if there is a saved token and it's still valid
     const token = this.getToken();
+    if (token == null) {
+      return false;
+    }
     return !!token && !this.isTokenExpired(token);
   }
 

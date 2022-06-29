@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { LOGIN } from '../../utils/mutations';
+import { LOGGEDIN } from '../../utils/actions';
+import { useStoreContext } from "../../utils/GlobalState";
 import Auth from '../../utils/auth';
 import { Form, Button } from "react-bootstrap"
 import "./style.css"
@@ -9,6 +11,7 @@ import "./style.css"
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN);
+  const [dispatch] = useStoreContext();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -18,6 +21,9 @@ function Login(props) {
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
+      dispatch({
+        type: LOGGEDIN
+      });
     } catch (e) {
       console.log(e);
     }

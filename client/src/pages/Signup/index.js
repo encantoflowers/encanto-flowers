@@ -4,9 +4,12 @@ import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
 import { ADD_USER } from "../../utils/mutations";
 import { Form , Button} from "react-bootstrap"
+import { useStoreContext } from "../../utils/GlobalState";
+import { LOGGEDIN } from '../../utils/actions';
 import './style.css'
 
 function Signup(props) {
+  const [dispatch] = useStoreContext();
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
 
@@ -22,7 +25,9 @@ function Signup(props) {
     });
     const token = data.addUser.token;
     Auth.login(token);  
-
+    dispatch({
+      type: LOGGEDIN
+    });
   };
 
   const handleChange = (event) => {
