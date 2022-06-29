@@ -2,6 +2,9 @@
   "name": "encanto-flowers",
   "version": "0.1.0",
   "main": "server/server.js",
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "heroku": "^7.60.2",
     "mongoose": "^6.3.0",
