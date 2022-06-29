@@ -5,7 +5,7 @@ import { QUERY_PRODUCT } from "../../utils/queries";
 import {
   ADD_TO_CART,
   UPDATE_CART_QUANTITY,
-  LOGIN,
+  LOGGEDIN,
 } from "../../utils/actions";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useStoreContext } from "../../utils/GlobalState";
@@ -45,7 +45,7 @@ export default function ProductItem() {
       });
       console.log(data);
       dispatch({
-        type: LOGIN
+        type: LOGGEDIN
       });
     }
     toggleAdded(<div>Item added to Cart</div>);

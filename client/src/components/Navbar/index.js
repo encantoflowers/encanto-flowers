@@ -4,7 +4,8 @@ import { useQuery } from '@apollo/client';
 import { QUERY_CATEGORIES, QUERY_USER } from '../../utils/queries';
 import {
   UPDATE_CATEGORIES,
-  UPDATE_CURRENT_CATEGORY
+  UPDATE_CURRENT_CATEGORY,
+  LOGOUT
 } from '../../utils/actions';
 import { useStoreContext } from '../../utils/GlobalState';
 import { idbPromise } from '../../utils/helpers';
@@ -19,18 +20,18 @@ function EncantoNav() {
   const { loading, data } = useQuery(QUERY_CATEGORIES);
   
   const { data: userData } = useQuery(QUERY_USER);
+
   let user;
 
   if (userData) {
     user = userData.user;
   }
 
-  let role = 3;
-  if (loggedIn) {
-    role = Auth.getRole();
-  }
-
   const { categories, loggedIn } = state;
+
+  const role = Auth.getRole();
+  const loggedInBackup = Auth.loggedIn();
+  console.log(role);
 
   useEffect(() => {
     if (data) {
@@ -61,7 +62,7 @@ function EncantoNav() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        {loggedIn && Auth.getRole() === 1 ? (<Navbar.Brand href="/adminpanel">
+        {(loggedIn || loggedInBackup) && Auth.getRole() === 1 ? (<Navbar.Brand href="/adminpanel">
           <img
             alt=""
             src="/images/encanto_logo_nav.png"
@@ -98,39 +99,39 @@ function EncantoNav() {
                 </div>
               )}
             </NavDropdown>
-            {loggedIn && role === 1 ? (
+            {(loggedIn || loggedInBackup) && role == 1 ? (
               <Nav.Link href="/addproduct">Add Product</Nav.Link>
             ) : (<div></div>)}
-            {loggedIn && role === 1 ? (
+            {(loggedIn || loggedInBackup) && role == 1 ? (
               <Nav.Link href="/addcategory">Add Category</Nav.Link>
             ) : (<div></div>)}
-            {loggedIn && role === 1 ? (
+            {(loggedIn || loggedInBackup) && role == 1 ? (
               <Nav.Link href="/updateproduct">Update Product</Nav.Link>
             ) : (<div></div>)}
-            {loggedIn && role === 1 ? (
+            {(loggedIn || loggedInBackup) && role == 1 ? (
               <Nav.Link href="/updatecategory">Update Category</Nav.Link>
             ) : (<div></div>)}
-            {loggedIn && role < 2 ? (
-              <Nav.Link href="/" onClick={() => Auth.logout()}>Logout</Nav.Link>
+            {(loggedIn || loggedInBackup) && role < 2 ? (
+              <Nav.Link href="/" onClick={() => {Auth.logout(); dispatch({ type: LOGOUT });}}>Logout</Nav.Link>
             ) : (
               <div></div>
             )}
-            {loggedIn ? (
+            {(loggedIn || loggedInBackup) ? (
               <Nav.Link href="/cart">Cart</Nav.Link>
             ) : (
               <div></div>
             )}
-            {loggedIn && role < 2 ? (
+            {(loggedIn || loggedInBackup) && role < 2 ? (
               <Nav.Link href="/userprofile">Profile</Nav.Link>
             ) : (
               <div></div>
             )}
-            {!loggedIn ? (
+            {!(loggedIn || loggedInBackup) ? (
               <Nav.Link href="/signup">Sign Up</Nav.Link>
             ) : (
               <div></div>
             )}
-            {!loggedIn ? (
+            {!(loggedIn || loggedInBackup) ? (
               <Nav.Link href="/login">Sign In</Nav.Link>
             ) : (
               <div></div>
